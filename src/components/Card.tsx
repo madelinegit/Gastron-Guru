@@ -1,5 +1,16 @@
 import "./Card.scss";
 
+// mock data
+const rating = 4.5;
+const reviewCount = 58;
+const distance = 0.4;
+
+// condition to determine whether to display the '|' sign
+const showSeparator = reviewCount > 0 && distance !== undefined;
+
+// condition to determine whether to display the parentheses for reviews
+const showReviews = reviewCount > 0;
+
 const Card = () => {
   return (
     <div className="card-container">
@@ -12,7 +23,12 @@ const Card = () => {
 
         <div className="ratings-container">
           <div>
-            <p>4.5 (58) | 0.4 mi</p>
+            <p>
+              {rating}
+              {showReviews && ` (${reviewCount})`}
+              {showSeparator && ' | '}
+              {distance !== undefined && `${distance} mi`}
+            </p>
           </div>
           <div className="ribbon">
             <p>30% off</p>
