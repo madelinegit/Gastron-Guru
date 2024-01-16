@@ -3,11 +3,12 @@ import "./Card.scss";
 const Card = () => {
   return (
     <div className="card-container">
-      <div className="thumbnail">
-        Thumbnail
-      </div>
+      <div className="card">
+        <div className="thumbnail">
+          Thumbnail
+        </div>
 
-      <h1>Peter Winston</h1>
+        <h2>Peter Winston</h2>
 
         <div className="ratings-container">
           <div>
@@ -28,6 +29,7 @@ const Card = () => {
         <div className="buy-btn-container">
           <button>Buy now</button>
         </div>
+      </div>
     </div>
   )
 };
