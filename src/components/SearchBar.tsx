@@ -11,6 +11,9 @@ export default function SearchBar() {
     let index: number = -1;
 
     const timer = setInterval(() => {
+      if (placeholder == stringToSplit) {
+        return;
+      }
       if (index < splittedString.length) {
         index++;
         if (splittedString[index] != undefined) {
