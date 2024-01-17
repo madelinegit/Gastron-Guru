@@ -33,7 +33,7 @@ export default function SearchBar() {
         id="search-box"
         className="search-box"
         name="search-box"
-        placeholder={placeholder}
+        placeholder={placeholder as string}
       />
     </div>
   );
