@@ -11,17 +11,19 @@ export default function SearchBar() {
     const splittedString: string[] = stringToSplit.split('');
     let index: number = -1;
 
-    const timer = setInterval(() => {
-      if (placeholder == stringToSplit) {
-        return;
-      }
-      if (index < splittedString.length) {
-        index++;
-        if (splittedString[index] != undefined) {
-          setPlaceholder((prevText) => prevText + splittedString[index]);
+    const timer = setTimeout(() => {
+      setInterval(() => {
+        if (placeholder == stringToSplit) {
+          return;
         }
-      }
-    }, 200);
+        if (index < splittedString.length) {
+          index++;
+          if (splittedString[index] != undefined) {
+            setPlaceholder((prevText) => prevText + splittedString[index]);
+          }
+        }
+      }, 200);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, []);
