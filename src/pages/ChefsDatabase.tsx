@@ -1,4 +1,4 @@
-import { useChef } from '../utils/Api'
+import useChef from '../utils/Api'
 
 //define ChefsDatabase component
 const ChefsDatabase = () => {
