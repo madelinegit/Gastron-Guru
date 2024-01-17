@@ -17,7 +17,7 @@ export default function SearchBar() {
           setPlaceholder((prevText) => prevText + splittedString[index]);
         }
       }
-    }, 300);
+    }, 200);
 
     return () => clearInterval(timer);
   }, []);
