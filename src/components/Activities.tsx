@@ -1,3 +1,5 @@
+import './Activities.scss';
+
 type ActivitiesProps = {
   image: string;
   altText: string;
