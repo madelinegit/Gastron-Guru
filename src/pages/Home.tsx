@@ -1,9 +1,11 @@
-import Instructions from "../components/Instructions";
+import Instructions from '../components/Instructions';
+import { ForEveryOccasion } from '../components/ForEveryOccasion';
 
 const Home = () => {
   return (
     <>
       <Instructions />
+      <ForEveryOccasion />
     </>
   );
 };
