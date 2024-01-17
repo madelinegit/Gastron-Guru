@@ -1,9 +1,14 @@
-const ChefsDatabase = () => {
-  return (
-    <>
-      <p>Database</p>
-    </>
-  );
-};
+import { useChef } from '../utils/Api'
 
-export default ChefsDatabase;
+//define ChefsDatabase component
+const ChefsDatabase = () => {
+  const chefs = useChef()
+  const renderChefNames = () => {
+    // console.log({ chefs })
+    return chefs.map((chef) => <p key={chef.name}>{chef.name}</p>)
+  }
+
+  return <>{renderChefNames()}</>
+}
+
+export default ChefsDatabase
