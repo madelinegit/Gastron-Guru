@@ -1,85 +1,47 @@
+import useChef from "../utils/Api";
 import "./ChefCard.scss";
 
-// mock data
-const rating = 4.5;
-const reviewCount = 58;
-const distance = 0.4;
-
-// condition to determine whether to display the '|' sign
-const showSeparator = reviewCount > 0 && distance !== undefined;
-
-// condition to determine whether to display the parentheses for reviews
-const showReviews = reviewCount > 0;
-
 const Card = () => {
+  const chefsData = useChef();
+
   return (
     <div className="chef-card-container">
-      <div className="chef-card">
-        <div className="thumbnail">
-          {/* FILLER IMAGE */}
-          <img src="https://images.unsplash.com/photo-1630445396366-8dea03c85ead?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Peter Winston" />
-        </div>
-
-        <h2>Peter Winston</h2>
-
-        <div className="ratings-container">
-          <div>
-            <p>
-              {rating}
-              {showReviews && ` (${reviewCount})`}
-              {showSeparator && ' | '}
-              {distance !== undefined && `${distance} mi`}
-            </p>
+      {chefsData.map((chef) => (
+        <div className="chef-card">
+          <div className="thumbnail">
+            {/* FILLER IMAGE */}
+            <img src="https://images.unsplash.com/photo-1630445396366-8dea03c85ead?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Peter Winston" />
           </div>
-          <div className="ribbon">
-            <p>30% off</p>
+
+          <h2>{chef.name}</h2>
+
+          <div className="ratings-container">
+            <div>
+              <p>
+                {chef.rating?.value}
+                {chef.rating && chef.rating.number_of_ratings > 0 && ` (${chef.rating.number_of_ratings})`}
+                {chef.rating?.value && chef.rating.number_of_ratings && chef.distance_from_centre && ' | '}
+                {chef.distance_from_centre !== undefined && `${(Math.ceil(Number(chef.distance_from_centre) * 100) / 100).toFixed(1)} mi`}
+              </p>
+            </div>
+            <div className="ribbon">
+              <p>{chef.labels[0]}</p>
+            </div>
           </div>
-        </div>
 
-        <div className="tags">
-          <ul>
-            <li>High-End</li>
-            <li>In-House</li>
-          </ul>
-        </div>
-
-        <div className="buy-btn-container">
-          <button>Buy now</button>
-        </div>
-      </div>
-
-      <div className="chef-card">
-        <div className="thumbnail">
-          Thumbnail
-        </div>
-
-        <h2>Peter Winston</h2>
-
-        <div className="ratings-container">
-          <div>
-            <p>
-              {rating}
-              {showReviews && ` (${reviewCount})`}
-              {showSeparator && ' | '}
-              {distance !== undefined && `${distance} mi`}
-            </p>
+          <div className="tags">
+            <ul>
+              {chef.private && chef.private.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
           </div>
-          <div className="ribbon">
-            <p>30% off</p>
+
+          <div className="buy-btn-container">
+            <button>Buy now</button>
           </div>
         </div>
-
-        <div className="tags">
-          <ul>
-            <li>High-End</li>
-            <li>In-House</li>
-          </ul>
-        </div>
-
-        <div className="buy-btn-container">
-          <button>Buy now</button>
-        </div>
-      </div>
+      ))}
     </div>
   )
 };
