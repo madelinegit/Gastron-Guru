@@ -1,8 +1,10 @@
-import Instructions from "../components/Instructions";
+import Instructions from '../components/Instructions';
+import SearchBar from '../components/SearchBar';
 
 const Home = () => {
   return (
     <>
+      <SearchBar />
       <Instructions />
     </>
   );
