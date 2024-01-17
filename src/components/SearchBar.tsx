@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import './SearchBar.scss';
 
 export default function SearchBar() {
   const inputRef = useRef(null);
