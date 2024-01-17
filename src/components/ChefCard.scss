@@ -10,11 +10,14 @@ $breakpoint-md: 768px;
 
   @media (max-width: $breakpoint-md) {
     flex-direction: column;
+    margin: 20px;
   }
 }
 
 .chef-card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
   overflow: hidden;
   box-shadow: inset 0px 10px 15px -3px rgba(0, 0, 0, 0.1), inset 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -30,6 +33,12 @@ $breakpoint-md: 768px;
   .thumbnail {
     background-color: #eee;
     height: 200px;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
   }
 
   .ratings-container {
