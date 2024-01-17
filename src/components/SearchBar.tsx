@@ -23,11 +23,12 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div>
+    <div className="search-bar-container">
       <input
         type="text"
         ref={inputRef}
         id="search-box"
+        className="search-box"
         name="search-box"
         placeholder={placeholder}
       />
