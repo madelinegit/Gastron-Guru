@@ -2,7 +2,7 @@
 $breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 
-.card-container {
+.chef-card-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,22 +13,22 @@ $breakpoint-md: 768px;
   }
 }
 
-.card {
+.chef-card {
   position: relative;
   overflow: hidden;
   box-shadow: inset 0px 10px 15px -3px rgba(0, 0, 0, 0.1), inset 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  width: 350px;
+  width: 330px;
   background-color: #fbf1e8;
 
   h1, h2, h3 {
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
     color: $light-black;
     font-size: 2rem;
   }
 
   .thumbnail {
-    background: #eee;
+    background-color: #eee;
     height: 200px;
   }
 
@@ -38,19 +38,14 @@ $breakpoint-md: 768px;
     align-items: center;
 
     p {
-      padding-left: 20px;
+      padding: 10px 20px;
     }
 
     .ribbon {
-      background: $gold;
-      --f: 0px;
-      --r: 15px;
-      --t: 0px;
-      position: relative;
-      right: 0;
-      inset: var(--t) calc(-1*var(--f)) auto auto;
-      padding: 15px 10px 15px calc(10px + var(--r));
-      clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--f)), calc(100% - var(--f)) 100%, calc(100% - var(--f)) calc(100% - var(--f)), 0 calc(100% - var(--f)), var(--r) calc(50% - var(--f)/2));
+      background-color: $gold;
+      padding-left: calc(.8em + .25em);
+      clip-path: polygon(100vw 0,0 0,.8em 50%,0 100%,100vw 100%);
+      border-image: conic-gradient($gold 0 0) fill 0;
 
       p {
         font-weight: bold;
@@ -65,7 +60,7 @@ $breakpoint-md: 768px;
     list-style-type: none;
     display: flex;
     gap: 8px;
-    margin: 40px 0 10px 0;
+    margin: 20px 0 10px 0;
     padding: 0 20px 0 20px;
 
     li {
@@ -82,7 +77,7 @@ $breakpoint-md: 768px;
     margin: 0 20px 15px 20px;
 
     button {
-      background: $gold;
+      background-color: $gold;
       border: none;
       border-radius: 5px;
       width: 100%;

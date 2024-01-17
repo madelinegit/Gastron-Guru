@@ -1,4 +1,4 @@
-import "./Card.scss";
+import "./ChefCard.scss";
 
 // mock data
 const rating = 4.5;
@@ -13,8 +13,8 @@ const showReviews = reviewCount > 0;
 
 const Card = () => {
   return (
-    <div className="card-container">
-      <div className="card">
+    <div className="chef-card-container">
+      <div className="chef-card">
         <div className="thumbnail">
           Thumbnail
         </div>

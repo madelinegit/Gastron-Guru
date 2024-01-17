@@ -1,11 +1,11 @@
 import Instructions from "../components/Instructions";
-import Card from "../components/Card";
+import ChefCard from "../components/ChefCard";
 
 const Home = () => {
   return (
     <>
       <Instructions />
-      <Card />
+      <ChefCard />
     </>
   );
 };
