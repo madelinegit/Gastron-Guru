@@ -3,17 +3,17 @@ $breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 
 .chef-card-container {
-  background-color: $light-black;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  padding: 10px;
 
   @media (max-width: $breakpoint-md) {
     flex-direction: column;
-    padding: 30px;
   }
+
+  background-color: $light-black;
+  width: 100%;
 }
 
 .chef-card {
@@ -33,7 +33,9 @@ $breakpoint-md: 768px;
     margin: 0 0 30px 0;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     padding: 15px 15px 5px 15px;
     color: $black;
     font-size: 21px;
@@ -64,8 +66,8 @@ $breakpoint-md: 768px;
 
     .ribbon {
       background-color: $gold;
-      padding-left: calc(.8em + .25em);
-      clip-path: polygon(100vw 0,0 0,.8em 50%,0 100%,100vw 100%);
+      padding-left: calc(0.8em + 0.25em);
+      clip-path: polygon(100vw 0, 0 0, 0.8em 50%, 0 100%, 100vw 100%);
       border-image: conic-gradient($gold 0 0) fill 0;
 
       p {
