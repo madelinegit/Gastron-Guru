@@ -1,6 +1,6 @@
 import FeaturedCards from "./FeaturedExampleCards";
 import "./Instructions.scss";
-import RelativeSquareBlocks from "./RelativeSquareBlocks";
+// import RelativeSquareBlocks from "./RelativeSquareBlocks";
 
 function Instructions() {
   return (
@@ -55,8 +55,8 @@ function Instructions() {
           </p>
         </div>
         <FeaturedCards />
-        <RelativeSquareBlocks/>
       </div>
+      {/* <RelativeSquareBlocks /> */}
     </div>
   );
 }

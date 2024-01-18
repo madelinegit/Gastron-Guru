@@ -1,3 +1,42 @@
-.parent-container {
+
+
+.blue-container {
+  width: 100%;
+  height: 409px;
   background-color: $dark-blue;
+  // transform: translate(50px,30px);
+  padding: -100px;
+  position: relative;
+  bottom: 250px;
+  z-index: -1;
+}
+.squareblock-chef {
+  left: 0;
+  img.fluid-image {
+    width: 434.51px;
+    height: 429.51px;
+    object-fit: cover;
+    position: relative;
+    float: right;
+    top: -150px;
+    left: -223px;
+    margin-bottom: -50px;
+    //this did nothing to crop it differently^
+  }
+}
+
+.squareblock-container {
+  width: 894;
+  height: 440px;
+  background-color: $gold;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.text-container {
+  width: 375px;
+  border: 1px solid red;
 }
