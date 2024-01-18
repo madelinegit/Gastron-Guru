@@ -1,9 +1,9 @@
-import ChefCard from "../components/ChefCard";
+import ChefCards from "../components/ChefCards";
 
 const Home = () => {
   return (
     <>
-      <ChefCard />
+      <ChefCards />
     </>
   );
 };
