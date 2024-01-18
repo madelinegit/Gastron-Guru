@@ -1,5 +1,5 @@
-import Home from './pages/Home'
-import ChefsDatabase from './pages/ChefsDatabase'
+import Home from "./pages/Home";
+import ChefsDatabase from "./pages/ChefsDatabase";
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <Home />
       <ChefsDatabase />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
