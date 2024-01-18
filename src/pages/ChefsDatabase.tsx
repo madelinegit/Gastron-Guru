@@ -1,4 +1,4 @@
-import { useChef } from '../utils/Api'
+import useChef from '../utils/Api'
 
 //define ChefsDatabase component
 const ChefsDatabase = () => {
@@ -11,4 +11,4 @@ const ChefsDatabase = () => {
   return <>{renderChefNames()}</>
 }
 
-export default ChefsDatabase
+export default ChefsDatabase;
