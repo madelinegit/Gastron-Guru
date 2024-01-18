@@ -1,5 +1,7 @@
-import Ribbon from "./Ribbon";
 import useChef, { Chef } from "../utils/Api";
+import RatingAndLocation from "./RatingAndLocation";
+import Ribbon from "./Ribbon";
+
 import "./ChefCards.scss";
 
 type ChefDataProps = {
@@ -27,17 +29,11 @@ const ChefCard: React.FC<Chef> = ({ name, rating, distance_from_centre, labels, 
     <h2>{name}</h2>
 
     <div className="ratings-container">
-      <div>
-        <p>
-          {rating?.value}
-          {rating && rating.number_of_ratings > 0 && ` (${rating.number_of_ratings})`}
-          {rating?.value && rating.number_of_ratings && distance_from_centre && ' | '}
-          {distance_from_centre !== undefined && `${(Math.ceil(Number(distance_from_centre) * 100) / 100).toFixed(1)} mi`}
-        </p>
-      </div>
-
+      <RatingAndLocation
+        rating={rating}
+        distance_from_centre={distance_from_centre}
+      />
       <Ribbon label={labels?.[0]} />
-
     </div>
 
     <div className="tags">
