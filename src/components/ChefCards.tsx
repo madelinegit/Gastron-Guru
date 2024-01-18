@@ -1,25 +1,11 @@
-import useChef, { Chef } from "../utils/Api";
+import useChef from "../utils/Api";
+import { ChefDataProps } from "../types";
 import RatingAndLocation from "./RatingAndLocation";
 import Ribbon from "./Ribbon";
 
 import "./ChefCards.scss";
 
-type ChefDataProps = {
-  name?: string
-  labels?: string[]
-  services?: string[]
-  corporate?: boolean
-  private?: string[]
-  distance_from_centre?: string
-  rating?: {
-    value: number
-    number_of_ratings: number
-  }
-  cuisines?: string[]
-  location?: string
-}
-
-const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPrivate }: Chef) => (
+const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPrivate }: ChefDataProps) => (
   <div className="chef-card">
     <div className="thumbnail">
       {/* FILLER IMAGE */}
@@ -50,10 +36,12 @@ const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPri
   </div>
 );
 
-const ChefCards: React.FC<ChefDataProps> = () => {
+//CREATE SEPARATE COMPONENT..?
+const ChefCards = () => {
   const chefData = useChef();
 
   return (
+    // CREATED CONTAINER TO VISUALIZE CARDS UI. UPDATE/EDIT ACCORDINGLY
     <div className="chef-card-container">
       {chefData.map(chef => (
         <ChefCard key={chef.name} {...chef} />
