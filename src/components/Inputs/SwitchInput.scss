@@ -16,8 +16,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 102px; // Width of the switch container
-  height: 55px; // Height of the switch container
+  width: 102px;
+  height: 55px;
   border: 2px solid $white;
   border-radius: 27px;
 
@@ -32,15 +32,15 @@
     cursor: pointer;
     top: 4px;
     left: 5px;
-    width: 40px; // Width of the round switch
-    height: 42px; // Height of the round switch
+    width: 40px;
+    height: 42px;
     background-color: $gold;
     border: 1px solid #979797;
-    border-radius: 50%; // Makes the switch round
-    transition: left 0.3s ease-in-out; // Add transition for left property
+    border-radius: 50%;
+    transition: left 0.3s ease-in-out;
   }
 
   input:checked + .SwitchRound {
-    left: 54px; // Move the switch to the right when checked
+    left: 54px;
   }
 }
