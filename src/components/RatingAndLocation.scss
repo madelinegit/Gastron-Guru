@@ -1,0 +1,11 @@
+.ratings-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    padding: 10px 0 10px 20px;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 11.5px;
+  }
+}

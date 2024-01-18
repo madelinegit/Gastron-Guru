@@ -19,7 +19,7 @@ type ChefDataProps = {
   location?: string
 }
 
-const ChefCard: React.FC<Chef> = ({ name, rating, distance_from_centre, labels, private: chefPrivate }) => (
+const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPrivate }: Chef) => (
   <div className="chef-card">
     <div className="thumbnail">
       {/* FILLER IMAGE */}
@@ -45,7 +45,7 @@ const ChefCard: React.FC<Chef> = ({ name, rating, distance_from_centre, labels, 
     </div>
 
     <div className="buy-btn-container">
-      <button>Buy now</button>
+      <button className="button-primary">Buy now</button>
     </div>
   </div>
 );

@@ -1,3 +1,5 @@
+import "./RatingAndLocation.scss";
+
 interface RatingAndLocationProps {
   rating: {
     value: number;
@@ -6,7 +8,7 @@ interface RatingAndLocationProps {
   distance_from_centre: string | undefined;
 }
 
-const RatingAndLocation: React.FC<RatingAndLocationProps> = ({ rating, distance_from_centre }) => {
+const RatingAndLocation = ({ rating, distance_from_centre }: RatingAndLocationProps) => {
   return (
     <div>
       <p>

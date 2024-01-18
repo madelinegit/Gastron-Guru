@@ -1,8 +1,10 @@
+import "./Ribbon.scss";
+
 interface RibbonProps {
   label: string | undefined;
 }
 
-const Ribbon: React.FC<RibbonProps> = ({ label }) => (
+const Ribbon = ({ label }: RibbonProps) => (
   <div className="ribbon">
     <p>{label}</p>
   </div>

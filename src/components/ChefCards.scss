@@ -48,33 +48,6 @@
     }
   }
 
-  .ratings-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    p {
-      padding: 10px 0 10px 20px;
-      font-family: 'Helvetica', sans-serif;
-      font-size: 11.5px;
-    }
-
-    .ribbon {
-      background-color: $gold;
-      padding-left: calc(.8em + .25em);
-      clip-path: polygon(100vw 0,0 0,.8em 50%,0 100%,100vw 100%);
-      border-image: conic-gradient($gold 0 0) fill 0;
-
-      p {
-        width: 100%;
-        padding: 10px;
-        font-weight: bold;
-        font-size: 10px;
-        text-transform: uppercase;
-      }
-    }
-  }
-
   .tags ul {
     list-style-type: none;
     display: flex;
@@ -106,10 +79,6 @@
       padding: 10px 0px;
       font-size: 14px;
       text-align: center;
-
-      @media (max-width: $breakpoint-md) {
-        height: 47px;
-      }
     }
   }
 
