@@ -1,0 +1,46 @@
+// RoundSwitchInput.scss
+@import '../../styles/colors.scss';
+
+.switchLabel {
+  margin-right: 15px;
+  color: $white;
+  font-size: 21px;
+  opacity: 1;
+  font-weight: 700;
+  font-style: Bold;
+  letter-spacing: 0px;
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 102px; // Width of the switch container
+  height: 55px; // Height of the switch container
+  border: 2px solid $white;
+  border-radius: 27px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .SwitchRound {
+    position: absolute;
+    cursor: pointer;
+    top: 4px;
+    left: 5px;
+    width: 40px; // Width of the round switch
+    height: 42px; // Height of the round switch
+    background-color: $gold;
+    border: 1px solid #979797;
+    border-radius: 50%; // Makes the switch round
+    transition: left 0.3s ease-in-out; // Add transition for left property
+  }
+
+  input:checked + .SwitchRound {
+    left: 54px; // Move the switch to the right when checked
+  }
+}
