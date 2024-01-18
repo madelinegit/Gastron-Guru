@@ -2,12 +2,12 @@ import Activity from './Activity';
 import ManCooking from '../assets/images/man-cooking.jpg';
 import DancingCouple from '../assets/images/dancing-couple.jpg';
 import CookoutEvents from '../assets/images/food.jpg';
-import './Activity.scss';
+import './ForEveryOccasion.scss';
 
 export const ForEveryOccasion = () => {
   return (
     <div className="for-every-occasion-container">
-      <h1>FOR EVERY OCCASION</h1>
+      <h2>FOR EVERY OCCASION</h2>
       <Activity
         inverted={false}
         image={ManCooking}
