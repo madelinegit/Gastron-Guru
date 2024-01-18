@@ -1,7 +1,7 @@
 import useChef from "../utils/Api";
 import "./ChefCard.scss";
 
-const Card = () => {
+const ChefCard = () => {
   const chefsData = useChef();
 
   return (
@@ -47,4 +47,4 @@ const Card = () => {
   )
 };
 
-export default Card;
+export default ChefCard;
