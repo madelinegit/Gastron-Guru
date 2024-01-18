@@ -4,7 +4,7 @@ import DancingCouple from '../assets/images/dancing-couple.jpg';
 import CookoutEvents from '../assets/images/food.jpg';
 import './ForEveryOccasion.scss';
 
-export const ForEveryOccasion = () => {
+const ForEveryOccasion = () => {
   return (
     <div className="for-every-occasion-container">
       <h2>FOR EVERY OCCASION</h2>
@@ -29,3 +29,5 @@ export const ForEveryOccasion = () => {
     </div>
   );
 };
+
+export default ForEveryOccasion;
