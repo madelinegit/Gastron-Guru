@@ -1,9 +1,20 @@
+import Ribbon from "./Ribbon";
 import useChef, { Chef } from "../utils/Api";
-import { ChefData } from "../types";
 import "./ChefCards.scss";
 
-type Props = {
-  data: ChefData
+type ChefDataProps = {
+  name?: string
+  labels?: string[]
+  services?: string[]
+  corporate?: boolean
+  private?: string[]
+  distance_from_centre?: string
+  rating?: {
+    value: number
+    number_of_ratings: number
+  }
+  cuisines?: string[]
+  location?: string
 }
 
 const ChefCard: React.FC<Chef> = ({ name, rating, distance_from_centre, labels, private: chefPrivate }) => (
@@ -24,10 +35,9 @@ const ChefCard: React.FC<Chef> = ({ name, rating, distance_from_centre, labels, 
           {distance_from_centre !== undefined && `${(Math.ceil(Number(distance_from_centre) * 100) / 100).toFixed(1)} mi`}
         </p>
       </div>
-      <div className="ribbon">
-        {/* GRAB FIRST INDEX FROM ARRAY TO DISPLAY DISCOUNT */}
-        <p>{labels?.[0]}</p>
-      </div>
+
+      <Ribbon label={labels?.[0]} />
+
     </div>
 
     <div className="tags">
@@ -44,7 +54,7 @@ const ChefCard: React.FC<Chef> = ({ name, rating, distance_from_centre, labels, 
   </div>
 );
 
-const ChefCards: React.FC<Props> = () => {
+const ChefCards: React.FC<ChefDataProps> = () => {
   const chefData = useChef();
 
   return (
