@@ -1,0 +1,79 @@
+.activity-container {
+  display: flex;
+  align-items: center;
+  gap: 96px;
+
+  .img {
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
+    img {
+      width: 480px;
+      height: 336px;
+      object-fit: cover;
+      object-position: 65% 65%;
+    }
+  }
+
+  p {
+    width: 448px;
+    color: #fffb;
+
+    @media (max-width: $breakpoint-sm) {
+      width: 350px;
+      color: #fffb;
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    button {
+      cursor: pointer;
+    }
+  }
+}
+
+.activity-container-inverted {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 96px;
+
+  .img {
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
+
+    img {
+      width: 480px;
+      height: 336px;
+      object-fit: cover;
+      object-position: 65% 65%;
+    }
+  }
+
+  p {
+    width: 448px;
+    color: #fffb;
+
+    @media (max-width: $breakpoint-sm) {
+      width: 350px;
+      color: #fffb;
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    button {
+      cursor: pointer;
+    }
+  }
+}

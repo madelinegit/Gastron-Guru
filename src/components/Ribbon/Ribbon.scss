@@ -1,0 +1,14 @@
+.ribbon {
+  background-color: $gold;
+  padding-left: calc(.8em + .25em);
+  clip-path: polygon(100vw 0,0 0,.8em 50%,0 100%,100vw 100%);
+  border-image: conic-gradient($gold 0 0) fill 0;
+
+  p {
+    width: 100%;
+    padding: 10px !important;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+}
