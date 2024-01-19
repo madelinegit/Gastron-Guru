@@ -1,24 +1,8 @@
-import { useEffect, useState } from 'react'
-
-//define Chef interface.
-// NOTE: Able to separate this interface into its own file (Chef.interface.tsx) => import to useChefsData.tsx (define custom hook for fetch) => import useChef to ChefsDatabase.tsx
-export interface Chef {
-  name?: string
-  labels?: string[]
-  services?: string[]
-  corporate?: boolean
-  private?: string[]
-  distance_from_centre?: string
-  rating?: {
-    value: number
-    number_of_ratings: number
-  }
-  cuisines?: string[]
-  location?: string
-}
+import { useEffect, useState } from "react";
+import { ChefDataProps } from "../types";
 
 const useChef = () => {
-  const [chefs, setChefs] = useState<Chef[]>([])
+  const [chefs, setChefs] = useState<ChefDataProps[]>([])
 
   //fetch chef data on mount of ChefsDatabase component
   useEffect(() => {
@@ -33,10 +17,12 @@ const useChef = () => {
       } catch (error) {
         console.error('Error fetching data', error)
       }
-    }
-    fetchChefs()
-  }, [])
-  return chefs
-}
+    };
+
+    fetchChefs();
+  }, []);
+
+  return chefs;
+};
 
 export default useChef;
