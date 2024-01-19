@@ -1,11 +1,13 @@
-import Instructions from '../components/Instructions';
 import SearchBar from '../components/SearchBar';
+import ChefCard from "../components/ChefCard";
+import RelativeSquareBlocks from "../components/RelativeSquareBlocks";
 
 const Home = () => {
   return (
     <>
       <SearchBar />
-      <Instructions />
+      <ChefCard />
+      <RelativeSquareBlocks />
     </>
   );
 };
