@@ -1,7 +1,9 @@
 import useChef from "../utils/Api";
+import { capitalizeWords } from "../utils/helpers";
 import { ChefDataProps } from "../types";
 import RatingAndLocation from "./RatingAndLocation";
 import Ribbon from "./Ribbon";
+import Star from "./icons/Star";
 
 import "./ChefCards.scss";
 
@@ -15,17 +17,22 @@ const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPri
     <h2>{name}</h2>
 
     <div className="ratings-container">
-      <RatingAndLocation
-        rating={rating}
-        distance_from_centre={distance_from_centre}
-      />
-      <Ribbon label={labels?.[0]} />
+      <div className="left">
+        <Star />
+        <RatingAndLocation
+          rating={rating}
+          distance_from_centre={distance_from_centre}
+        />
+      </div>
+      <div className="right">
+        <Ribbon label={labels?.[0]} />
+      </div>
     </div>
 
     <div className="tags">
       <ul>
         {chefPrivate && chefPrivate.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item}>{capitalizeWords(item)}</li>
         ))}
       </ul>
     </div>
@@ -36,7 +43,7 @@ const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPri
   </div>
 );
 
-//CREATE SEPARATE COMPONENT..?
+// CREATE SEPARATE COMPONENT..?
 const ChefCards = () => {
   const chefData = useChef();
 
