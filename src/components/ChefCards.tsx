@@ -7,7 +7,13 @@ import Star from "./icons/Star";
 
 import "./ChefCards.scss";
 
-const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPrivate }: ChefDataProps) => (
+const ChefCard = ({
+  name,
+  rating,
+  distance_from_centre,
+  labels,
+  private: chefPrivate
+}: ChefDataProps) => (
   <div className="chef-card">
     <div className="thumbnail">
       {/* FILLER IMAGE */}
@@ -16,7 +22,7 @@ const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPri
 
     <h2>{name}</h2>
 
-    <div className="ratings-container">
+    <section className="ratings-container">
       <div className="left">
         <Star />
         <RatingAndLocation
@@ -27,7 +33,7 @@ const ChefCard = ({ name, rating, distance_from_centre, labels, private: chefPri
       <div className="right">
         <Ribbon label={labels?.[0]} />
       </div>
-    </div>
+    </section>
 
     <div className="tags">
       <ul>
