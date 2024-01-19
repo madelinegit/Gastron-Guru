@@ -1,13 +1,11 @@
-import Home from "./pages/Home";
-import ChefsDatabase from "./pages/ChefsDatabase";
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <Home />
-      <ChefsDatabase />
+      <Outlet />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
