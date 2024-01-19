@@ -1,9 +1,11 @@
-import Instructions from "../components/Instructions";
+import ChefCard from "../components/ChefCard";
+import RelativeSquareBlocks from "../components/RelativeSquareBlocks";
 
 const Home = () => {
   return (
     <>
-      <Instructions />
+      <ChefCard />
+      <RelativeSquareBlocks />
     </>
   );
 };
