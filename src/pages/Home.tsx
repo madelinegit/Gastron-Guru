@@ -1,12 +1,12 @@
 import SearchBar from '../components/SearchBar';
-import ChefCard from "../components/ChefCard";
+import ChefCards from "../components/ChefCards/ChefCards";
 import RelativeSquareBlocks from "../components/RelativeSquareBlocks";
 
 const Home = () => {
   return (
     <>
       <SearchBar />
-      <ChefCard />
+      <ChefCards />
       <RelativeSquareBlocks />
     </>
   );

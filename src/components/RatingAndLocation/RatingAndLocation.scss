@@ -1,0 +1,29 @@
+.ratings-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 10px 15px;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    p {
+      font-family: 'Helvetica', sans-serif;
+      font-size: 11.5px;
+    }
+  
+    svg {
+      width: 14px;
+      height: 14px;
+  
+      path {
+      display: inline-block;
+      border: 2px solid #ccc;
+      fill: $gold;
+      }
+    }
+  }
+
+}
