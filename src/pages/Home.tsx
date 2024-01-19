@@ -1,4 +1,4 @@
-import ChefCards from "../components/ChefCards";
+import ChefCards from "../components/ChefCards/ChefCards";
 import RelativeSquareBlocks from "../components/RelativeSquareBlocks";
 
 const Home = () => {

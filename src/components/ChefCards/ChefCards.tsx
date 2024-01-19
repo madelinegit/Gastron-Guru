@@ -1,11 +1,15 @@
-import useChef from "../utils/Api";
-import { capitalizeWords } from "../utils/helpers";
-import { ChefDataProps } from "../types";
-import RatingAndLocation from "./RatingAndLocation";
-import Ribbon from "./Ribbon";
-import Star from "./icons/Star";
+import useChef from "../../utils/Api";
+import { capitalizeWords } from "../../utils/helpers";
+import { ChefDataProps } from "../../types";
+import RatingAndLocation from "../RatingAndLocation/RatingAndLocation";
+import Ribbon from "../Ribbon/Ribbon";
 
 import "./ChefCards.scss";
+
+// import icon
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 
 const ChefCard = ({
   name,
@@ -22,9 +26,9 @@ const ChefCard = ({
 
     <h2>{name}</h2>
 
-    <section className="ratings-container">
+    <div className="ratings-container">
       <div className="left">
-        <Star />
+        <FontAwesomeIcon icon={faStar} />
         <RatingAndLocation
           rating={rating}
           distance_from_centre={distance_from_centre}
