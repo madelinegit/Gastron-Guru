@@ -1,13 +1,13 @@
-import Instructions from '../components/Instructions';
-import ForEveryOccasion from '../components/ForEveryOccasion';
 import ChefCard from "../components/ChefCard";
+import ForEveryOccasion from '../components/ForEveryOccasion';
+import RelativeSquareBlocks from "../components/RelativeSquareBlocks";
 
 const Home = () => {
   return (
     <>
-      <Instructions />
       <ChefCard />
       <ForEveryOccasion />
+      <RelativeSquareBlocks />
     </>
   );
 };
