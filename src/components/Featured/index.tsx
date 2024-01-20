@@ -10,26 +10,27 @@ const Featured = () => {
   // determine the number of cards according to screen size
   function getNumberOfCards() {
     return window.innerWidth >= 768 ? 4 : 3;
-  };
+  }
 
   useEffect(() => {
     function handleResize() {
       setNumberOfCards(getNumberOfCards());
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   // shuffle the array of chefs
-  const shuffleChefCards = (chefs: any[]) => chefs.sort(() => Math.random() - 0.5);
+  const shuffleChefCards = (chefs: any[]) =>
+    chefs.sort(() => Math.random() - 0.5);
 
   // filter chefs with discounts
-  const chefsWithDiscounts = chefData.filter((chef) =>
-    chef.labels && chef.labels.length > 0
+  const chefsWithDiscounts = chefData.filter(
+    (chef) => chef.labels && chef.labels.length > 0
   );
 
   // shuffle chefs with discounts

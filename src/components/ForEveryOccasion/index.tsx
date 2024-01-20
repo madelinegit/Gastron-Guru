@@ -1,4 +1,4 @@
-import Activity from "../Activity/Activity";
+import Activity from "../Activity";
 import ManCooking from "../../assets/images/man-cooking.jpg";
 import DancingCouple from "../../assets/images/dancing-couple.jpg";
 import CookoutEvents from "../../assets/images/food.jpg";

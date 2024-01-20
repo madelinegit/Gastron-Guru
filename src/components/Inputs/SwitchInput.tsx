@@ -1,17 +1,16 @@
-import React from 'react'
-import InputContainer from './InputContainer'
-import './SwitchInput.scss'
+import InputContainer from "./InputContainer";
+import "./SwitchInput.scss";
 
 interface SwitchInputProps {
-  isChecked: boolean
-  onToggle: () => void
-  label?: string // Assuming 'label' is a prop used in the component
+  isChecked: boolean;
+  onToggle: () => void;
+  label?: string; // Assuming 'label' is a prop used in the component
 }
 
 const SwitchInput = ({
   isChecked,
   onToggle,
-  label = 'Map',
+  label = "Map",
 }: SwitchInputProps) => {
   return (
     <InputContainer>
@@ -26,7 +25,7 @@ const SwitchInput = ({
         <span className="SwitchRound"></span>
       </label>
     </InputContainer>
-  )
-}
+  );
+};
 
-export default SwitchInput
+export default SwitchInput;

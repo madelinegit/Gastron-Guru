@@ -1,4 +1,4 @@
-import './Activity.scss';
+import "./Activity.scss";
 
 type ActivityProps = {
   image: string;
@@ -11,7 +11,7 @@ const Activity = ({ image, title, description, inverted }: ActivityProps) => {
   return (
     <div
       className={
-        inverted! ? 'activity-container-inverted' : 'activity-container'
+        inverted! ? "activity-container-inverted" : "activity-container"
       }
     >
       <div className="img">

@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
-import Home from "./pages/Home/Home.tsx";
-import ChefsDatabase from "./pages/ChefsDatabase/ChefsDatabase.tsx";
+import Home from "./pages/Home/index.tsx";
+import ChefsDatabase from "./pages/ChefsDatabase/index.tsx";
 
 //With <a> use <Link key={} to={'/{endpoint}'} /> instead to route between the two pages
 //key: 1 = <Home />, key: 2 = <ChefsDatabase />

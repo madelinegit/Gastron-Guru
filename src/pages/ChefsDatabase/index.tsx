@@ -5,7 +5,7 @@ import {
   useSwitchToggle,
   useCheckboxToggle,
 } from "../../utils/helpers";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar";
 import ChefCards from "../../components/ChefCards";
 
 const ChefsDatabase = () => {
