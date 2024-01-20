@@ -1,20 +1,21 @@
-import React from 'react'
-import SwitchInput from '../components/Inputs/SwitchInput'
-import CheckboxInput from '../components/Inputs/CheckboxInput'
+import SwitchInput from "../../components/Inputs/SwitchInput";
+import CheckboxInput from "../../components/Inputs/CheckboxInput";
 import {
   useWindowResize,
   useSwitchToggle,
   useCheckboxToggle,
-} from '../utils/helpers'
+} from "../../utils/helpers";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import ChefCards from "../../components/ChefCards";
 
 const ChefsDatabase = () => {
-  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
     setIsSwitchChecked
-  )
-  const { renderCheckbox } = useWindowResize(true)
-  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
+  );
+  const { renderCheckbox } = useWindowResize(true);
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
 
   return (
     <>
@@ -22,6 +23,8 @@ const ChefsDatabase = () => {
         isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
         onToggle={handleSwitchToggle}
       />
+      <SearchBar />
+      <ChefCards chefData={[]} />
 
       {renderCheckbox && (
         <CheckboxInput
@@ -36,7 +39,7 @@ const ChefsDatabase = () => {
         </section>
       )}
     </>
-  )
-}
+  );
+};
 
-export default ChefsDatabase
+export default ChefsDatabase;

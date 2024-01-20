@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import './SearchBar.scss';
+import { useEffect, useRef, useState } from "react";
+import "./SearchBar.scss";
 
 export default function SearchBar() {
   const inputRef = useRef(null);
-  const [placeholder, setPlaceholder] = useState<string>('');
+  const [placeholder, setPlaceholder] = useState<string>("");
 
-  const stringToSplit: string = 'Search chefs in your location';
+  const stringToSplit: string = "Search chefs in your location";
 
   useEffect(() => {
-    const splittedString: string[] = stringToSplit.split('');
+    const splittedString: string[] = stringToSplit.split("");
     let index: number = -1;
 
     const timer = setTimeout(() => {

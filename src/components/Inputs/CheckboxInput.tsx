@@ -1,14 +1,14 @@
-import InputContainer from './InputContainer'
-import './CheckboxInput.scss'
+import InputContainer from "./InputContainer";
+import "./CheckboxInput.scss";
 
 interface CheckboxInputProps {
-  checkboxDescription?: string
-  onCheckboxToggle: () => void
-  isChecked: boolean
+  checkboxDescription?: string;
+  onCheckboxToggle: () => void;
+  isChecked: boolean;
 }
 
 const CheckboxInput = ({
-  checkboxDescription = 'Details',
+  checkboxDescription = "Details",
   onCheckboxToggle,
   isChecked,
 }: CheckboxInputProps) => {
@@ -26,7 +26,7 @@ const CheckboxInput = ({
         {checkboxDescription}
       </label>
     </InputContainer>
-  )
-}
+  );
+};
 
-export default CheckboxInput
+export default CheckboxInput;
