@@ -1,43 +1,37 @@
-import { useState, useEffect } from 'react'
-import useChef from '../utils/Api'
+import React from 'react'
 import SwitchInput from '../components/Inputs/SwitchInput'
 import CheckboxInput from '../components/Inputs/CheckboxInput'
+import {
+  useWindowResize,
+  useSwitchToggle,
+  useCheckboxToggle,
+} from '../utils/helpers'
 
 const ChefsDatabase = () => {
-  const [isSwitchChecked, setIsSwitchChecked] = useState<boolean>(false)
-  const [isOverrideActive, setIsOverrideActive] = useState<boolean>(false)
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
+  const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
+    isSwitchChecked,
+    setIsSwitchChecked
+  )
 
-  useEffect(() => {
-    handleWindowSizeChange()
-    window.addEventListener('resize', handleWindowSizeChange)
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange)
-    }
-  }, [])
-
-  const handleWindowSizeChange = () => {
-    const windowWidth = window.innerWidth
-    if (!isOverrideActive) {
-      setIsSwitchChecked(windowWidth > 600)
-    }
-  }
-
-  const handleSwitchToggle = () => {
-    setIsSwitchChecked((prev) => {
-      if (!isOverrideActive) {
-        setIsOverrideActive(true)
-      }
-      return !prev
-    })
-  }
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
 
   return (
     <>
-      <SwitchInput isChecked={isSwitchChecked} onToggle={handleSwitchToggle} />
-      <CheckboxInput />
-      {/* Render other components */}
+      <SwitchInput
+        isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
+        onToggle={handleSwitchToggle}
+      />
+
+      {isSwitchChecked && (
+        <CheckboxInput onCheckboxToggle={handleCheckboxToggle} />
+      )}
+      {(isSwitchChecked || isOverrideActive || detailsShowing) && (
+        <section>
+          {(isSwitchChecked || isOverrideActive) && <h1>Map</h1>}
+          {isSwitchChecked && detailsShowing && <h1>Details</h1>}
+        </section>
+      )}
     </>
   )
 }

@@ -1,10 +1,11 @@
-import './SwitchInput.scss'
+import React from 'react'
 import InputContainer from './InputContainer'
+import './SwitchInput.scss'
 
 interface SwitchInputProps {
-  isChecked?: boolean
-  onToggle?: () => void
-  label?: string
+  isChecked: boolean
+  onToggle: () => void
+  label?: string // Assuming 'label' is a prop used in the component
 }
 
 const SwitchInput = ({
@@ -27,4 +28,5 @@ const SwitchInput = ({
     </InputContainer>
   )
 }
+
 export default SwitchInput
