@@ -1,20 +1,40 @@
-import useChef from '../utils/Api'
+import React from 'react'
 import SwitchInput from '../components/Inputs/SwitchInput'
 import CheckboxInput from '../components/Inputs/CheckboxInput'
+import {
+  useWindowResize,
+  useSwitchToggle,
+  useCheckboxToggle,
+} from '../utils/helpers'
 
-//define ChefsDatabase component
 const ChefsDatabase = () => {
-  const chefs = useChef()
-  const renderChefNames = () => {
-    // console.log({ chefs })
-    return chefs.map((chef) => <p key={chef.name}>{chef.name}</p>)
-  }
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
+  const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
+    isSwitchChecked,
+    setIsSwitchChecked
+  )
+  const { renderCheckbox } = useWindowResize(true)
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
 
   return (
     <>
-      <SwitchInput />
-      <CheckboxInput />
-      {renderChefNames()}
+      <SwitchInput
+        isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
+        onToggle={handleSwitchToggle}
+      />
+
+      {renderCheckbox && (
+        <CheckboxInput
+          onCheckboxToggle={handleCheckboxToggle}
+          isChecked={detailsShowing}
+        />
+      )}
+      {(isSwitchChecked || isOverrideActive || detailsShowing) && (
+        <section>
+          {(isSwitchChecked || isOverrideActive) && <h1>Map</h1>}
+          {renderCheckbox && detailsShowing && <h1>Details</h1>}
+        </section>
+      )}
     </>
   )
 }
