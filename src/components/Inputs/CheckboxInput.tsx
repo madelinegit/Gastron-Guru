@@ -4,11 +4,13 @@ import './CheckboxInput.scss'
 interface CheckboxInputProps {
   checkboxDescription?: string
   onCheckboxToggle: () => void
+  isChecked: boolean
 }
 
 const CheckboxInput = ({
   checkboxDescription = 'Details',
   onCheckboxToggle,
+  isChecked,
 }: CheckboxInputProps) => {
   return (
     <InputContainer>
@@ -16,6 +18,8 @@ const CheckboxInput = ({
         type="checkbox"
         name="detail"
         className="checkInput"
+        checked={isChecked}
+        defaultChecked={true}
         onChange={onCheckboxToggle}
       />
       <label htmlFor="details" className="checkInputLabel">

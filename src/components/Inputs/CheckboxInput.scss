@@ -11,9 +11,11 @@
 }
 
 .checkInput {
-  accent-color: $gold;
   height: 24px;
   width: 24px;
   border: 1px solid $white;
   border-radius: 4px;
+}
+.checkInput:checked {
+  accent-color: $gold;
 }

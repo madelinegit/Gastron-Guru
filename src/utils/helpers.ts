@@ -18,7 +18,11 @@ export const useWindowResize = (defaultState: boolean) => {
     }
   }, [])
 
-  return { isSwitchChecked: state, setIsSwitchChecked: setState }
+  return {
+    isSwitchChecked: state,
+    setIsSwitchChecked: setState,
+    renderCheckbox: state,
+  }
 }
 
 export const useSwitchToggle = (
@@ -41,7 +45,7 @@ export const useSwitchToggle = (
 }
 
 export const useCheckboxToggle = () => {
-  const [detailsShowing, setDetailsShowing] = useState<boolean>(false)
+  const [detailsShowing, setDetailsShowing] = useState<boolean>(true)
 
   const handleCheckboxToggle = () => {
     setDetailsShowing((prev) => !prev)
