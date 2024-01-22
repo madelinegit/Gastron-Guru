@@ -1,13 +1,13 @@
 .ratings-container {
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0 10px 15px;
 
   .left {
     display: flex;
-    align-items: center;
     gap: 4px;
+    width: auto;
 
     p {
       font-family: 'Helvetica', sans-serif;
@@ -15,15 +15,13 @@
     }
   
     svg {
+      display: inline-flex;
       width: 14px;
-      height: 14px;
-  
+      
       path {
-      display: inline-block;
       border: 2px solid #ccc;
       fill: $gold;
       }
     }
   }
-
 }
