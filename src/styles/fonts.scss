@@ -56,6 +56,14 @@ $breakpoint-lg: 1024px;
   font-style: normal;
 }
 
+@font-face {
+  font-family: PinyonScript;
+  src: url('../../assets/fonts/PinyonScript/PinyonScript-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 h1 {
   @include responsive-font-size(72px, 58px, 45px);
 }
