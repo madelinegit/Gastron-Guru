@@ -1,7 +1,7 @@
-import './InputContainer.scss'
+import "./InputContainer.scss";
 
 const InputContainer = ({ children }: { children: React.ReactNode }) => {
-  return <div className="inputContainer">{children}</div>
-}
+  return <div className="inputContainer">{children}</div>;
+};
 
-export default InputContainer
+export default InputContainer;

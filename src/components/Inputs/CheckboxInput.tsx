@@ -1,16 +1,32 @@
-import './CheckboxInput.scss'
-import InputContainer from './InputContainer'
+import InputContainer from "./InputContainer";
+import "./CheckboxInput.scss";
 
-//default checkbox description is 'Details'
-const CheckboxInput = ({ checkboxDescription = 'Details' }) => {
+interface CheckboxInputProps {
+  checkboxDescription?: string;
+  onCheckboxToggle: () => void;
+  isChecked: boolean;
+}
+
+const CheckboxInput = ({
+  checkboxDescription = "Details",
+  onCheckboxToggle,
+  isChecked,
+}: CheckboxInputProps) => {
   return (
     <InputContainer>
-      <input type="checkbox" name="detail" className="checkInput" />
+      <input
+        type="checkbox"
+        name="detail"
+        className="checkInput"
+        checked={isChecked}
+        defaultChecked={true}
+        onChange={onCheckboxToggle}
+      />
       <label htmlFor="details" className="checkInputLabel">
         {checkboxDescription}
       </label>
     </InputContainer>
-  )
-}
+  );
+};
 
-export default CheckboxInput
+export default CheckboxInput;

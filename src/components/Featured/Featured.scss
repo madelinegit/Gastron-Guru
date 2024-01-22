@@ -1,0 +1,35 @@
+.featured-container {
+  background-color: $light-black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 10px;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+    color: $white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .featured-cards {
+    margin: 0 5px 15px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      margin: 0 0 30px 0;
+      width: 100%;
+    }
+  }
+
+}

@@ -27,8 +27,10 @@
   @media (max-width: $breakpoint-md) {
     flex-direction: column;
     margin: 0 0 30px 0;
+    width: 100%;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/components/ChefCard.scss
   h1,
   h2,
@@ -36,6 +38,9 @@
     padding: 15px 15px 5px 15px;
 =======
   h1, h2, h3 {
+=======
+  h3 {
+>>>>>>> a50582b8cbb2537bfbd77c95b8ccbcc6a321b38d
     margin: 0 15px 5px 15px;
 >>>>>>> e3918b9942bd41c90b44b5e8d0f26304180c6aa6:src/components/ChefCards/ChefCards.scss
     color: $black;
@@ -112,8 +117,16 @@
     }
   }
 
+<<<<<<< HEAD
   // WIDTH ADJUSTMENT FOR MOBILE VIEW
   @media (max-width: $breakpoint-sm) {
     width: 100%;
   }
 }
+=======
+  // // WIDTH ADJUSTMENT FOR MOBILE VIEW
+  // @media (max-width: $breakpoint-sm) {
+  //   width: 100%;
+  // }
+}
+>>>>>>> a50582b8cbb2537bfbd77c95b8ccbcc6a321b38d

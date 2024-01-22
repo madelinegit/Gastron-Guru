@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ChefDataProps } from "../types";
+import { ChefDataProps } from "../components/ChefCards/types";
 
 const useChef = () => {
   const [chefs, setChefs] = useState<ChefDataProps[]>([])

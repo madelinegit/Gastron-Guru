@@ -31,7 +31,7 @@
     position: absolute;
     cursor: pointer;
     top: 4px;
-    left: 5px;
+    // left: 54px;
     width: 40px;
     height: 42px;
     background-color: $gold;
@@ -41,6 +41,9 @@
   }
 
   input:checked + .SwitchRound {
+    left: 5px;
+  }
+  input:not(:checked) + .SwitchRound {
     left: 54px;
   }
 }
