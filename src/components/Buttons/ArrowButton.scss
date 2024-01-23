@@ -1,0 +1,15 @@
+@import '../../styles/colors.scss';
+.arrowBtn {
+  font-size: 21px;
+  color: $light-black;
+  background-color: $white;
+  border: none;
+}
+
+.arrowBtn-inactive {
+  transform: rotate(180deg) translateY(10px);
+  background-color: $white;
+  color: $light-black;
+  border: none;
+  font-size: 21px;
+}

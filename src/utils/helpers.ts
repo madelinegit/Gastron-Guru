@@ -57,3 +57,37 @@ export const useCheckboxToggle = () => {
 export const capitalizeWords = (str: string): string => {
   return str.replace(/\b\w/g, (match) => match.toUpperCase())
 }
+
+// logic for Modal Component
+export const useModal = () => {
+  const [showModal, setShowModal] = useState<boolean>(false)
+
+  const handleModalToggle = () => {
+    setShowModal((prev) => !prev)
+  }
+
+  return { showModal, handleModalToggle }
+}
+
+// State to manage the expanded state of each card
+export interface CardExpansionHelper {
+  expandedCards: string[]
+  toggleCardExpansion: (label: string) => void
+}
+
+export const useCardExpansion = (firstLabel: string): CardExpansionHelper => {
+  const [expandedCards, setExpandedCards] = useState<string[]>([firstLabel])
+
+  const toggleCardExpansion = (label: string) => {
+    setExpandedCards((prevExpanded) =>
+      prevExpanded.includes(label)
+        ? prevExpanded.filter((cardLabel) => cardLabel !== label)
+        : [...prevExpanded, label]
+    )
+  }
+
+  return {
+    expandedCards,
+    toggleCardExpansion,
+  }
+}
