@@ -1,19 +1,38 @@
-.chef-card-container {
+.chef-card-container-scroll {
+  width: 100%;
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  .chef-card {
+    @media (max-width: $breakpoint-md) {
+      margin: 0;
+      height: 387px;
+      gap: 4px;
+    }
+  }
+}
+
+.chef-card-container-grid {
+  width: 100%;
   background-color: $light-black;
   display: flex;
-  flex-wrap:inherit;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
   padding: 10px;
 
   @media (max-width: $breakpoint-md) {
-    flex-direction: column;
+    width: 100%;
     padding: 30px;
   }
 }
 
 .chef-card {
-  width: 208px;
+  width: 208px !important;
+  flex-shrink: 0;
   height: auto;
   margin: 0 5px 15px 5px;
   display: flex;
@@ -25,7 +44,6 @@
   background-color: #fbf3eb;
 
   @media (max-width: $breakpoint-md) {
-    flex-direction: column;
     margin: 0 0 30px 0;
     width: 100%;
   }
@@ -75,9 +93,4 @@
       width: 100%;
     }
   }
-
-  // // WIDTH ADJUSTMENT FOR MOBILE VIEW
-  // @media (max-width: $breakpoint-sm) {
-  //   width: 100%;
-  // }
 }
