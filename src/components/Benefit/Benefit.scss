@@ -1,3 +1,39 @@
-.benefit {
-  background:grey;
+.benefitContainer {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+height: 575px;
+background: $dark-blue
+
 }
+
+.benefit {
+}
+
+h4 {
+ font-size: 36px;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 400px;
+}
+
+h4,p {
+  color: $white;
+}
+
+
+p {
+  @include responsive-font-size(18px, 16px, 14px);
+  font-family: Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+
+
+$gold: #E7BE51;
+$light-black: #0E0E0E;
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$dark-blue: #1E2434;
+$light-blue: #4E5566;

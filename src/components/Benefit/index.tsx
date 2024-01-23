@@ -1,5 +1,12 @@
 import './Benefit.scss'
-const Benefit = ({title, description}) => {
+
+type BenefitProp = {
+  title: string
+  description: string
+}
+
+
+const Benefit = ({title, description}:BenefitProp) => {
   return (
     <div className='benefit'>
       <h4>{title}</h4>

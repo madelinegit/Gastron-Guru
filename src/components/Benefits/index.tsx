@@ -2,12 +2,12 @@ import Benefit from "../Benefit/index";
 
 const Benefits = () => {
   return (
-    <>
-      <Benefit title='Discounts' description='lorem'/>
-      <Benefit title='Quality' description='lorem'/>
-      <Benefit title='Inclusive Database' description='lorem'/>
-      <Benefit title='Convenience' description='lorem'/>
-    </>
+    <div className="benefitContainer">
+      <Benefit title='Discounts' description='Lorem ipsum dolor sit amet, consectetur adiuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore'/>
+      <Benefit title='Quality' description='bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut m dolore'/>
+      <Benefit title='Inclusive Database' description='ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore'/>
+      <Benefit title='Convenience' description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '/>
+    </div>
   );
 };
 
