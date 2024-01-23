@@ -5,7 +5,9 @@ const Map = () => {
     width: '435px',
     height: '461px',
   }
-  const GOOGLE_MAP_API_KEY = 'AIzaSyDYFrLDROGtYKRHlcGMKAHu52ehwtekx5o'
+
+  //please talk to Adam for key (need to set up .env)
+  const GOOGLE_MAP_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY!
 
   return (
     <LoadScript googleMapsApiKey={GOOGLE_MAP_API_KEY}>
