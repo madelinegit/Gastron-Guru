@@ -14,6 +14,7 @@ import ModalCard from '../../components/Modal/ModalCard'
 import MockNarrowContainer from '../../components/Modal/MockNarrowContainer'
 import useChef from '../../utils/Api'
 import ArrowButton from '../../components/Buttons/ArrowButton'
+import { modalData } from '../../utils/Data'
 
 const ChefsDatabase = () => {
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
@@ -28,57 +29,6 @@ const ChefsDatabase = () => {
 
   const chefData = useChef()
 
-  interface ModalDataProps {
-    label: string
-    inputs: {
-      label: string
-      type: string
-    }[]
-  }
-  const modalData: ModalDataProps[] = [
-    {
-      label: 'Sort by:',
-      inputs: [
-        {
-          label: 'Price',
-          type: 'radio',
-        },
-        {
-          label: 'Rating',
-          type: 'radio',
-        },
-        {
-          label: 'Disatnce to centre',
-          type: 'radio',
-        },
-      ],
-    },
-    {
-      label: 'Discounts',
-      inputs: [
-        {
-          label: '5% off',
-          type: 'radio',
-        },
-        {
-          label: '10% off',
-          type: 'radio',
-        },
-        {
-          label: '25% off',
-          type: 'radio',
-        },
-        { label: '> 25% off', type: 'radio' },
-      ],
-    },
-    {
-      label: 'Cusines',
-      inputs: [
-        { label: 'Italian', type: 'radio' },
-        { label: 'Indian', type: 'radio' },
-      ],
-    },
-  ]
   const { expandedCards, toggleCardExpansion } = useCardExpansion(
     modalData[0].label
   )
