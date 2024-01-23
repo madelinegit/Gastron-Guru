@@ -7,7 +7,7 @@ import {
 } from '../../utils/helpers'
 import SearchBar from '../../components/SearchBar'
 import ChefCards from '../../components/ChefCards'
-import Map from '../../components/Map/Map'
+import useChef from '../../utils/Api'
 
 const ChefsDatabase = () => {
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
@@ -17,6 +17,7 @@ const ChefsDatabase = () => {
   )
   const { renderCheckbox } = useWindowResize(true)
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
+  const chefData = useChef()
 
   return (
     <>
@@ -25,7 +26,7 @@ const ChefsDatabase = () => {
         onToggle={handleSwitchToggle}
       />
       <SearchBar />
-      <ChefCards chefData={[]} />
+      <ChefCards chefData={chefData} />
 
       {renderCheckbox && (
         <CheckboxInput
