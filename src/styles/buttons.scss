@@ -22,3 +22,21 @@
     cursor: pointer;
   }
 }
+
+.modal-btn {
+  background-color: $gold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  margin-left: 40px;
+
+  p {
+    font: bold 14px "Poppins";
+    padding: 8px 22px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    margin-left: 14px;
+  }
+}

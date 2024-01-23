@@ -32,8 +32,9 @@ const ChefCard = ({
           distance_from_centre={distance_from_centre}
         />
       </div>
-
-      <Ribbon label={labels?.[0]} />
+      <div className="right">
+        <Ribbon label={labels?.[0]} />
+      </div>
     </div>
 
     <div className="tags">
