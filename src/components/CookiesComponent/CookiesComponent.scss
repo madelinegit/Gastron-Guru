@@ -1,15 +1,20 @@
 .modal {
-  background-color: $white;
-  bottom: 1vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: flex;
-  margin: 18.5px;
-  padding: 17px 20px;
-  position: fixed;
-  z-index: 4;
+  justify-content: center;
+
+  &-container {
+    background-color: $white;
+    bottom: 1vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    padding: 17px 20px;
+    margin: 18.5px;
+    position: fixed;
+    z-index: 4;
+  }
 
   &-text {
-    padding: 13px 50px 13px 28px;
+    padding: 16.5px 50px 16.5px 28px;
 
     h3 {
       font-size: 24px;
@@ -19,11 +24,11 @@
 }
 
 @media (max-width: $breakpoint-sm) {
-  .modal {
+  .modal-container {
     display: block;
+  }
 
-    &-text {
-      padding: 13px 14px;
-    }
+  .modal-text {
+    padding: 0px 14px;
   }
 }
