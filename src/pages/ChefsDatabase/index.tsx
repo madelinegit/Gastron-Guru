@@ -8,6 +8,7 @@ import {
 import SearchBar from '../../components/SearchBar'
 import ChefCards from '../../components/ChefCards'
 import useChef from '../../utils/Api'
+import Map from '../../components/Map/Map'
 
 const ChefsDatabase = () => {
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
