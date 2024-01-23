@@ -19,6 +19,20 @@ const ChefsDatabase = () => {
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
   const chefData = useChef();
 
+  // styling for horizontal scroll when 'details' is checked
+  const flexContainerScroll = {
+    width: "100%",
+    display: "flex",
+    overflow: "auto",
+  };
+
+  // styling for grid view when 'details' is NOT checked
+  const flexContainerGrid = {
+    width: "100%",
+    display: "flex",
+    flexWrap: "wrap" as const,
+  };
+
   return (
     <>
       <SwitchInput
@@ -26,7 +40,11 @@ const ChefsDatabase = () => {
         onToggle={handleSwitchToggle}
       />
       <SearchBar />
-      <ChefCards chefData={chefData} />
+
+      {/* display chef cards horizontally when 'details' is checked */}
+      <div style={isSwitchChecked && detailsShowing ? flexContainerScroll : flexContainerGrid}>
+        <ChefCards chefData={chefData} />
+      </div>
 
       {renderCheckbox && (
         <CheckboxInput

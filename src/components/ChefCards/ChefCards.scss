@@ -1,7 +1,7 @@
 .chef-card-container {
   background-color: $light-black;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:inherit;
   justify-content: center;
   align-items: stretch;
   padding: 10px;

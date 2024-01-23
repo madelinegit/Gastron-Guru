@@ -54,7 +54,6 @@ const ChefCard = ({
 
 // CREATE SEPARATE COMPONENT..?
 const ChefCards = ({ chefData }: { chefData: ChefDataProps[] }) => {
-  // const chefData = useChef();
 
   return (
     <div className="chef-card-container">
