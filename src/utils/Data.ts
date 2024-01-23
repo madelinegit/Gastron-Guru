@@ -18,7 +18,7 @@ export const modalData: ModalDataProps[] = [
         type: 'radio',
       },
       {
-        label: 'Disatnce to centre',
+        label: 'Distance to centre',
         type: 'radio',
       },
     ],
