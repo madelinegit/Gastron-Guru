@@ -13,6 +13,11 @@
     z-index: 4;
   }
 
+  @media (max-width: $breakpoint-xs) {
+    width: 100%;
+    margin: 0;
+  }
+
   &-text {
     padding: 16.5px 50px 16.5px 28px;
 

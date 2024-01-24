@@ -1,18 +1,23 @@
 .for-every-occasion-container {
   width: 100%;
   height: 100%;
-  padding: 60px 0;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  gap: 128px;
+  gap: 66px;
 
-  background-color: $black;
+  background-color: $light-black;
   color: $white;
 
-  h2 {
-    text-align: left;
+  h2.title {
+    text-transform: uppercase;
+    text-align: center;
+    @media (max-width: $breakpoint-md) {
+      text-align: left;
+    }
+    margin-top: 77px;
+    margin-bottom: 49px;
   }
 }
