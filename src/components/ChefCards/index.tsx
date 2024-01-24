@@ -32,8 +32,9 @@ const ChefCard = ({
           distance_from_centre={distance_from_centre}
         />
       </div>
-
-      <Ribbon label={labels?.[0]} />
+      <div className="right">
+        <Ribbon label={labels?.[0]} />
+      </div>
     </div>
 
     <div className="tags">
@@ -52,11 +53,10 @@ const ChefCard = ({
 );
 
 // CREATE SEPARATE COMPONENT..?
-const ChefCards = ({ chefData }: { chefData: ChefDataProps[] }) => {
-  // const chefData = useChef();
+const ChefCards = ({ chefData, isScrollEnabled }: { chefData: ChefDataProps[]; isScrollEnabled: boolean }) => {
 
   return (
-    <div className="chef-card-container">
+    <div className={isScrollEnabled ? `chef-card-container-scroll` : `chef-card-container-grid`}>
       {chefData.map((chef) => (
         <ChefCard key={chef.name} {...chef} />
       ))}

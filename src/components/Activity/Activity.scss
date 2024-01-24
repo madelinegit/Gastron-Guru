@@ -3,13 +3,92 @@
   align-items: center;
   gap: 96px;
 
+  @media (max-width: $breakpoint-lg) {
+    gap: 52px;
+  }
+
+  margin-bottom: 60px;
+
+  &-inverted {
+    display: flex;
+    align-items: center;
+
+    @media (min-width: $breakpoint-lg) {
+      flex-direction: row-reverse;
+    }
+
+    gap: 96px;
+
+    @media (max-width: $breakpoint-lg) {
+      gap: 52px;
+    }
+
+    margin-bottom: 60px;
+
+    .img {
+      @media (max-width: $breakpoint-md) {
+        display: none;
+      }
+
+      img {
+        width: 480px;
+        height: 336px;
+
+        @media (max-width: $breakpoint-lg) {
+          width: 420px;
+          height: 312px;
+        }
+
+        object-fit: cover;
+        object-position: 65% 65%;
+      }
+    }
+
+    p {
+      width: 448px;
+      color: #fffb;
+
+      @media (max-width: $breakpoint-sm) {
+        width: 350px;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        width: 280px;
+      }
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      h2 {
+        max-width: 391px;
+        margin-bottom: 10px;
+        font-family: PinyonScript !important;
+        @include responsive-font-size(72px, 52px, 42px);
+      }
+
+      button {
+        cursor: pointer;
+      }
+    }
+  }
+
   .img {
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: $breakpoint-md) {
       display: none;
     }
+
     img {
       width: 480px;
-      height: 336px;
+      height: 372px;
+
+      @media (max-width: $breakpoint-lg) {
+        width: 420px;
+        height: 312px;
+      }
+
       object-fit: cover;
       object-position: 65% 65%;
     }
@@ -21,7 +100,10 @@
 
     @media (max-width: $breakpoint-sm) {
       width: 350px;
-      color: #fffb;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 280px;
     }
   }
 
@@ -29,48 +111,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
 
-    button {
-      cursor: pointer;
+    h2 {
+      max-width: 391px;
+      font-family: PinyonScript !important;
+      @include responsive-font-size(72px, 52px, 42px);
+      margin-bottom: 10px;
     }
-  }
-}
-
-.activity-container-inverted {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 96px;
-
-  .img {
-    @media (max-width: $breakpoint-sm) {
-      display: none;
-    }
-
-    img {
-      width: 480px;
-      height: 336px;
-      object-fit: cover;
-      object-position: 65% 65%;
-    }
-  }
-
-  p {
-    width: 448px;
-    color: #fffb;
-
-    @media (max-width: $breakpoint-sm) {
-      width: 350px;
-      color: #fffb;
-    }
-  }
-
-  .text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
 
     button {
       cursor: pointer;
