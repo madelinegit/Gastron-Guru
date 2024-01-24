@@ -1,4 +1,5 @@
 .featured-container {
+  width: 100%;
   background-color: $light-black;
   display: flex;
   flex-direction: column;
@@ -7,7 +8,6 @@
   padding: 60px 10px;
 
   @media (max-width: $breakpoint-md) {
-    flex-direction: column;
     padding: 30px;
   }
 
@@ -20,15 +20,13 @@
   }
 
   .featured-cards {
+    width: 100%;
     margin: 0 5px 15px 5px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
   
     @media (max-width: $breakpoint-md) {
-      flex-direction: column;
       margin: 0 0 30px 0;
-      width: 100%;
     }
   }
 
