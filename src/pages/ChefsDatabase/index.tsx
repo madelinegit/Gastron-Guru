@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import SwitchInput from '../../components/Inputs/SwitchInput'
 import CheckboxInput from '../../components/Inputs/CheckboxInput'
 import {
@@ -18,9 +20,22 @@ const ChefsDatabase = () => {
   )
   const { renderCheckbox } = useWindowResize(true)
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
+
+  const [sortedChefCards, setSortChefCards] = useState<any[]>([]);
   const chefData = useChef()
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
+
+  // sort chef cards based on ratings (desc order)
+  useEffect(() => {
+    const sortedData = chefData.sort((a, b) => {
+      const ratingA = a.rating?.value || 0;
+      const ratingB = b.rating?.value || 0;
+
+      return ratingB - ratingA;
+    });
+    setSortChefCards(sortedData);
+  }, [chefData]);
 
   return (
     <>
@@ -37,7 +52,10 @@ const ChefsDatabase = () => {
         />
       )}
 
-      <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
+      <ChefCards
+        chefData={sortedChefCards}
+        isScrollEnabled={isScrollEnabled}
+      />
 
       {isScrollEnabled && (
         <section>
