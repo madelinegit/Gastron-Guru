@@ -15,6 +15,7 @@ import MockNarrowContainer from '../../components/Modal/MockNarrowContainer'
 import useChef from '../../utils/Api'
 import ArrowButton from '../../components/Buttons/ArrowButton'
 import { modalData } from '../../utils/Data'
+import Map from '../../components/Map/Map'
 
 const ChefsDatabase = () => {
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
@@ -24,14 +25,14 @@ const ChefsDatabase = () => {
   )
   const { renderCheckbox } = useWindowResize(true)
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
-
-  const { showModal, handleModalToggle } = useModal()
-
   const chefData = useChef()
+  const { showModal, handleModalToggle } = useModal()
 
   const { expandedCards, toggleCardExpansion } = useCardExpansion(
     modalData[0].label
   )
+
+  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing
 
   return (
     <>
@@ -56,6 +57,7 @@ const ChefsDatabase = () => {
         isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
         onToggle={handleSwitchToggle}
       />
+      <SearchBar />
 
       {renderCheckbox && (
         <CheckboxInput
@@ -64,11 +66,16 @@ const ChefsDatabase = () => {
         />
       )}
 
-      <ChefCards chefData={chefData} />
+      <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 
-      {(isSwitchChecked || isOverrideActive || detailsShowing) && (
+      {isScrollEnabled && (
         <section>
-          {(isSwitchChecked || isOverrideActive) && <h1>Map</h1>}
+          {(isSwitchChecked || isOverrideActive) && (
+            <div>
+              <h1>Map</h1>
+              <Map />
+            </div>
+          )}
           {renderCheckbox && detailsShowing && <h1>Details</h1>}
         </section>
       )}

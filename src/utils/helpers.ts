@@ -22,6 +22,7 @@ export const useWindowResize = (defaultState: boolean) => {
     isSwitchChecked: state,
     setIsSwitchChecked: setState,
     renderCheckbox: state,
+    state,
   }
 }
 
