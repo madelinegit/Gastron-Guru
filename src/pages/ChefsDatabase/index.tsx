@@ -7,6 +7,7 @@ import {
 } from "../../utils/helpers";
 import SearchBar from "../../components/SearchBar";
 import ChefCards from "../../components/ChefCards";
+import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
 
 const ChefsDatabase = () => {
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
@@ -19,19 +20,21 @@ const ChefsDatabase = () => {
 
   return (
     <>
-      <SwitchInput
+      {/* <SwitchInput
         isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
         onToggle={handleSwitchToggle}
-      />
-      <SearchBar />
+      />{" "} */}
+      <SearchBarWrapper>
+        <SearchBar />
+      </SearchBarWrapper>
+      
       <ChefCards chefData={[]} />
-
-      {renderCheckbox && (
+      {/* {renderCheckbox && (
         <CheckboxInput
           onCheckboxToggle={handleCheckboxToggle}
           isChecked={detailsShowing}
         />
-      )}
+      )} */}
       {(isSwitchChecked || isOverrideActive || detailsShowing) && (
         <section>
           {(isSwitchChecked || isOverrideActive) && <h1>Map</h1>}

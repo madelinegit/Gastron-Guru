@@ -10,11 +10,11 @@ function RelativeSquareBlocks() {
       <div className="gold-container">
         <div className="text-container">
           <h2>OUR CHEFS</h2>
-          <p>
+          <p className="margin-bottom">
             Sed ut persipiciatis unde omnis iste natus error sit voluptatem
             accusantium voluptatem a doloremque
           </p>
-          <p>
+          <p className="margin-bottom">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

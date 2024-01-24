@@ -1,10 +1,20 @@
 .search-bar-container {
   width: 100%;
+  // mg changed from 100
   height: 10vh;
   display: flex;
   align-items: center;
   padding: 3rem 4rem;
-  background-color: $black;
+  background-color: $gold;
+  display: flex; //mg
+
+  .flex {
+    display: flex;
+    svg {
+      width: 100px;
+    }
+  }
+  
 
   input {
     width: 30%;
@@ -21,3 +31,4 @@
     color: #fffb;
   }
 }
+
