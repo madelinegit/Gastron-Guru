@@ -20,6 +20,8 @@ const ChefsDatabase = () => {
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
   const chefData = useChef()
 
+  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
+
   return (
     <>
       <SwitchInput
@@ -27,7 +29,6 @@ const ChefsDatabase = () => {
         onToggle={handleSwitchToggle}
       />
       <SearchBar />
-      <ChefCards chefData={chefData} />
 
       {renderCheckbox && (
         <CheckboxInput
@@ -35,7 +36,10 @@ const ChefsDatabase = () => {
           isChecked={detailsShowing}
         />
       )}
-      {(isSwitchChecked || isOverrideActive || detailsShowing) && (
+
+      <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
+
+      {isScrollEnabled && (
         <section>
           {(isSwitchChecked || isOverrideActive) && (
             <div>

@@ -45,7 +45,10 @@ const Featured = () => {
       <NarrowContainer>
         <h2>Featured</h2>
         <div className="featured-cards">
-          <ChefCards chefData={featuredChefs} />
+          <ChefCards
+            chefData={featuredChefs}
+            isScrollEnabled={false}
+          />
         </div>
       </NarrowContainer>
     </div>
