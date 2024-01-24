@@ -26,15 +26,15 @@ const ChefsDatabase = () => {
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
 
-  // sort chef cards based on ratings (desc order)
+  // sort chef cards based on ratings (desc order) upon initial page load
   useEffect(() => {
-    const sortedData = chefData.sort((a, b) => {
+    const sortedByRating = chefData.sort((a, b) => {
       const ratingA = a.rating?.value || 0;
       const ratingB = b.rating?.value || 0;
 
       return ratingB - ratingA;
     });
-    setSortChefCards(sortedData);
+    setSortChefCards(sortedByRating);
   }, [chefData]);
 
   return (
