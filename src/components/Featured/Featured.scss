@@ -1,5 +1,4 @@
 .featured-container {
-  width: 100%;
   background-color: $light-black;
   display: flex;
   flex-direction: column;
@@ -20,7 +19,6 @@
   }
 
   .featured-cards {
-    width: 100%;
     margin: 0 5px 15px 5px;
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,4 @@
 .chef-card-container-scroll {
-  width: 100%;
   background-color: $light-black;
   display: flex;
   flex-shrink: 0;
@@ -18,7 +17,6 @@
 }
 
 .chef-card-container-grid {
-  width: 100%;
   background-color: $light-black;
   display: flex;
   flex-wrap: wrap;
