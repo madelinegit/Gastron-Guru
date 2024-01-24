@@ -1,25 +1,26 @@
-h2 {
-  @include responsive-font-size(50px, 43px, 36px);
-  margin: 10px 0 25px;
-}
-p {
-  @include responsive-font-size(18px, 16px, 14px);
-  margin-bottom: 25px;
-}
+$breakpoint-xlarge: 1250px;
 
-$breakpoint-sm: 480px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1250px;
+.text-container {
+  h2 {
+    @include responsive-font-size(50px, 43px, 36px);
+    margin: 10px 0 25px;
+  }
+
+  p {
+    @include responsive-font-size(18px, 16px, 14px);
+    margin-bottom: 25px;
+  }
+}
 
 .parent {
   height: 100%;
   width: 100%;
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $breakpoint-xlarge) {
     border-top: $light-black solid 200px;
     position: relative;
     z-index: -2;
   }
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-xlarge) {
     padding-top: 100px;
     display: flex;
     flex-direction: column;
@@ -32,17 +33,17 @@ $breakpoint-lg: 1250px;
   position: absolute;
   z-index: 0;
   height: 400px;
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $breakpoint-xlarge) {
     height: 400px;
     transform: translate (0px, -300px);
   }
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-xlarge) {
     height: 1000px;
     transform: translate(0px, -100px);
   }
 }
 .chef {
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-xlarge) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,15 +51,28 @@ $breakpoint-lg: 1250px;
   img {
     width: 437.02px;
     height: 432px;
+
+    @media (max-width: $breakpoint-xs) {
+      width: 290px;
+      height: 300px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 360px;
+      height: 400px;
+    }
+
     object-fit: cover;
     z-index: 3;
     position: relative;
-    @media (min-width: $breakpoint-lg) {
+
+    @media (min-width: $breakpoint-xlarge) {
       float: right;
       top: -150px;
-      left: -223px;
+      left: -170px;
     }
-    @media (max-width: $breakpoint-lg) {
+
+    @media (max-width: $breakpoint-xlarge) {
       margin-bottom: -140px;
     }
   }
@@ -73,8 +87,9 @@ $breakpoint-lg: 1250px;
   background-color: $gold;
   position: relative;
   z-index: 2;
-  @media (max-width: $breakpoint-lg) {
-    width: 500px;
+
+  @media (max-width: $breakpoint-xlarge) {
+    width: 100%;
     height: 533px;
     position: relative;
     top: -50px;
@@ -82,13 +97,23 @@ $breakpoint-lg: 1250px;
 }
 .text-container {
   width: 375px;
-  @media (max-width: $breakpoint-lg) {
+
+  @media (max-width: $breakpoint-xlarge) {
     width: 437.02px;
     padding-right: 15px;
     position: relative;
     top: 75px;
   }
+
+  @media (max-width: $breakpoint-xs) {
+    width: 290px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 360px;
+  }
 }
+  
 .blue-container {
   width: 100%;
   height: 409px;
@@ -97,7 +122,7 @@ $breakpoint-lg: 1250px;
   position: absolute;
   z-index: 1;
   transform: translate(0px, -300px);
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-xlarge) {
     display: none;
   }
 }
