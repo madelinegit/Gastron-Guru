@@ -13,7 +13,7 @@ const ArrowButton = ({ handleBtnToggle, state }: ArrowBtnProps) => {
           onClick={handleBtnToggle}
           className={state ? 'arrowBtn' : 'arrowBtn-inactive'}
         >
-          ^
+          <i className="fa-solid fa-chevron-up"></i>
         </button>
       </div>
     </>

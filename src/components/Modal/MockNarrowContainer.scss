@@ -4,6 +4,10 @@
   height: 100%;
   z-index: 4;
   background-color: $white;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: space-between;
   overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;

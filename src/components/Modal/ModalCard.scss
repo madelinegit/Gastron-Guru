@@ -1,7 +1,12 @@
 @import '../../styles/colors.scss';
 
 .modalCard {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  padding: 5px;
+  margin: 10px;
   &:not(:last-of-type) {
     border-bottom: 1px solid rgb(151, 151, 151);
   }
@@ -15,6 +20,7 @@
     font-size: 21px;
     font-weight: 700;
     color: $black;
+    margin: 10px;
   }
 }
 
