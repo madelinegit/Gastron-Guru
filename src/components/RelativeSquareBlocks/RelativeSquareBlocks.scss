@@ -8,7 +8,8 @@ p {
 .margin-bottom {
   margin-bottom: 25px;
 }
-$breakpoint-xlarge: 1250px;
+
+$breakpoint-xlarge: 1300px;
 
 .text-container {
   h2 {
@@ -88,7 +89,6 @@ $breakpoint-xlarge: 1250px;
   }
 }
 .gold-container {
-  width: 894;
   height: 440px;
   display: flex;
   flex-direction: column;
@@ -99,7 +99,7 @@ $breakpoint-xlarge: 1250px;
   z-index: 2;
 
   @media (max-width: $breakpoint-xlarge) {
-    width: 100%;
+    width: 700px;
     height: 533px;
     position: relative;
     top: -50px;
@@ -123,12 +123,12 @@ $breakpoint-xlarge: 1250px;
     width: 360px;
   }
 }
-  
+
 .blue-container {
   width: 100%;
   height: 409px;
   background-color: $dark-blue;
-  padding: -100px;
+  // padding: -100px;
   position: absolute;
   z-index: 1;
   transform: translate(0px, -300px);

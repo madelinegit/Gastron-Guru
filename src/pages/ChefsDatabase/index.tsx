@@ -1,39 +1,32 @@
-import SwitchInput from '../../components/Inputs/SwitchInput'
-import CheckboxInput from '../../components/Inputs/CheckboxInput'
+import SwitchInput from "../../components/Inputs/SwitchInput";
+import CheckboxInput from "../../components/Inputs/CheckboxInput";
 import {
   useWindowResize,
   useSwitchToggle,
   useCheckboxToggle,
-} from '../../utils/helpers'
-import SearchBar from '../../components/SearchBar'
-import ChefCards from '../../components/ChefCards'
-import useChef from '../../utils/Api'
-import Map from '../../components/Map/Map'
+} from "../../utils/helpers";
+import SearchBar from "../../components/SearchBar";
+import ChefCards from "../../components/ChefCards";
+import useChef from "../../utils/Api";
+import Map from "../../components/Map/Map";
 
 const ChefsDatabase = () => {
-  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
     setIsSwitchChecked
-  )
-  const { renderCheckbox } = useWindowResize(true)
-  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
-  const chefData = useChef()
+  );
+  const { renderCheckbox } = useWindowResize(true);
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
+  const chefData = useChef();
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
 
   return (
     <>
-      {/* <SwitchInput
+      <SwitchInput
         isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
         onToggle={handleSwitchToggle}
-      />{" "} */}
-      <SearchBarWrapper>
-        <SearchBar />
-      </SearchBarWrapper>
-      
-      <ChefCards chefData={[]} />
-      {/* {renderCheckbox && (
       />
       <SearchBar />
 
@@ -42,8 +35,6 @@ const ChefsDatabase = () => {
           onCheckboxToggle={handleCheckboxToggle}
           isChecked={detailsShowing}
         />
-      )} */}
-      {(isSwitchChecked || isOverrideActive || detailsShowing) && (
       )}
 
       <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
@@ -60,7 +51,7 @@ const ChefsDatabase = () => {
         </section>
       )}
     </>
-  )
-}
+  );
+};
 
-export default ChefsDatabase
+export default ChefsDatabase;

@@ -44,7 +44,7 @@ export default function SearchBar() {
         placeholder={placeholder as string}
       />
 
-    <SearchBarWrapper/> //has buttons
+    {/* <SearchBarWrapper/> //has buttons */}
     </div>
   );
 }
