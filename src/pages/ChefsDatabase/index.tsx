@@ -4,10 +4,17 @@ import {
   useWindowResize,
   useSwitchToggle,
   useCheckboxToggle,
+  useModal,
+  useCardExpansion,
 } from '../../utils/helpers';
 import SearchBar from '../../components/SearchBar';
 import ChefCards from '../../components/ChefCards';
+import Modal from '../../components/Modal/Modal';
+import ModalCard from '../../components/Modal/ModalCard';
+import MockNarrowContainer from '../../components/Modal/MockNarrowContainer';
 import useChef from '../../utils/Api';
+import ArrowButton from '../../components/Buttons/ArrowButton';
+import { modalData } from '../../utils/Data';
 import Map from '../../components/Map/Map';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { useEffect, useState } from 'react';
@@ -21,6 +28,11 @@ const ChefsDatabase = () => {
   const { renderCheckbox } = useWindowResize(true);
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
   const chefData = useChef();
+  const { showModal, handleModalToggle } = useModal();
+
+  const { expandedCards, toggleCardExpansion } = useCardExpansion(
+    modalData[0].label
+  );
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
 
@@ -49,6 +61,23 @@ const ChefsDatabase = () => {
       }
     >
       {loading && <LoadingSpinner />}
+      <SearchBar />
+      <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
+      {showModal && (
+        <Modal>
+          <MockNarrowContainer>
+            {' '}
+            {modalData.map((card) => (
+              <ModalCard
+                key={card.label}
+                {...card}
+                isExpanded={expandedCards.includes(card.label)}
+                onToggleExpansion={() => toggleCardExpansion(card.label)}
+              />
+            ))}
+          </MockNarrowContainer>
+        </Modal>
+      )}
       <SwitchInput
         isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
         onToggle={handleSwitchToggle}

@@ -1,0 +1,34 @@
+@import '../../styles/colors.scss';
+
+.modalCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  padding: 10px;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid rgb(151, 151, 151);
+  }
+}
+
+.modalCard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: $black;
+    margin: 10px;
+  }
+}
+
+.modalCard-List {
+  list-style: none;
+  li label {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Helvetica', sans-serif;
+    margin-left: 5px;
+  }
+}
