@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './HomeBanner.scss';
 
 const HomeBanner = () => {
@@ -8,9 +9,9 @@ const HomeBanner = () => {
 
         <h1>Your Culinary Journey...</h1>
         
-        <a href="/chefs-database">
+        <Link to="/chefs-database">
           <button className="button-primary">Explore</button>
-        </a>
+        </Link>
 
       </div>
     </section>
