@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./SearchBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import SearchBarWrapper from "./SearchBarWrapper";
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export default function SearchBar() {
   const inputRef = useRef(null);
@@ -31,20 +31,19 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div className="search-bar-container">
-      {/* <FontAwesomeIcon icon="fa-light fa-magnifying-glass" /> */}
-      <i className="fa-light fa-magnifying-glass"></i>
-      <i className="fa-solid fa-magnifying-glass"></i>
-      <input
-        type="text"
-        ref={inputRef}
-        id="search-box"
-        className="search-box"
-        name="search-box"
-        placeholder={placeholder as string}
-      />
-
-    {/* <SearchBarWrapper/> //has buttons */}
-    </div>
+    // <div className="search-bar-container">
+      <div className="search-input-group">
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="light-icon" />
+        <input
+          type="text"
+          ref={inputRef}
+          id="search-box"
+          className="search-box"
+          name="search-box"
+          placeholder={placeholder as string}
+          />
+        <button className="button-primary buttonsize"><span>Search</span></button>
+      </div>
+    // </div>
   );
 }

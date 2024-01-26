@@ -1,5 +1,3 @@
-import SwitchInput from '../../components/Inputs/SwitchInput';
-import CheckboxInput from '../../components/Inputs/CheckboxInput';
 import {
   useWindowResize,
   useSwitchToggle,
@@ -7,7 +5,6 @@ import {
   useModal,
   useCardExpansion,
 } from '../../utils/helpers';
-import SearchBar from '../../components/SearchBar';
 import ChefCards from '../../components/ChefCards';
 import Modal from '../../components/Modal/Modal';
 import ModalCard from '../../components/Modal/ModalCard';
@@ -18,6 +15,7 @@ import { modalData } from '../../utils/Data';
 import Map from '../../components/Map/Map';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { useEffect, useState } from 'react';
+import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper';
 
 const ChefsDatabase = () => {
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
@@ -61,8 +59,6 @@ const ChefsDatabase = () => {
       }
     >
       {loading && <LoadingSpinner />}
-      <SearchBar />
-      <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
           <MockNarrowContainer>
@@ -78,18 +74,19 @@ const ChefsDatabase = () => {
           </MockNarrowContainer>
         </Modal>
       )}
-      <SwitchInput
-        isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
-        onToggle={handleSwitchToggle}
-      />
-      <SearchBar />
+      
+      <SearchBarWrapper
+        handleCheckboxToggle={handleCheckboxToggle}
+        handleSwitchToggle={handleSwitchToggle}
 
-      {renderCheckbox && (
-        <CheckboxInput
-          onCheckboxToggle={handleCheckboxToggle}
-          isChecked={detailsShowing}
-        />
-      )}
+        isSwitchChecked={isSwitchChecked}
+        isOverrideActive={isOverrideActive}
+        renderCheckbox={renderCheckbox}
+        detailsShowing={detailsShowing}
+        showModal={showModal}
+        toggleCardExpansion={toggleCardExpansion}
+        handleModalToggle={handleModalToggle}
+       />
 
       <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 

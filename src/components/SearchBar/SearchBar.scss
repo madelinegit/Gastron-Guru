@@ -1,24 +1,34 @@
-.search-bar-container {
-  width: 100%;
+$search-bar-container-padding: 3rem 4rem;
+
+ .search-bar {
+  overflow:none;
+  // width: 50%;
+  flex:1;
   // mg changed from 100
   height: 10vh;
   display: flex;
   align-items: center;
-  padding: 3rem 4rem;
-  background-color: $gold;
+  padding: $search-bar-container-padding;
+  background-color: $light-black;
   display: flex; //mg
+  // flex: auto;
 
-  .flex {
+  .search-input-group {
+    position: relative;
+    //parent styling for light-icon
     display: flex;
-    svg {
-      width: 100px;
-    }
+    align-items: center;
   }
-  
-
+  .search-box {
+    padding-left: 50px;
+  }
+  .light-icon {
+    color:white;
+    position:absolute;
+    left: 20px;
+  }
   input {
-    width: 30%;
-
+    width: 435px;
     color: $white;
     font-size: 16px;
     padding: 0.75rem;
@@ -30,5 +40,12 @@
   input::placeholder {
     color: #fffb;
   }
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    height: auto;
+  }
 }
+
 

@@ -1,11 +1,75 @@
-// .fa-magnifying-glass {
-//   color: $white;
-// }
+.search-bar {
+  // width:100%;
+  display:flex;
+  background-color: $light-black;  
 
-.flex {
-  display: flex;
-  flex: shrink;
-  svg {
-    width: 100px;
+}
+
+.search-component {
+    width: 453px;
+    border: 1px solid whitesmoke;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-left: 20px;
+    margin-right:20px
   }
+  
+
+//   padding-right: 30px;
+// }
+// .flex {
+//   display: flex;
+//   flex: shrink;
+//   svg {
+//     width: 100px;
+//   }
+// }
+//this is in searchbar.scss
+
+.buttonsize {
+  width: 70px;
+  overflow:none;
+  // width moves text outsid of box
+  //position relative to get the text back into the box?
+
+  // .p {
+  //   color:white;
+  // } //disappeared at some point now is back
+}
+.white {
+  color:white;
+  padding-right: 10px;
+}
+
+.filter-and-map {
+  display:flex;
+  align-items: center;
+  // align-content: center;
+}
+.arrow-button-filter {
+  display:flex;
+  align-items: center;
+  //centers check box & details
+  // justify-content: space-around;
+}
+
+.switchdiv {
+  // flex: 1;
+  // width:200px;
+  display:flex;
+  align-items: center;
+}
+
+.checkdiv {
+  // flex:1;
+  // height:100%;
+  // width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // @media (max-width: $breakpoint-sm) {
+  //   display: none; //  hides .checkdiv on screens 480px wide or less
+  // }
 }
