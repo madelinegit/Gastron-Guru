@@ -4,27 +4,32 @@
 const express = require("express");
 const router = express.Router();
 const getToken = require("../utils/getToken");
+const model = require("../models");
+const User = model.user;
 
 // sign up
 router.post("/register", async function (req, res) {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
-    /**
-     * save user and return JWT
-     */
+    // create new user
+    await new User({ name, email, password }).save();
 
-    // get new user's _id to create token
+    const user = await User.findOne({ email: email });
 
-    const token = await getToken("64995e4269e072a77bec5520");
-
-    if (!token) {
-      res.status(401);
+    if (!user) {
+      console.log("user not found");
+      return res.sendStatus(401);
     }
 
+    // create token with _id as subject
+    const token = await getToken(user._id);
+
     res.send(token);
-  } catch {
-    res.status(500);
+  } catch (err) {
+    console.log(err);
+
+    return res.sendStatus(500);
   }
 });
 
@@ -33,19 +38,20 @@ router.post("/login", async function (req, res) {
   try {
     const { email, password } = req.body;
 
-    /**
-     * verify user creds and return JWT
-     */
+    const user = await User.findOne({ email: email, password: password });
 
-    const token = await getToken("64995e4269e072a77bec5520");
-
-    if (!token) {
-      res.status(401);
+    if (!user) {
+      console.log("user not found");
+      return res.sendStatus(401);
     }
 
+    const token = await getToken(user._id);
+
     res.send(token);
-  } catch {
-    res.status(500);
+  } catch (err) {
+    console.log(err);
+
+    return res.sendStatus(500);
   }
 });
 

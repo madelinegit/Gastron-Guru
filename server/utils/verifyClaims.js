@@ -14,6 +14,7 @@ async function verifyClaims(req) {
 
     const verified = jwt.verify(token, process.env.JWT_SECRET || "secret");
 
+    //return token subject (user _id)
     return verified.sub;
   } catch {
     return false;

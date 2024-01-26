@@ -1,3 +1,4 @@
+import Benefits from "../../components/Benefits/index";
 import CookiesComponent from "../../components/CookiesComponent/CookiesComponent";
 import Featured from "../../components/Featured";
 import ForEveryOccasion from "../../components/ForEveryOccasion";
@@ -7,6 +8,7 @@ const Home = () => {
   return (
     <>
       <Featured />
+      <Benefits/>
       <ForEveryOccasion />
       <RelativeSquareBlocks />
       <CookiesComponent />

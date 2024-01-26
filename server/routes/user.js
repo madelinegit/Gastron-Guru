@@ -2,21 +2,28 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
-const verifyClaims = require("../utils/verifyClaims");
 const router = express.Router();
+const verifyClaims = require("../utils/verifyClaims");
+const model = require("../models");
+const User = model.user;
 
 // get user data
 router.get("/", async function (req, res) {
   try {
+    // returns user _id from token
     const userId = await verifyClaims(req);
 
     if (!userId) {
-      res.status(401);
+      return res.sendStatus(401);
     }
 
-    res.send(userId);
-  } catch {
-    res.status(500);
+    const user = await User.findById(userId);
+
+    return res.json(user);
+  } catch (err) {
+    console.log(err);
+
+    return res.sendStatus(500);
   }
 });
 
