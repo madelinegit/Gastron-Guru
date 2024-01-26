@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './CuisinesDropdown.scss';
 
 const CuisinesDropdown = () => {
@@ -9,6 +10,7 @@ const CuisinesDropdown = () => {
 
   const toggle = () => setOpen((prevOpen) => !prevOpen);
 
+  // if cuisine is clicked, it will add or remove from array
   function handleClick(item: any) {
     const newSelection = [...selection];
     const index = newSelection.indexOf(item);
@@ -25,21 +27,21 @@ const CuisinesDropdown = () => {
   return (
     <>
       <div className="dropdown-container">
+        <h3>Select Your Specialty</h3>
+        <label>Cuisines</label>
         <div
           tabIndex={0}
           className="header"
           role="button"
           onClick={() => toggle()}
         >
-
-          <h1>Select Your Specialty</h1>
-          <label>Cuisines</label>
+          <p>Select cuisine type</p>
 
           {/* if dropdown is open, flip arrow direction */}
-          {/* TO-DO: replace 'close' & 'open' with respective arrow icons */}
-          {open ? 'Close' : 'Open'}
+          {open ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
         </div>
 
+        {/* display cuisines list if clicked */}
         {open && (
           <ul className="cuisines-list">
             {cuisineOptions.map((cuisine) => (
