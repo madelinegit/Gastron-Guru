@@ -1,75 +1,67 @@
 .search-bar {
-  // width:100%;
-  display:flex;
-  background-color: $light-black;  
-
+  width: 100%;
+  // width:1261px;
+  height: 110px;
+  display: flex;
+  background-color: $light-black;
+  @media (max-width: $breakpoint-md) {
+    display: flex;
+    justify-content: center;
+    //^not working
+    flex-direction: column;
+  }
+}
+.search-component {
+  width: 453px;
+  height: 110px;
+  border: 1px solid whitesmoke;
+  display: flex;
+  align-items: center;
+  margin: 0px 20px 0px 20px;
+  // margin-right: 20px;
+  @media (max-width: $breakpoint-md) {
+    // justify-content: center;
+  }
+}
+///dummy styling
+.filter-and-map {
+  // width: 100%;
+  //100% made the switch jut out to the right off of the page
+  width:90%;
+  margin: 0px 20px 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.search-component {
-    width: 453px;
-    border: 1px solid whitesmoke;
+.arrow-button-filter {
     display: flex;
-    align-items: center;
-    padding: 5px;
-    margin-left: 20px;
-    margin-right:20px
+  align-items: center;
+  //"filter" & arrow button
+  @media (max-width: $breakpoint-md) {
   }
-  
-
-//   padding-right: 30px;
-// }
-// .flex {
-//   display: flex;
-//   flex: shrink;
-//   svg {
-//     width: 100px;
-//   }
-// }
-//this is in searchbar.scss
-
-.buttonsize {
-  width: 70px;
-  overflow:none;
-  // width moves text outsid of box
-  //position relative to get the text back into the box?
-
-  // .p {
-  //   color:white;
-  // } //disappeared at some point now is back
 }
 .white {
-  color:white;
+  color: white;
   padding-right: 10px;
 }
+//span styling
 
-.filter-and-map {
-  display:flex;
-  align-items: center;
-  // align-content: center;
+.switch-and-check {
+  max-width:400px;
 }
-.arrow-button-filter {
-  display:flex;
-  align-items: center;
-  //centers check box & details
-  // justify-content: space-around;
-}
-
 .switchdiv {
-  // flex: 1;
-  // width:200px;
-  display:flex;
+  display: flex;
   align-items: center;
+  padding-left:20px;
 }
 
 .checkdiv {
-  // flex:1;
-  // height:100%;
-  // width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  // @media (max-width: $breakpoint-sm) {
-  //   display: none; //  hides .checkdiv on screens 480px wide or less
-  // }
+  padding-right: 20px;
+  @media (max-width: $breakpoint-md) {
+    display: none; //  hides .checkdiv on screens 480px wide or less
+  }
 }

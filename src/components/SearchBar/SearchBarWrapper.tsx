@@ -65,6 +65,7 @@ export default function SearchBarWrapper({
             </Modal>
           )}
         </div>
+        <div className="switch-and-check"></div>
         {/* //creates arrow filterbutton instance */}
         <div className="switchdiv">
           <SwitchInput
@@ -85,7 +86,7 @@ export default function SearchBarWrapper({
           )}
           {/* //creates new instance of checkboxinput component */}
         </div>
+        </div>
       </div>
-    </div>
   );
 }
