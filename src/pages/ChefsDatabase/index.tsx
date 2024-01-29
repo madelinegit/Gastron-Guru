@@ -60,8 +60,6 @@ const ChefsDatabase = () => {
         loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
       }
     >
-      <SearchBar />
-      {loading && <LoadingSpinner />}
       <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
@@ -90,6 +88,8 @@ const ChefsDatabase = () => {
           isChecked={detailsShowing}
         />
       )}
+
+      {loading && <LoadingSpinner />}
 
       <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 
