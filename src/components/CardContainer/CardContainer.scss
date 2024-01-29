@@ -1,0 +1,16 @@
+.card-container {
+  background-color: $light-black;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px;
+  // Add these styles for the scrollbar
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 20px;
+  }
+}
