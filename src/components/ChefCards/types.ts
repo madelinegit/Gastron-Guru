@@ -11,6 +11,4 @@ export interface ChefDataProps {
   };
   cuisines?: string[];
   location?: string;
-  onCardClick?: (index: number) => void;
-  activeCard: number;
 }

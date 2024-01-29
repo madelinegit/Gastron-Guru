@@ -4,6 +4,8 @@
   grid-template-rows: 40% 60%;
   grid-template-areas: "img miscal ribbon" "info info info";
   width: 50%;
+  gap: 20px;
+  border: 2px solid black;
 
   &-img {
     background-color: red;
@@ -16,21 +18,61 @@
   }
 
   &-miscal {
-    background-color: purple;
     grid-area: miscal;
+    margin-top: 20px;
+
+    svg {
+      display: inline-flex;
+      width: 14px;
+
+      path {
+        border: 2px solid #ccc;
+        fill: $gold;
+      }
+    }
+
+    .tagz {
+      ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin: 10px 0 10px 0;
+
+        li {
+          background-color: $dark-blue;
+          border-radius: 4px;
+          padding: 8px;
+          color: $white;
+          font-family: Helvetica, sans-serif;
+          font-size: 10px;
+        }
+      }
+    }
+
+    p {
+      color: $dark-blue;
+    }
+  }
+
+  &-buy-btn-container {
+    margin-top: 30px;
+    .chef-detail-buy-btn {
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      background-color: $gold;
+    }
   }
 
   &-ribbon {
     grid-area: ribbon;
-
-    .small-ribbon {
-      background-color: gold;
-    }
   }
 
   &-info {
-    background-color: blue;
     grid-area: info;
+    margin-left: 20px;
 
     p {
       margin: 0;
@@ -38,4 +80,8 @@
       box-sizing: border-box;
     }
   }
+}
+
+.fa-icon {
+  margin-right: 10px;
 }

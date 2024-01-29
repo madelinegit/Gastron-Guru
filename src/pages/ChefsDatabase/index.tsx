@@ -101,6 +101,7 @@ const ChefsDatabase = () => {
         chefData={chefData}
         isScrollEnabled={isScrollEnabled}
         onCardClick={onCardClick}
+        activeCard={activeCard}
       />
       <ChefDetail activeCard={activeCard} />
 

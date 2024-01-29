@@ -59,10 +59,12 @@ const ChefCards = ({
   chefData,
   isScrollEnabled,
   onCardClick,
+  activeCard,
 }: {
   chefData: ChefDataProps[];
   isScrollEnabled: boolean;
   onCardClick: (index: number) => void;
+  activeCard: number;
 }) => {
   return (
     <div
@@ -72,13 +74,18 @@ const ChefCards = ({
           : `chef-card-container-grid`
       }
     >
-      {chefData.map((chef, index) => (
-        <>
-          <button onClick={() => onCardClick(index)}>
-            <ChefCard key={chef.name} {...chef} />
-          </button>
-        </>
-      ))}
+      {chefData.map((chef, index) => {
+        const isActive = index === activeCard;
+        return (
+          <>
+            <section className={isActive ? "conditional-border" : ""}>
+              <button onClick={() => onCardClick(index)}>
+                <ChefCard key={chef.name} {...chef} />
+              </button>
+            </section>
+          </>
+        );
+      })}
     </div>
   );
 };
