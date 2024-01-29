@@ -1,4 +1,4 @@
-import { capitalizeWords } from "../../utils/helpers";
+import { capitalizeWords, replaceWords } from "../../utils/helpers";
 import RatingAndLocation from "../RatingAndLocation";
 import Ribbon from "../Ribbon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,7 +41,9 @@ const ChefCard = ({
       <ul>
         {chefPrivate &&
           chefPrivate.map((item) => (
-            <li key={item}>{capitalizeWords(item)}</li>
+            <li key={item}>
+              {capitalizeWords(replaceWords(item))}
+            </li>
           ))}
       </ul>
     </div>
