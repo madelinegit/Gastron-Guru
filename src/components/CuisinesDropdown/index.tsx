@@ -31,7 +31,7 @@ const CuisinesDropdown = () => {
         <label>Cuisines</label>
         <div
           tabIndex={0}
-          className="header"
+          className="dropdown-box"
           role="button"
           onClick={() => toggle()}
         >
@@ -48,10 +48,9 @@ const CuisinesDropdown = () => {
               <li
                 key={cuisine}
                 className={selection.includes(cuisine) ? 'selected' : ''}
+                onClick={() => handleClick(cuisine)}
               >
-                <button type="button" onClick={() => handleClick(cuisine)}>
-                  {cuisine}
-                </button>
+                {cuisine}
               </li>
             ))}
           </ul>

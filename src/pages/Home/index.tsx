@@ -9,8 +9,8 @@ import RelativeSquareBlocks from "../../components/RelativeSquareBlocks";
 const Home = () => {
   return (
     <>
-      <CuisinesDropdown />
       <HomeBanner />
+      <CuisinesDropdown />
       <Featured />
       <Benefits/>
       <ForEveryOccasion />
