@@ -54,10 +54,22 @@ export const useCheckboxToggle = () => {
 
   return { detailsShowing, handleCheckboxToggle }
 }
+
 // capitalize first letter of each word
 export const capitalizeWords = (str: string): string => {
   return str.replace(/\b\w/g, (match) => match.toUpperCase())
 }
+
+// replace words from API to display correctly in chef tags
+export const replaceWords = (word: string): string => {
+  const wordMap: { [key: string]: string } = {
+    "inhouse": "in-house",
+    "high-end-serv": "high-end services",
+  };
+
+  // check if the word is in the mapping; replace if necessary
+  return wordMap[word] || word;
+};
 
 // logic for Modal Component
 export const useModal = () => {

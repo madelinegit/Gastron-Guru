@@ -1,3 +1,4 @@
+import HomeBanner from "../../components/HomeBanner";
 import Benefits from "../../components/Benefits/index";
 import CookiesComponent from "../../components/CookiesComponent/CookiesComponent";
 import CuisinesDropdown from "../../components/CuisinesDropdown";
@@ -9,6 +10,7 @@ const Home = () => {
   return (
     <>
       <CuisinesDropdown />
+      <HomeBanner />
       <Featured />
       <Benefits/>
       <ForEveryOccasion />
