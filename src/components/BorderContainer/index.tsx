@@ -1,27 +1,27 @@
-import { useState } from 'react';
-import ChefCard from '../ChefCards';
-import { ChefDataProps } from '../ChefCards/types';
-import './BorderContainer.scss';
+/* import { useState } from "react";
+import ChefCard from "../ChefCards";
+import { ChefDataProps } from "../ChefCards/types";
+import "./BorderContainer.scss";
 
 type BorderContainerProps = {
   cards: ChefDataProps[];
+  onCardClick: (index: number) => void;
 };
-const BorderContainer = ({ cards }: BorderContainerProps) => {
-  const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
-  function handleClick(i: number) {
-    setActiveCardIndex(i);
-  }
+const BorderContainer = ({ cards, onCardClick }: BorderContainerProps) => {
   console.log(cards);
   return (
     <div className="border-container">
       {cards.map((card, index) => (
-        <ChefCard
-          {...card}
-          onCardClick={() => handleClick(index)}
-          isActive={index === activeCardIndex}
-        />
+        <>
+          <ChefCard
+            chefData={[]}
+            isScrollEnabled={false}
+            {...card}
+            onCardClick={onCardClick}
+          />
+        </>
       ))}
     </div>
   );
 };
-export default BorderContainer;
+export default BorderContainer; */

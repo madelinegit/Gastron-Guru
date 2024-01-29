@@ -1,0 +1,41 @@
+.chef-detail {
+  display: grid;
+  grid-template-columns: 50% 30% 20%;
+  grid-template-rows: 40% 60%;
+  grid-template-areas: "img miscal ribbon" "info info info";
+  width: 50%;
+
+  &-img {
+    background-color: red;
+    grid-area: img;
+
+    img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-miscal {
+    background-color: purple;
+    grid-area: miscal;
+  }
+
+  &-ribbon {
+    grid-area: ribbon;
+
+    .small-ribbon {
+      background-color: gold;
+    }
+  }
+
+  &-info {
+    background-color: blue;
+    grid-area: info;
+
+    p {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  }
+}

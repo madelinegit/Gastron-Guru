@@ -13,6 +13,8 @@ const ChefCard = ({
   labels,
   private: chefPrivate,
 }: ChefDataProps) => (
+  /*   onCardClick: (index: number) => void,
+  activeCard: number */
   <div className="chef-card">
     <div className="thumbnail">
       {/* FILLER IMAGE */}
@@ -53,12 +55,29 @@ const ChefCard = ({
 );
 
 // CREATE SEPARATE COMPONENT..?
-const ChefCards = ({ chefData, isScrollEnabled }: { chefData: ChefDataProps[]; isScrollEnabled: boolean }) => {
-
+const ChefCards = ({
+  chefData,
+  isScrollEnabled,
+  onCardClick,
+}: {
+  chefData: ChefDataProps[];
+  isScrollEnabled: boolean;
+  onCardClick: (index: number) => void;
+}) => {
   return (
-    <div className={isScrollEnabled ? `chef-card-container-scroll` : `chef-card-container-grid`}>
-      {chefData.map((chef) => (
-        <ChefCard key={chef.name} {...chef} />
+    <div
+      className={
+        isScrollEnabled
+          ? `chef-card-container-scroll`
+          : `chef-card-container-grid`
+      }
+    >
+      {chefData.map((chef, index) => (
+        <>
+          <button onClick={() => onCardClick(index)}>
+            <ChefCard key={chef.name} {...chef} />
+          </button>
+        </>
       ))}
     </div>
   );
