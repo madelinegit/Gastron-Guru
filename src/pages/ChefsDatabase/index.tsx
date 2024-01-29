@@ -1,58 +1,63 @@
-import SwitchInput from '../../components/Inputs/SwitchInput';
-import CheckboxInput from '../../components/Inputs/CheckboxInput';
+import SwitchInput from '../../components/Inputs/SwitchInput'
+import CheckboxInput from '../../components/Inputs/CheckboxInput'
 import {
   useWindowResize,
   useSwitchToggle,
   useCheckboxToggle,
   useModal,
   useCardExpansion,
-} from '../../utils/helpers';
-import SearchBar from '../../components/SearchBar';
-import ChefCards from '../../components/ChefCards';
-import Modal from '../../components/Modal/Modal';
-import ModalCard from '../../components/Modal/ModalCard';
-import MockNarrowContainer from '../../components/Modal/MockNarrowContainer';
-import useChef from '../../utils/Api';
-import ArrowButton from '../../components/Buttons/ArrowButton';
-import { modalData } from '../../utils/Data';
-import Map from '../../components/Map/Map';
-import { LoadingSpinner } from '../../components/LoadingSpinner';
-import { useEffect, useState } from 'react';
+} from '../../utils/helpers'
+import SearchBar from '../../components/SearchBar'
+import ChefCards from '../../components/ChefCards'
+import Modal from '../../components/Modal/Modal'
+import ModalCard from '../../components/Modal/ModalCard'
+import MockNarrowContainer from '../../components/Modal/MockNarrowContainer'
+import useChef from '../../utils/Api'
+import ArrowButton from '../../components/Buttons/ArrowButton'
+import { modalData } from '../../utils/Data'
+import Map from '../../components/Map/Map'
+import { LoadingSpinner } from '../../components/LoadingSpinner'
+import { useEffect, useState } from 'react'
 
 const ChefsDatabase = () => {
-  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
     setIsSwitchChecked
-  );
-  const { renderCheckbox } = useWindowResize(true);
-  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
-  const chefData = useChef();
-  const { showModal, handleModalToggle } = useModal();
+  )
+  const { renderCheckbox } = useWindowResize(true)
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
+  const chefData = useChef()
+  const { showModal, handleModalToggle } = useModal()
 
   const { expandedCards, toggleCardExpansion } = useCardExpansion(
     modalData[0].label
-  );
+  )
 
-  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
+  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing
 
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     try {
-      chefData;
+      chefData
     } catch (error) {
-      console.log('An error occurred...');
-      setLoading(true);
+      console.log('An error occurred...')
+      setLoading(true)
     }
     return () => {
-      console.log('Done!');
+      console.log('Done!')
       setTimeout(() => {
         // added just to make sure that it'll pass here
-        setLoading(false);
-      }, 2500);
-    };
-  }, [chefData]);
+        setLoading(false)
+      }, 2500)
+    }
+  }, [chefData])
+
+  //START FILTER LOGIC
+  //set the state of the data filtered to map to display the relavent ChefCards according to filter params
+
+  //END FILTER LOGIC
 
   return (
     <div
@@ -105,7 +110,7 @@ const ChefsDatabase = () => {
         </section>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ChefsDatabase;
+export default ChefsDatabase
