@@ -54,14 +54,11 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
         </div>
       </section>
       <section className="chef-detail-ribbon">
-        <p className="small-ribbon">
-          {/* {chef?.labels?.[0]} */}
-          <Ribbon label={undefined} />
-        </p>
+        <p className="small-ribbon">{chef?.labels?.[0]}</p>
       </section>
       <section className="chef-detail-info">
         <h3>{chef?.name}</h3>
-        <p>
+        <p className="para">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur
           temporibus autem voluptas repellat quas. Tempora commodi nostrum
           laborum magni sit nesciunt animi voluptas. In eaque, repellendus

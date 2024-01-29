@@ -68,11 +68,28 @@
 
   &-ribbon {
     grid-area: ribbon;
+    margin-top: 20px;
+    background-color: blue;
+
+    .small-ribbon {
+      background-color: $gold;
+      padding-left: calc(0.8em + 0.25em);
+      clip-path: polygon(100vw 0, 0 0, 0.8em 50%, 0 100%, 100vw 100%);
+      border-image: conic-gradient($gold 0 0) fill 0;
+
+      p {
+        width: 100%;
+        padding: 10px !important;
+        font-weight: bold;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+    }
   }
 
   &-info {
     grid-area: info;
-    margin-left: 20px;
+    background-color: blue;
 
     p {
       margin: 0;
@@ -84,4 +101,10 @@
 
 .fa-icon {
   margin-right: 10px;
+}
+
+.para {
+  margin: 0;
+  padding: 0;
+  color: black;
 }
