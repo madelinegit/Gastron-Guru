@@ -1,0 +1,67 @@
+.search-bar {
+  width: 100%;
+  // width:1261px;
+  height: 110px;
+  display: flex;
+  background-color: $light-black;
+  @media (max-width: $breakpoint-md) {
+    display: flex;
+    justify-content: center;
+    //^not working
+    flex-direction: column;
+  }
+}
+.search-component {
+  width: 453px;
+  height: 110px;
+  border: 1px solid whitesmoke;
+  display: flex;
+  align-items: center;
+  margin: 0px 20px 0px 20px;
+  // margin-right: 20px;
+  @media (max-width: $breakpoint-md) {
+    // justify-content: center;
+  }
+}
+///dummy styling
+.filter-and-map {
+  // width: 100%;
+  //100% made the switch jut out to the right off of the page
+  width:90%;
+  margin: 0px 20px 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow-button-filter {
+    display: flex;
+  align-items: center;
+  //"filter" & arrow button
+  @media (max-width: $breakpoint-md) {
+  }
+}
+.white {
+  color: white;
+  padding-right: 10px;
+}
+//span styling
+
+.switch-and-check {
+  max-width:400px;
+}
+.switchdiv {
+  display: flex;
+  align-items: center;
+  padding-left:20px;
+}
+
+.checkdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 20px;
+  @media (max-width: $breakpoint-md) {
+    display: none; //  hides .checkdiv on screens 480px wide or less
+  }
+}
