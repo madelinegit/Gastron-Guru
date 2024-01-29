@@ -60,8 +60,8 @@ const ChefsDatabase = () => {
         loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
       }
     >
-      {loading && <LoadingSpinner />}
       <SearchBar />
+      {loading && <LoadingSpinner />}
       <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
