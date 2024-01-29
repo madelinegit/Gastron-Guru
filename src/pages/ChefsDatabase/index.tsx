@@ -20,6 +20,7 @@ import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { useEffect, useState } from 'react';
 
 const ChefsDatabase = () => {
+  const [loading, setLoading] = useState<boolean>(true);
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
@@ -36,8 +37,6 @@ const ChefsDatabase = () => {
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
 
-  const [loading, setLoading] = useState<boolean>(true);
-
   useEffect(() => {
     try {
       chefData;
@@ -47,10 +46,7 @@ const ChefsDatabase = () => {
     }
     return () => {
       console.log('Done!');
-      setTimeout(() => {
-        // added just to make sure that it'll pass here
-        setLoading(false);
-      }, 2500);
+      setLoading(false);
     };
   }, [chefData]);
 
@@ -60,8 +56,6 @@ const ChefsDatabase = () => {
         loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
       }
     >
-      {loading && <LoadingSpinner />}
-      <SearchBar />
       <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
@@ -90,6 +84,8 @@ const ChefsDatabase = () => {
           isChecked={detailsShowing}
         />
       )}
+
+      {loading && <LoadingSpinner />}
 
       <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 
