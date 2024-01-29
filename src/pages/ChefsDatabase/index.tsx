@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper';
 
 const ChefsDatabase = () => {
+  const [loading, setLoading] = useState<boolean>(true);
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
@@ -34,8 +35,6 @@ const ChefsDatabase = () => {
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
 
-  const [loading, setLoading] = useState<boolean>(true);
-
   useEffect(() => {
     try {
       chefData;
@@ -45,10 +44,7 @@ const ChefsDatabase = () => {
     }
     return () => {
       console.log('Done!');
-      setTimeout(() => {
-        // added just to make sure that it'll pass here
-        setLoading(false);
-      }, 2500);
+      setLoading(false);
     };
   }, [chefData]);
 
@@ -58,7 +54,7 @@ const ChefsDatabase = () => {
         loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
       }
     >
-      {loading && <LoadingSpinner />}
+      <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
           <MockNarrowContainer>
@@ -87,6 +83,8 @@ const ChefsDatabase = () => {
         toggleCardExpansion={toggleCardExpansion}
         handleModalToggle={handleModalToggle}
        />
+
+      {loading && <LoadingSpinner />}
 
       <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 
