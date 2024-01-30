@@ -9,16 +9,60 @@
   background-color: $black;
   color: $white;
 
+  &.success-modal-overlay {
+    overflow: hidden;
+    position: fixed;
+    z-index: 0;
+
+    display: flex;
+    align-items: center;
+
+    .wrapper {
+      overflow: hidden;
+      position: fixed;
+      z-index: 0;
+      opacity: 0.6;
+      margin-top: 180px;
+
+      .user-registration-form {
+        .submit-btn {
+          pointer-events: none;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
   .wrapper {
     width: 60%;
     align-self: center;
 
-    @media (min-width: $breakpoint-xl) {
-      width: 30%;
+    @media (min-width: $breakpoint-4k) {
+      width: 50%;
+      zoom: 180%;
+    }
+
+    @media (max-width: 1680px) {
+      width: 40%;
       zoom: 120%;
     }
 
-    form {
+    @media (max-width: $breakpoint-xl) {
+      width: 40%;
+      zoom: 120%;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      width: 50%;
+      zoom: 110%;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      zoom: 100%;
+      width: 60%;
+    }
+
+    .user-registration-form {
       margin-top: 24px;
       display: flex;
       flex-direction: column;
