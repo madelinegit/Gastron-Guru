@@ -3,8 +3,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const router = express.Router();
-const getToken = require("../../utils/getToken");
-const model = require("../../models");
+const getToken = require("../utils/getToken");
+const model = require("../models");
 const User = model.user;
 
 // sign up
