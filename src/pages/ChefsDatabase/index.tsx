@@ -1,30 +1,58 @@
 import { useState, useEffect } from 'react';
 
-import SwitchInput from '../../components/Inputs/SwitchInput'
-import CheckboxInput from '../../components/Inputs/CheckboxInput'
+import SwitchInput from '../../components/Inputs/SwitchInput';
+import CheckboxInput from '../../components/Inputs/CheckboxInput';
 import {
   useWindowResize,
   useSwitchToggle,
   useCheckboxToggle,
-} from '../../utils/helpers'
-import SearchBar from '../../components/SearchBar'
-import ChefCards from '../../components/ChefCards'
-import useChef from '../../utils/Api'
-import Map from '../../components/Map/Map'
+  useModal,
+  useCardExpansion,
+} from '../../utils/helpers';
+import SearchBar from '../../components/SearchBar';
+import ChefCards from '../../components/ChefCards';
+import Modal from '../../components/Modal/Modal';
+import ModalCard from '../../components/Modal/ModalCard';
+import MockNarrowContainer from '../../components/Modal/MockNarrowContainer';
+import useChef from '../../utils/Api';
+import ArrowButton from '../../components/Buttons/ArrowButton';
+import { modalData } from '../../utils/Data';
+import Map from '../../components/Map/Map';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
+import { useEffect, useState } from 'react';
 
 const ChefsDatabase = () => {
-  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
+  const [loading, setLoading] = useState<boolean>(true);
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
     setIsSwitchChecked
-  )
-  const { renderCheckbox } = useWindowResize(true)
-  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
+  );
+  const { renderCheckbox } = useWindowResize(true);
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
 
   const [sortedChefCards, setSortChefCards] = useState<any[]>([]);
-  const chefData = useChef()
+  const chefData = useChef();
+  const { showModal, handleModalToggle } = useModal();
+
+  const { expandedCards, toggleCardExpansion } = useCardExpansion(
+    modalData[0].label
+  );
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
+
+  useEffect(() => {
+    try {
+      chefData;
+    } catch (error) {
+      console.log('An error occurred...');
+      setLoading(true);
+    }
+    return () => {
+      console.log('Done!');
+      setLoading(false);
+    };
+  }, [chefData]);
 
   // sort chef cards based on ratings (desc order) upon initial page load
   useEffect(() => {
@@ -38,7 +66,27 @@ const ChefsDatabase = () => {
   }, [chefData]);
 
   return (
-    <>
+    <div
+      style={
+        loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
+      }
+    >
+      <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
+      {showModal && (
+        <Modal>
+          <MockNarrowContainer>
+            {' '}
+            {modalData.map((card) => (
+              <ModalCard
+                key={card.label}
+                {...card}
+                isExpanded={expandedCards.includes(card.label)}
+                onToggleExpansion={() => toggleCardExpansion(card.label)}
+              />
+            ))}
+          </MockNarrowContainer>
+        </Modal>
+      )}
       <SwitchInput
         isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
         onToggle={handleSwitchToggle}
@@ -52,10 +100,9 @@ const ChefsDatabase = () => {
         />
       )}
 
-      <ChefCards
-        chefData={sortedChefCards}
-        isScrollEnabled={isScrollEnabled}
-      />
+      {loading && <LoadingSpinner />}
+
+      <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 
       {isScrollEnabled && (
         <section>
@@ -68,8 +115,8 @@ const ChefsDatabase = () => {
           {renderCheckbox && detailsShowing && <h1>Details</h1>}
         </section>
       )}
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default ChefsDatabase
+export default ChefsDatabase;
