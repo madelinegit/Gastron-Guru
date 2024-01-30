@@ -6,12 +6,15 @@ import './CuisinesDropdown.scss';
 const CuisinesDropdown = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [selection, setSelection] = useState<string[]>([]);
+  // mock data
   const cuisineOptions = ['Japanese', 'Ukranian', 'Russian', 'Polish', 'Italian', 'Mexican', 'Chinese', 'Indian'];
 
   const toggle = () => setOpen((prevOpen) => !prevOpen);
 
   // if cuisine is clicked, it will add or remove from array
-  function handleClick(item: any) {
+  function handleClick(event: React.MouseEvent, item: any) {
+    event.stopPropagation();
+
     const newSelection = [...selection];
     const index = newSelection.indexOf(item);
 
@@ -39,7 +42,7 @@ const CuisinesDropdown = () => {
           {selection.length > 0 ? (
             <ul>
               {selection.map((selectedCuisine) => (
-                <li key={selectedCuisine} onClick={() => handleClick(selectedCuisine)} className="selected-cuisine">
+                <li key={selectedCuisine} onClick={(event) => handleClick(event, selectedCuisine)} className="selected-cuisine">
                   {selectedCuisine} <FontAwesomeIcon icon={faX} />
                 </li>
               ))}
@@ -59,7 +62,7 @@ const CuisinesDropdown = () => {
               <li
                 key={cuisine}
                 className={selection.includes(cuisine) ? 'selected' : ''}
-                onClick={() => handleClick(cuisine)}
+                onClick={(event) => handleClick(event, cuisine)}
               >
                 {cuisine}
               </li>
