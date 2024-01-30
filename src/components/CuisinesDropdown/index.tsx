@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown, faX } from '@fortawesome/free-solid-svg-icons';
 import './CuisinesDropdown.scss';
 
 const CuisinesDropdown = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [selection, setSelection] = useState<string[]>([]);
-  const cuisineOptions = ['Italian', 'Mexican', 'Chinese', 'Indian'];
+  const cuisineOptions = ['Japanese', 'Ukranian', 'Russian', 'Polish', 'Italian', 'Mexican', 'Chinese', 'Indian'];
 
   const toggle = () => setOpen((prevOpen) => !prevOpen);
 
@@ -35,7 +35,18 @@ const CuisinesDropdown = () => {
           role="button"
           onClick={() => toggle()}
         >
-          <p>Select cuisine type</p>
+          {/* display selected cuisines or default message */}
+          {selection.length > 0 ? (
+            <ul>
+              {selection.map((selectedCuisine) => (
+                <li key={selectedCuisine} onClick={() => handleClick(selectedCuisine)} className="selected-cuisine">
+                  {selectedCuisine} <FontAwesomeIcon icon={faX} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Select cuisine type</p>
+          )}
 
           {/* if dropdown is open, flip arrow direction */}
           {open ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
