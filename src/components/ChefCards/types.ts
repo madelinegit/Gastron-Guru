@@ -1,7 +1,9 @@
 export interface ChefDataProps {
   name?: string;
+  "featured-images"?: string[];
   labels?: string[];
   services?: string[];
+  description?: string;
   corporate?: boolean;
   private?: string[];
   distance_from_centre?: string;
@@ -11,4 +13,7 @@ export interface ChefDataProps {
   };
   cuisines?: string[];
   location?: string;
+  isActive?: boolean;
+  onCardClick?: (index: number) => void | undefined;
+  activeCard: number;
 }

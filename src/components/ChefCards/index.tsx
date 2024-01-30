@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { ChefDataProps } from "./types";
 import "./ChefCards.scss";
+import wood from "../ChefDetail/wood.jpg";
 
 const ChefCard = ({
   name,
@@ -12,47 +13,54 @@ const ChefCard = ({
   distance_from_centre,
   labels,
   private: chefPrivate,
-}: ChefDataProps) => (
-  /*   onCardClick: (index: number) => void,
-  activeCard: number */
-  <div className="chef-card">
-    <div className="thumbnail">
-      {/* FILLER IMAGE */}
-      <img
-        src="https://images.unsplash.com/photo-1630445396366-8dea03c85ead?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Peter Winston"
-      />
-    </div>
+  onCardClick,
+  activeCard,
+  isActive,
+  "featured-images": featuredImages,
+}: ChefDataProps & { onCardClick: (index: number) => void }) => {
+  const handleClick = () => {
+    onCardClick(isActive ? activeCard : -1);
+  };
 
-    <h3>{name}</h3>
-
-    <div className="ratings-container">
-      <div className="left">
-        <FontAwesomeIcon icon={faStar} />
-        <RatingAndLocation
-          rating={rating}
-          distance_from_centre={distance_from_centre}
-        />
+  return (
+    <div
+      onClick={handleClick}
+      className={isActive ? "chef-card conditional-border" : "chef-card"}
+    >
+      <div className="thumbnail">
+        <img src={featuredImages?.[0]} alt="Chef Restaurant Images" />
       </div>
-      <div className="right">
-        <Ribbon label={labels?.[0]} />
+
+      <h3>{name}</h3>
+
+      <div className="ratings-container">
+        <div className="left">
+          <FontAwesomeIcon icon={faStar} />
+          <RatingAndLocation
+            rating={rating}
+            distance_from_centre={distance_from_centre}
+          />
+        </div>
+        <div className="right">
+          <Ribbon label={labels?.[0]} />
+        </div>
+      </div>
+
+      <div className="tags">
+        <ul>
+          {chefPrivate &&
+            chefPrivate.map((item) => (
+              <li key={item}>{capitalizeWords(item)}</li>
+            ))}
+        </ul>
+      </div>
+
+      <div className="buy-btn-container">
+        <button className="button-primary">Buy now</button>
       </div>
     </div>
-
-    <div className="tags">
-      <ul>
-        {chefPrivate &&
-          chefPrivate.map((item) => (
-            <li key={item}>{capitalizeWords(item)}</li>
-          ))}
-      </ul>
-    </div>
-
-    <div className="buy-btn-container">
-      <button className="button-primary">Buy now</button>
-    </div>
-  </div>
-);
+  );
+};
 
 // CREATE SEPARATE COMPONENT..?
 const ChefCards = ({
@@ -78,11 +86,13 @@ const ChefCards = ({
         const isActive = index === activeCard;
         return (
           <>
-            <section className={isActive ? "conditional-border" : ""}>
-              <button onClick={() => onCardClick(index)}>
-                <ChefCard key={chef.name} {...chef} />
-              </button>
-            </section>
+            <ChefCard
+              key={chef.name}
+              {...chef}
+              isActive={isActive}
+              onCardClick={() => onCardClick(index)}
+              activeCard={activeCard}
+            />
           </>
         );
       })}

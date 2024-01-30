@@ -33,6 +33,11 @@
   }
 }
 
+.conditional-border {
+  border: 3pt solid $gold;
+  padding: 0;
+}
+
 .chef-card {
   width: 208px;
   flex-shrink: 0;
@@ -90,8 +95,4 @@
       width: 100%;
     }
   }
-}
-
-.conditional-border {
-  border: 3pt solid $gold;
 }

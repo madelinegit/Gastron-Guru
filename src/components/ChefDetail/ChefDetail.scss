@@ -1,110 +1,120 @@
-.chef-detail {
-  display: grid;
-  grid-template-columns: 50% 30% 20%;
-  grid-template-rows: 40% 60%;
-  grid-template-areas: "img miscal ribbon" "info info info";
-  width: 50%;
-  gap: 20px;
-  border: 2px solid black;
+.main-detail {
+  border: 20pt solid black;
+  width: 700px;
 
-  &-img {
-    background-color: red;
-    grid-area: img;
+  .cd {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-rows: 40% 60%;
+    grid-template-areas: "img miscal ribbon" "info info info";
+    max-width: 649px;
+    width: 100%;
+    height: 459px;
 
-    img {
-      max-width: 100%;
-      object-fit: cover;
-    }
-  }
+    &-img {
+      width: 350px;
+      height: 190px;
+      grid-area: img;
+      overflow: hidden;
 
-  &-miscal {
-    grid-area: miscal;
-    margin-top: 20px;
-
-    svg {
-      display: inline-flex;
-      width: 14px;
-
-      path {
-        border: 2px solid #ccc;
-        fill: $gold;
+      img {
+        width: 100%;
       }
     }
 
-    .tagz {
-      ul {
-        list-style-type: none;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin: 10px 0 10px 0;
+    &-miscal {
+      grid-area: miscal;
+      margin: 20px 10px 0px 20px;
+      align-self: end;
 
-        li {
-          background-color: $dark-blue;
-          border-radius: 4px;
-          padding: 8px;
-          color: $white;
-          font-family: Helvetica, sans-serif;
+      p {
+        font-size: 12px;
+        padding-bottom: 5px;
+
+        .cd-icon {
+          margin-right: 10px;
+        }
+      }
+
+      svg {
+        display: inline-flex;
+        width: 14px;
+
+        path {
+          border: 2px solid #ccc;
+          fill: $gold;
+        }
+      }
+
+      .cd-tags {
+        ul {
+          list-style-type: none;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 5px;
+          margin: 10px 0 10px 0;
+
+          li {
+            background-color: $dark-blue;
+            border-radius: 4px;
+            padding: 8px;
+            color: $white;
+            font-family: Helvetica, sans-serif;
+            font-size: 10px;
+          }
+        }
+      }
+
+      p {
+        color: $dark-blue;
+      }
+    }
+
+    &-btn-container {
+      margin-top: 10px;
+
+      .cd-btn {
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        background-color: $gold;
+      }
+    }
+
+    &-ribbon {
+      grid-area: ribbon;
+      margin-top: 20px;
+
+      .cd-ribbon-container {
+        background-color: $gold;
+        padding-left: calc(0.8em + 0.25em);
+        clip-path: polygon(100vw 0, 0 0, 0.8em 50%, 0 100%, 100vw 100%);
+        border-image: conic-gradient($gold 0 0) fill 0;
+
+        p {
+          width: 100%;
+          padding: 10px 0.5em;
+          font-weight: bold;
           font-size: 10px;
+          text-transform: uppercase;
         }
       }
     }
 
-    p {
-      color: $dark-blue;
-    }
-  }
-
-  &-buy-btn-container {
-    margin-top: 30px;
-    .chef-detail-buy-btn {
-      padding: 10px 20px;
-      border-radius: 4px;
-      border: none;
-      background-color: $gold;
-    }
-  }
-
-  &-ribbon {
-    grid-area: ribbon;
-    margin-top: 20px;
-    background-color: blue;
-
-    .small-ribbon {
-      background-color: $gold;
-      padding-left: calc(0.8em + 0.25em);
-      clip-path: polygon(100vw 0, 0 0, 0.8em 50%, 0 100%, 100vw 100%);
-      border-image: conic-gradient($gold 0 0) fill 0;
+    &-info {
+      grid-area: info;
+      margin: 20px 40px 2px 20px;
 
       p {
-        width: 100%;
-        padding: 10px !important;
-        font-weight: bold;
-        font-size: 10px;
-        text-transform: uppercase;
+        padding-top: 10px;
       }
     }
   }
+}
 
-  &-info {
-    grid-area: info;
-    background-color: blue;
-
-    p {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+@media (max-width: $breakpoint-sm) {
+  .main-detail {
+    display: none;
   }
-}
-
-.fa-icon {
-  margin-right: 10px;
-}
-
-.para {
-  margin: 0;
-  padding: 0;
-  color: black;
 }
