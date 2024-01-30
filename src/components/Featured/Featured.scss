@@ -9,10 +9,6 @@
 
   background-color: $black;
 
-  @media (max-width: $breakpoint-md) {
-    padding: 30px;
-  }
-
   h2 {
     margin-bottom: 15px;
     text-align: center;
