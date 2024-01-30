@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   useWindowResize,
   useSwitchToggle,
@@ -54,7 +55,7 @@ const ChefsDatabase = () => {
         loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
       }
     >
-      <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
+      {/* <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
           <MockNarrowContainer>
@@ -69,12 +70,12 @@ const ChefsDatabase = () => {
             ))}
           </MockNarrowContainer>
         </Modal>
-      )}
-      
+      )} */}
+
       <SearchBarWrapper
         handleCheckboxToggle={handleCheckboxToggle}
         handleSwitchToggle={handleSwitchToggle}
-
+        expandedCards={expandedCards}
         isSwitchChecked={isSwitchChecked}
         isOverrideActive={isOverrideActive}
         renderCheckbox={renderCheckbox}

@@ -1,3 +1,4 @@
+import React from "react";
 import SwitchInput from "../Inputs/SwitchInput";
 import CheckboxInput from "../Inputs/CheckboxInput";
 import "./SearchBarWrapper.scss";
@@ -41,11 +42,10 @@ export default function SearchBarWrapper({
   // specifies what this code intends to do, create search bar element
   return (
     <div className="search-bar">
-      <div className="search-component">{/* <SearchBar /> */}
-      {/* Dummy Search Bar */}
-        <input type="text" placeholder="Search..." style={{ width: '453px' }}/>
+      <div className="search-component">
+        <SearchBar />
       </div>
-      <div className="filter-and-map">
+      <div className="mini-searchbar-wrapper">
         <div className="arrow-button-filter">
           <span className="white">Filter</span>
           <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
@@ -65,28 +65,30 @@ export default function SearchBarWrapper({
             </Modal>
           )}
         </div>
-        <div className="switch-and-check"></div>
-        {/* //creates arrow filterbutton instance */}
-        <div className="switchdiv">
-          <SwitchInput
-            isChecked={
-              (isSwitchChecked && !isOverrideActive) || isOverrideActive
-            }
-            // evaluates as if its one boolean
-            onToggle={handleSwitchToggle}
-          />
-          {/* //creates new instance of switchinput component */}
-        </div>
-        <div className="checkdiv">
-          {renderCheckbox && (
-            <CheckboxInput
-              onCheckboxToggle={handleCheckboxToggle}
-              isChecked={detailsShowing}
+
+        <div className="switch-and-check">
+          {/* //creates arrow filterbutton instance */}
+          <div className="switchdiv">
+            <SwitchInput
+              isChecked={
+                (isSwitchChecked && !isOverrideActive) || isOverrideActive
+              }
+              // evaluates as if its one boolean
+              onToggle={handleSwitchToggle}
             />
-          )}
-          {/* //creates new instance of checkboxinput component */}
-        </div>
+            {/* //creates new instance of switchinput component */}
+          </div>
+          <div className="checkdiv">
+            {renderCheckbox && (
+              <CheckboxInput
+                onCheckboxToggle={handleCheckboxToggle}
+                isChecked={detailsShowing}
+              />
+            )}
+            {/* //creates new instance of checkboxinput component */}
+          </div>
         </div>
       </div>
+    </div>
   );
 }
