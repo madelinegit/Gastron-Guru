@@ -56,7 +56,11 @@ export const UserRegistrationForm: React.FC = () => {
     const inputEmailValue: string = emailRef.current!.value;
     const inputPasswordValue: string = passwordRef.current!.value;
 
-    handleValidate(inputNameValue, inputEmailValue, inputPasswordValue);
+    if (handleValidate(inputNameValue, inputEmailValue, inputPasswordValue)) {
+      setError('');
+      setSuccess(true);
+      // TODO: make the api post with user information
+    }
   };
 
   return (
