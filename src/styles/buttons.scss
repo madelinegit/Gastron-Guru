@@ -41,3 +41,18 @@
     margin-top: 15px;
   }
 }
+
+.dark-blue-btn {
+  background-color: $dark-blue;
+  color: $white;
+
+  font-size: responsive-font-size(14px, 12px, 10px);
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 0.25px;
+
+  border: none;
+  border-radius: 5px;
+  padding: 14px 10px;
+
+  cursor: pointer;
+}
