@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import SwitchInput from '../../components/Inputs/SwitchInput';
 import CheckboxInput from '../../components/Inputs/CheckboxInput';
 import {
@@ -17,7 +18,8 @@ import ArrowButton from '../../components/Buttons/ArrowButton';
 import { modalData } from '../../utils/Data';
 import Map from '../../components/Map/Map';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
-import { useEffect, useState } from 'react';
+import useChefsDatabaseEffects from './useChefsDatabaseEffects';
+import { ChefDataProps } from '../../components/ChefCards/types';
 
 const ChefsDatabase = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -28,6 +30,8 @@ const ChefsDatabase = () => {
   );
   const { renderCheckbox } = useWindowResize(true);
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
+
+  const [sortedChefCards, setSortChefCards] = useState<ChefDataProps[]>([]);
   const chefData = useChef();
   const { showModal, handleModalToggle } = useModal();
 
@@ -49,6 +53,9 @@ const ChefsDatabase = () => {
       setLoading(false);
     };
   }, [chefData]);
+
+  // sort chef cards by ratings (high to low)
+  useChefsDatabaseEffects({ chefData, setSortChefCards });
 
   return (
     <div
