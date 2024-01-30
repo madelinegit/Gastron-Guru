@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown, faX } from '@fortawesome/free-solid-svg-icons';
+import useChef from '../../utils/Api';
 import './CuisinesDropdown.scss';
 
 const CuisinesDropdown = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [selection, setSelection] = useState<string[]>([]);
-  // mock data
-  const cuisineOptions = ['Japanese', 'Ukranian', 'Russian', 'Polish', 'Italian', 'Mexican', 'Chinese', 'Indian'];
-
   const toggle = () => setOpen((prevOpen) => !prevOpen);
+  const chefData = useChef();
+
+  // extract every cuisines offered from all chefs without repetition
+  const cuisinesList = Array.from(new Set(chefData.flatMap(chef => chef.cuisines || [])));
 
   // if cuisine is clicked, it will add or remove from array
   function handleClick(event: React.MouseEvent, item: any) {
@@ -58,7 +60,7 @@ const CuisinesDropdown = () => {
         {/* display cuisines list if clicked */}
         {open && (
           <ul className="cuisines-list">
-            {cuisineOptions.map((cuisine) => (
+            {cuisinesList.map((cuisine) => (
               <li
                 key={cuisine}
                 className={selection.includes(cuisine) ? 'selected' : ''}
