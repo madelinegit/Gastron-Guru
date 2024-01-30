@@ -38,7 +38,7 @@
           border: none;
           border-radius: 6px;
           padding: 12px;
-          // font-size: 16px;
+          font-size: responsive-font-size(14px, 12px, 10px);
           font-family: Poppins, sans-serif;
 
           &.error {
