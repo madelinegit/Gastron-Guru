@@ -1,7 +1,7 @@
 .search-bar {
   width:100%;
   display:flex;
-  background-color: $light-black;  
+  background-color: $light-black;
   justify-content: space-between;
   @media (max-width: $breakpoint-lg) {
     flex-direction: column;
