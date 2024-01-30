@@ -19,6 +19,7 @@ import Map from '../../components/Map/Map';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
 import useChefsDatabaseEffects from './useChefsDatabaseEffects';
 import { ChefDataProps } from '../../components/ChefCards/types';
+import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper';
 
 const ChefsDatabase = () => {
   const [loading, setLoading] = useState<boolean>(true);
