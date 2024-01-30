@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import './UserRegistrationForm.scss';
+import RegistrationModal from '../Modal/RegistrationModal';
 
 export const UserRegistrationForm: React.FC = () => {
   const [error, setError] = useState<string>('');
@@ -49,9 +50,11 @@ export const UserRegistrationForm: React.FC = () => {
   };
 
   const handleSubmit = (
-    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+    event:
+      | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement>
   ) => {
-    e.preventDefault();
+    event.preventDefault();
 
     const inputNameValue: string = nameRef.current!.value;
     const inputEmailValue: string = emailRef.current!.value;
@@ -59,68 +62,94 @@ export const UserRegistrationForm: React.FC = () => {
 
     if (handleValidate(inputNameValue, inputEmailValue, inputPasswordValue)) {
       setError('');
+      nameRef.current!.value = '';
+      emailRef.current!.value = '';
+      passwordRef.current!.value = '';
+      nameRef.current!.disabled = true;
+      emailRef.current!.disabled = true;
+      passwordRef.current!.disabled = true;
       setSuccess(true);
       // TODO: make the api post with user information
     }
   };
 
   return (
-    <>
-      {/* {success && (
-        <Modal>
-          <h3>You're successfully registered!</h3>
-        </Modal>
-      )} */}
-      <form onSubmit={handleSubmit} method="post">
-        <div className="input-container">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            className={`input ${error.includes('name') && 'error'}`}
-            ref={nameRef}
-            required
-          />
-          {error.includes('name') && (
-            <span className="error-span">{error}</span>
-          )}
-        </div>
-        <div className="input-container">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            className={`input ${error.includes('email') && 'error'}`}
-            ref={emailRef}
-            required
-          />
-          {error.includes('email') && (
-            <span className="error-span">{error}</span>
-          )}
-        </div>
-        <div className="input-container">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            className={`input ${error.includes('password') && 'error'}`}
-            ref={passwordRef}
-            required
-          />
-          {error.includes('password') && (
-            <span className="error-span">{error}</span>
-          )}
-        </div>
-        {error.includes('form') && <span className="error-span">{error}</span>}
-
-        <button
-          type="submit"
-          className="button-primary submit-btn"
-          onClick={handleSubmit}
+    <main
+      className={`user-registration-container ${
+        success ? 'success-modal-overlay' : ''
+      }`}
+    >
+      {success && (
+        <RegistrationModal>
+          <h3 className="modal-title">
+            You have been successfully registered!
+          </h3>
+          <div className="buttons">
+            <button className="dark-blue-btn">Search database</button>
+            <button className="dark-blue-btn">Create user profile</button>
+            <button className="dark-blue-btn">Create chefs profile</button>
+          </div>
+        </RegistrationModal>
+      )}
+      <div className="wrapper">
+        <h3>Register</h3>
+        <form
+          onSubmit={handleSubmit}
+          method="post"
+          className="user-registration-form"
         >
-          Register
-        </button>
-      </form>
-    </>
+          <div className="input-container">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              className={`input ${error.includes('name') && 'error'}`}
+              ref={nameRef}
+              required
+            />
+            {error.includes('name') && (
+              <span className="error-span">{error}</span>
+            )}
+          </div>
+          <div className="input-container">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              className={`input ${error.includes('email') && 'error'}`}
+              ref={emailRef}
+              required
+            />
+            {error.includes('email') && (
+              <span className="error-span">{error}</span>
+            )}
+          </div>
+          <div className="input-container">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              className={`input ${error.includes('password') && 'error'}`}
+              ref={passwordRef}
+              required
+            />
+            {error.includes('password') && (
+              <span className="error-span">{error}</span>
+            )}
+          </div>
+          {error.includes('form') && (
+            <span className="error-span">{error}</span>
+          )}
+
+          <button
+            type="submit"
+            className="button-primary submit-btn"
+            onClick={handleSubmit}
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </main>
   );
 };
