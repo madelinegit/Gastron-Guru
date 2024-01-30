@@ -34,7 +34,7 @@
   cursor: pointer;
   display: flex;
   margin-left: 40px;
-  font: bold 14px "Poppins";
+  font: bold 14px 'Poppins';
 
   @media (max-width: $breakpoint-sm) {
     margin-left: 14px;
