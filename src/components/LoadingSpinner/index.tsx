@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-import './LoadingSpinner.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   IconDefinition,
   faCircleNotch,
@@ -8,7 +5,10 @@ import {
   faPizzaSlice,
   faUtensils,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
 import NarrowContainer from '../NarrowContainer';
+import './LoadingSpinner.scss';
 
 export const LoadingSpinner = () => {
   const [iconIndex, setIconIndex] = useState<number>(0);
@@ -33,20 +33,13 @@ export const LoadingSpinner = () => {
   return (
     <div className="spinner-container">
       <NarrowContainer>
-        {icons[iconIndex] === faCircleNotch ? (
-          <FontAwesomeIcon
-            icon={icons[iconIndex]}
-            className="spinner-icon"
-            size="10x"
-            spin
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon={icons[iconIndex]}
-            className="spinner-icon"
-            size="10x"
-          />
-        )}
+        <FontAwesomeIcon
+          icon={icons[iconIndex]}
+          className={`icon ${
+            icons[iconIndex] === faCircleNotch ? 'spinner-circle' : ''
+          }`}
+          size="10x"
+        />
       </NarrowContainer>
     </div>
   );
