@@ -34,13 +34,13 @@ export const UserRegistrationForm: React.FC = () => {
       return false;
     }
 
-    if (
-      password === undefined ||
-      password === null ||
-      password === '' ||
-      password.length < 8
-    ) {
+    if (password === undefined || password === null || password === '') {
       setError('Please enter a valid password');
+      return false;
+    }
+
+    if (password.length < 8) {
+      setError('Your password must have more than 8 characters');
       return false;
     }
 
