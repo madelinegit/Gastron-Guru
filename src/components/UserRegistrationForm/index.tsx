@@ -8,10 +8,6 @@ export const UserRegistrationForm: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.value);
-  };
-
   const handleValidate = (
     name: string,
     email: string,
