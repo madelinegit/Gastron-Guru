@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import SwitchInput from '../../components/Inputs/SwitchInput';
 import CheckboxInput from '../../components/Inputs/CheckboxInput';
 import {
@@ -17,9 +18,11 @@ import ArrowButton from '../../components/Buttons/ArrowButton';
 import { modalData } from '../../utils/Data';
 import Map from '../../components/Map/Map';
 import { LoadingSpinner } from '../../components/LoadingSpinner';
-import { useEffect, useState } from 'react';
+import useChefsDatabaseEffects from './useChefsDatabaseEffects';
+import { ChefDataProps } from '../../components/ChefCards/types';
 
 const ChefsDatabase = () => {
+  const [loading, setLoading] = useState<boolean>(true);
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
@@ -27,6 +30,8 @@ const ChefsDatabase = () => {
   );
   const { renderCheckbox } = useWindowResize(true);
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
+
+  const [sortedChefCards, setSortChefCards] = useState<ChefDataProps[]>([]);
   const chefData = useChef();
   const { showModal, handleModalToggle } = useModal();
 
@@ -35,8 +40,6 @@ const ChefsDatabase = () => {
   );
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
-
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     try {
@@ -47,12 +50,12 @@ const ChefsDatabase = () => {
     }
     return () => {
       console.log('Done!');
-      setTimeout(() => {
-        // added just to make sure that it'll pass here
-        setLoading(false);
-      }, 2500);
+      setLoading(false);
     };
   }, [chefData]);
+
+  // sort chef cards by ratings (high to low)
+  useChefsDatabaseEffects({ chefData, setSortChefCards });
 
   return (
     <div
@@ -60,8 +63,6 @@ const ChefsDatabase = () => {
         loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
       }
     >
-      {loading && <LoadingSpinner />}
-      <SearchBar />
       <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
@@ -90,6 +91,8 @@ const ChefsDatabase = () => {
           isChecked={detailsShowing}
         />
       )}
+
+      {loading && <LoadingSpinner />}
 
       <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 

@@ -33,12 +33,20 @@ export const LoadingSpinner = () => {
   return (
     <div className="spinner-container">
       <NarrowContainer>
-        <FontAwesomeIcon
-          icon={icons[iconIndex]}
-          className="spinner-icon"
-          size="10x"
-          spin
-        />
+        {icons[iconIndex] === faCircleNotch ? (
+          <FontAwesomeIcon
+            icon={icons[iconIndex]}
+            className="spinner-icon"
+            size="10x"
+            spin
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={icons[iconIndex]}
+            className="spinner-icon"
+            size="10x"
+          />
+        )}
       </NarrowContainer>
     </div>
   );

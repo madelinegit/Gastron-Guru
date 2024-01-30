@@ -1,12 +1,12 @@
-import { capitalizeWords, replaceWords } from "../../utils/helpers";
-import RatingAndLocation from "../RatingAndLocation";
-import Ribbon from "../Ribbon";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { ChefDataProps } from "./types";
-import "./ChefCards.scss";
+import { capitalizeWords } from '../../utils/helpers';
+import RatingAndLocation from '../RatingAndLocation';
+import Ribbon from '../Ribbon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { ChefDataProps } from './types';
+import './ChefCard.scss';
 
-const ChefCard = ({
+const Card = ({
   name,
   rating,
   distance_from_centre,
@@ -40,11 +40,7 @@ const ChefCard = ({
     <div className="tags">
       <ul>
         {chefPrivate &&
-          chefPrivate.map((item) => (
-            <li key={item}>
-              {capitalizeWords(replaceWords(item))}
-            </li>
-          ))}
+          chefPrivate.map(item => <li key={item}>{capitalizeWords(item)}</li>)}
       </ul>
     </div>
 
@@ -53,17 +49,4 @@ const ChefCard = ({
     </div>
   </div>
 );
-
-// CREATE SEPARATE COMPONENT..?
-const ChefCards = ({ chefData, isScrollEnabled }: { chefData: ChefDataProps[]; isScrollEnabled: boolean }) => {
-
-  return (
-    <div className={isScrollEnabled ? `chef-card-container-scroll` : `chef-card-container-grid`}>
-      {chefData.map((chef) => (
-        <ChefCard key={chef.name} {...chef} />
-      ))}
-    </div>
-  );
-};
-
-export default ChefCards;
+export default Card;
