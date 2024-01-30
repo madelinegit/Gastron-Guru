@@ -3,6 +3,7 @@ import './UserRegistrationForm.scss';
 
 export const UserRegistrationForm: React.FC = () => {
   const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<boolean>(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -64,55 +65,62 @@ export const UserRegistrationForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} method="post">
-      <div className="input-container">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          className={`input ${error.includes('name') && 'error'}`}
-          ref={nameRef}
-          onChange={handleChange}
-          required
-        />
-        {error.includes('name') && <span className="error-span">{error}</span>}
-      </div>
-      <div className="input-container">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          className={`input ${error.includes('email') && 'error'}`}
-          ref={emailRef}
-          onChange={handleChange}
-          required
-        />
-        {error.includes('email') && <span className="error-span">{error}</span>}
-      </div>
-      <div className="input-container">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          className={`input ${error.includes('password') && 'error'}`}
-          ref={passwordRef}
-          onChange={handleChange}
-          required
-        />
-        {error.includes('password') && (
-          <span className="error-span">{error}</span>
-        )}
-      </div>
+    <>
+      {/* {success && (
+        <Modal>
+          <h3>You're successfully registered!</h3>
+        </Modal>
+      )} */}
+      <form onSubmit={handleSubmit} method="post">
+        <div className="input-container">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            className={`input ${error.includes('name') && 'error'}`}
+            ref={nameRef}
+            required
+          />
+          {error.includes('name') && (
+            <span className="error-span">{error}</span>
+          )}
+        </div>
+        <div className="input-container">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            className={`input ${error.includes('email') && 'error'}`}
+            ref={emailRef}
+            required
+          />
+          {error.includes('email') && (
+            <span className="error-span">{error}</span>
+          )}
+        </div>
+        <div className="input-container">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            className={`input ${error.includes('password') && 'error'}`}
+            ref={passwordRef}
+            required
+          />
+          {error.includes('password') && (
+            <span className="error-span">{error}</span>
+          )}
+        </div>
+        {error.includes('form') && <span className="error-span">{error}</span>}
 
-      {error.includes('form') && <span className="error-span">{error}</span>}
-
-      <button
-        type="submit"
-        className="button-primary submit-btn"
-        onClick={handleSubmit}
-      >
-        Register
-      </button>
-    </form>
+        <button
+          type="submit"
+          className="button-primary submit-btn"
+          onClick={handleSubmit}
+        >
+          Register
+        </button>
+      </form>
+    </>
   );
 };
