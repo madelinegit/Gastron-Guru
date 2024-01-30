@@ -15,10 +15,10 @@
 
 .icon {
   color: $gold;
-  animation: fadeIn 0.3s linear;
+  animation: fadeIn 0.5s linear;
 
   &.spinner-circle {
-    animation: spin 0.5s;
+    animation: spin 1s;
   }
 }
 

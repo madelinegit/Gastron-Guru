@@ -25,7 +25,7 @@ export const LoadingSpinner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIconIndex((prevIconIndex) => (prevIconIndex + 1) % icons.length);
-    }, 500);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [icons.length]);
