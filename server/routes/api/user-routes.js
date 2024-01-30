@@ -3,8 +3,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const router = express.Router();
-const verifyClaims = require("../utils/verifyClaims");
-const model = require("../models");
+const verifyClaims = require("../../utils/verifyClaims");
+const model = require("../../models");
 const User = model.user;
 
 // get user data
