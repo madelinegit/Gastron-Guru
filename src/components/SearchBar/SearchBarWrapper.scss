@@ -1,0 +1,72 @@
+.search-bar {
+  // width: 100%;
+  display: flex;
+  background-color: $light-black;
+  justify-content: space-between;
+  @media (max-width: 1300px) {
+    //breakpoint will change when search bar is responsive
+    //at first, flex column overflows into page, will fit
+    //in when search bar responsive
+    flex-direction: column;
+  }
+}
+
+.search-component {
+  // max-width: 453px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.mini-searchbar-wrapper {
+  width: 100%;
+  min-height: 100px;
+  background-color: $light-black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+//mystery padding must have to do with REM padding in search bar
+
+.buttonsize {
+  width: 70px;
+  overflow: none;
+}
+//delete when searchbar has button
+
+.white {
+  color: white;
+  padding-right: 10px;
+}
+
+.filter-and-map {
+  display: flex;
+  align-items: center;
+}
+.arrow-button-filter {
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 70px;
+}
+.switch-and-check {
+  min-width: 100px;
+  display: flex;
+  position: relative;
+  translate: -170px;
+  @media (max-width: $breakpoint-md) {
+    translate: 0px;
+  }
+}
+.checkdiv {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media (max-width: $breakpoint-md) {
+    display: none; //  hides .checkdiv on screens 480px wide or less
+  }
+}
