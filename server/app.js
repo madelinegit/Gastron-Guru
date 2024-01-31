@@ -10,19 +10,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./models");
+const routes = require('./controllers');
 const PORT = process.env.PORT || 3000;
-
-// import routers
-const indexRouter = require("./routes/index");
-const userRouter = require("./routes/user");
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // router mappings
-app.use("/", indexRouter);
-app.use("/user", userRouter);
+app.use(routes);
 
 // establish mongo database connection
 db.mongoose.connect(db.url).catch((err) => {
