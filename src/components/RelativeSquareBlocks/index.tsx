@@ -5,7 +5,7 @@ function RelativeSquareBlocks() {
   return (
     <div className="parent">
       <div className="black-container" />
-      <NarrowContainer>
+      {/* <NarrowContainer> */}
         <div className="chef">
           <img
             src="/src/assets/images/chef.png"
@@ -29,7 +29,7 @@ function RelativeSquareBlocks() {
             </p>
           </div>
       </div>
-      </NarrowContainer>
+      {/* </NarrowContainer> */}
       <div className="blue-container"></div>
     </div>
 

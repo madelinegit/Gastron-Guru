@@ -15,7 +15,6 @@ const Home = () => {
       <Benefits/>
       <ForEveryOccasion />
       <RelativeSquareBlocks />
-      {/* <SearchBarWrapper/> */}
       <CookiesComponent />
     </>
   );
