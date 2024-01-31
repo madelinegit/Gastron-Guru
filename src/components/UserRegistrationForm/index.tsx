@@ -20,14 +20,13 @@ export const UserRegistrationForm: React.FC = () => {
       return false;
     }
 
-    if (name === undefined || name === null || name === '') {
+    if (!name || name === '') {
       setError('Please enter your name');
       return false;
     }
 
     if (
-      email === undefined ||
-      email === null ||
+      !email ||
       email === '' ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
       !email.includes('@')
@@ -36,7 +35,7 @@ export const UserRegistrationForm: React.FC = () => {
       return false;
     }
 
-    if (password === undefined || password === null || password === '') {
+    if (!password || password === '') {
       setError('Please enter a valid password');
       return false;
     }
