@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import SwitchInput from "../../components/Inputs/SwitchInput";
 import CheckboxInput from "../../components/Inputs/CheckboxInput";
 import {

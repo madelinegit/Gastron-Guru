@@ -4,17 +4,22 @@ import "./ChefDetail.scss";
 import "../ChefCards/ChefCards.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Ribbon from "../Ribbon";
 import useChef from "../../utils/Api";
+import RatingAndLocation from "../RatingAndLocation";
 
 const ChefDetail = ({ activeCard }: { activeCard: number }) => {
   const chefData = useChef();
   const chef = chefData[activeCard];
-  const rating = chef?.rating;
-  const private_ = chef?.private;
-  const labels = chef?.labels;
-  const name = chef?.name;
-  const image = chef?.["featured-images"];
-  const description = chef?.description;
+  const {
+    rating,
+    private: private_,
+    labels,
+    name,
+    description,
+    distance_from_centre,
+    ["featured-images"]: image,
+  } = chef;
 
   return (
     <main className="main-detail">
@@ -33,10 +38,45 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
           style={image ? { gridArea: "miscal" } : { gridArea: "img" }}
         >
           <p>
-            <b className="cd-icon">
+            <div className="cd-rating-location">
               <FontAwesomeIcon icon={faStar} />
-            </b>
-            {rating?.value}
+              <RatingAndLocation
+                rating={rating}
+                distance_from_centre={distance_from_centre}
+              />
+            </div>
+          </p>
+          <p className="cd-tags">
+            <ul>
+              {private_ &&
+                private_.map((item) => (
+                  <li key={item}>{capitalizeWords(item)}</li>
+                ))}
+            </ul>
+          </p>
+          <div className="cd-btn-container">
+            <button className="cd-btn">Buy now</button>
+          </div>
+        </section>
+        <section className="cd-ribbon">
+          <Ribbon label={labels?.[0]} />
+          {/*  <div className="cd-ribbon-container">
+            <p>{labels?.[0]}</p>
+          </div> */}
+        </section>
+        <section className="cd-info">
+          <h3>{name}</h3>
+          <p>{description}</p>
+        </section>
+      </article>
+    </main>
+  );
+};
+
+export default ChefDetail;
+
+{
+  /*     {rating?.value}
             {rating &&
               rating?.number_of_ratings > 0 &&
               ` (${rating.number_of_ratings})`}
@@ -55,24 +95,5 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
                 private_.map((item) => (
                   <li key={item}>{capitalizeWords(item)}</li>
                 ))}
-            </ul>
-          </p>
-          <div className="cd-btn-container">
-            <button className="cd-btn">Buy now</button>
-          </div>
-        </section>
-        <section className="cd-ribbon">
-          <div className="cd-ribbon-container">
-            <p>{labels?.[0]}</p>
-          </div>
-        </section>
-        <section className="cd-info">
-          <h3>{name}</h3>
-          <p>{description}</p>
-        </section>
-      </article>
-    </main>
-  );
-};
-
-export default ChefDetail;
+            </ul> */
+}
