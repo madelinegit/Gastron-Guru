@@ -63,22 +63,6 @@ const ChefsDatabase = () => {
         loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
       }
     >
-      {/* <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
-      {showModal && (
-        <Modal>
-          <MockNarrowContainer>
-            {' '}
-            {modalData.map((card) => (
-              <ModalCard
-                key={card.label}
-                {...card}
-                isExpanded={expandedCards.includes(card.label)}
-                onToggleExpansion={() => toggleCardExpansion(card.label)}
-              />
-            ))}
-          </MockNarrowContainer>
-        </Modal>
-      )} */}
 
       <SearchBarWrapper
         handleCheckboxToggle={handleCheckboxToggle}

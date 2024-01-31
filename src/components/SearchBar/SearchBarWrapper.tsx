@@ -47,7 +47,7 @@ export default function SearchBarWrapper({
       </div>
       <div className="mini-searchbar-wrapper">
         <div className="arrow-button-filter">
-          <span className="white">Filter</span>
+          <p className="white">Filter</p>
           <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
           {showModal && (
             <Modal>
@@ -68,25 +68,25 @@ export default function SearchBarWrapper({
 
         <div className="switch-and-check">
           {/* //creates arrow filterbutton instance */}
-          <div className="switchdiv">
-            <SwitchInput
-              isChecked={
-                (isSwitchChecked && !isOverrideActive) || isOverrideActive
-              }
-              // evaluates as if its one boolean
-              onToggle={handleSwitchToggle}
+          {/* <div className="switchdiv"> */}
+          <SwitchInput
+            isChecked={
+              (isSwitchChecked && !isOverrideActive) || isOverrideActive
+            }
+            // evaluates as if its one boolean
+            onToggle={handleSwitchToggle}
+          />
+          {/* //creates new instance of switchinput component */}
+
+          {/* </div> */}
+          {renderCheckbox && (
+            <CheckboxInput
+              onCheckboxToggle={handleCheckboxToggle}
+              isChecked={detailsShowing}
             />
-            {/* //creates new instance of switchinput component */}
-          </div>
-          <div className="checkdiv">
-            {renderCheckbox && (
-              <CheckboxInput
-                onCheckboxToggle={handleCheckboxToggle}
-                isChecked={detailsShowing}
-              />
-            )}
-            {/* //creates new instance of checkboxinput component */}
-          </div>
+          )}
+          {/* //creates new instance of checkboxinput component */}
+          {/* <div className="checkdiv"></div> */}
         </div>
       </div>
     </div>
