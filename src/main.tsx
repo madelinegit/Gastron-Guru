@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Auth0Provider } from '@auth0/auth0-react';
 import App from "./App.tsx";
 import Home from "./pages/Home/index.tsx";
 import ChefsDatabase from "./pages/ChefsDatabase/index.tsx";
 
 //With <a> use <Link key={} to={'/{endpoint}'} /> instead to route between the two pages
 //key: 1 = <Home />, key: 2 = <ChefsDatabase />
+const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +30,15 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}
+    >
+
+      <RouterProvider router={router} />
+    </Auth0Provider>
   </React.StrictMode>
 );
