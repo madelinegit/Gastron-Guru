@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import SwitchInput from '../../components/Inputs/SwitchInput';
 import CheckboxInput from '../../components/Inputs/CheckboxInput';
 import {
@@ -38,7 +39,6 @@ const ChefsDatabase = () => {
   const { expandedCards, toggleCardExpansion } = useCardExpansion(
     modalData[0].label
   );
-
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
 
   useEffect(() => {
