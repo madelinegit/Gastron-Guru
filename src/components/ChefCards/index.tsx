@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { ChefDataProps } from "./types";
 import "./ChefCards.scss";
-import wood from "../ChefDetail/wood.jpg";
 
 const ChefCard = ({
   name,
