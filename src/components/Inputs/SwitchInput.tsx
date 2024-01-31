@@ -4,6 +4,7 @@ import "./SwitchInput.scss";
 interface SwitchInputProps {
   isChecked: boolean;
   onToggle: () => void;
+  //function w no inputs, returns nothing
   label?: string; // Assuming 'label' is a prop used in the component
 }
 
@@ -14,13 +15,14 @@ const SwitchInput = ({
 }: SwitchInputProps) => {
   return (
     <InputContainer>
-      <p className="switchLabel">{label}</p>
+      <span className="switchLabel">{label}</span>
       <label className="switch">
         <input
           type="checkbox"
           name="roundSwitch"
           checked={isChecked}
           onChange={onToggle}
+          //execute onToggle function
         />
         <span className="SwitchRound"></span>
       </label>

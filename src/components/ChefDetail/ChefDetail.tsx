@@ -19,7 +19,7 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
     description,
     distance_from_centre,
     ["featured-images"]: image,
-  } = chef;
+  } = chef || {};
 
   return (
     <main className="main-detail">

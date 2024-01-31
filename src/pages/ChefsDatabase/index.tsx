@@ -21,6 +21,7 @@ import { LoadingSpinner } from "../../components/LoadingSpinner";
 import useChefsDatabaseEffects from "./useChefsDatabaseEffects";
 import { ChefDataProps } from "../../components/ChefCards/types";
 import ChefDetail from "../../components/ChefDetail/ChefDetail";
+import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
 
 const ChefsDatabase = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -39,7 +40,6 @@ const ChefsDatabase = () => {
   const { expandedCards, toggleCardExpansion } = useCardExpansion(
     modalData[0].label
   );
-
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
 
   const [activeCard, setActiveCard] = useState<number>(0);
@@ -92,12 +92,18 @@ const ChefsDatabase = () => {
       />
       <SearchBar />
 
-      {renderCheckbox && (
-        <CheckboxInput
-          onCheckboxToggle={handleCheckboxToggle}
-          isChecked={detailsShowing}
-        />
-      )}
+      <SearchBarWrapper
+        handleCheckboxToggle={handleCheckboxToggle}
+        handleSwitchToggle={handleSwitchToggle}
+        expandedCards={expandedCards}
+        isSwitchChecked={isSwitchChecked}
+        isOverrideActive={isOverrideActive}
+        renderCheckbox={renderCheckbox}
+        detailsShowing={detailsShowing}
+        showModal={showModal}
+        toggleCardExpansion={toggleCardExpansion}
+        handleModalToggle={handleModalToggle}
+       />
 
       {loading && <LoadingSpinner />}
 
