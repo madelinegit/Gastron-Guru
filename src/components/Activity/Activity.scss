@@ -69,6 +69,10 @@
         @include responsive-font-size(72px, 52px, 42px);
       }
 
+      p {
+        padding-bottom: 28px;
+      }
+
       button {
         cursor: pointer;
       }
@@ -117,6 +121,10 @@
       font-family: PinyonScript !important;
       @include responsive-font-size(72px, 52px, 42px);
       margin-bottom: 10px;
+    }
+
+    p {
+      padding-bottom: 28px;
     }
 
     button {
