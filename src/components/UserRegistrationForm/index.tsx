@@ -2,6 +2,11 @@ import { useRef, useState } from 'react';
 import './UserRegistrationForm.scss';
 import RegistrationModal from '../Modal/RegistrationModal';
 
+const clearAndDisableInput = (ref: React.RefObject<HTMLInputElement>) => {
+  ref.current!.value = '';
+  ref.current!.disabled = true;
+};
+
 export const UserRegistrationForm: React.FC = () => {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
