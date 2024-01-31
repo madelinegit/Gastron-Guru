@@ -8,8 +8,6 @@ import MockNarrowContainer from "../Modal/MockNarrowContainer";
 import Modal from "../Modal/Modal";
 import ModalCard from "../Modal/ModalCard";
 import { modalData } from "../../utils/Data";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import Map from "../Map/Map";
 
 interface SearchBarWrapperProps {
   isSwitchChecked: boolean;
@@ -24,7 +22,6 @@ interface SearchBarWrapperProps {
   // modalData: boolean;
   expandedCards: string[];
 }
-//it needs every single one whereever it is called
 
 export default function SearchBarWrapper({
   isSwitchChecked,
@@ -36,7 +33,6 @@ export default function SearchBarWrapper({
   toggleCardExpansion,
   showModal,
   handleModalToggle,
-  // modalData,
   expandedCards,
 }: SearchBarWrapperProps): JSX.Element {
   // specifies what this code intends to do, create search bar element
@@ -68,17 +64,15 @@ export default function SearchBarWrapper({
 
         <div className="switch-and-check">
           {/* //creates arrow filterbutton instance */}
-          {/* <div className="switchdiv"> */}
           <SwitchInput
             isChecked={
               (isSwitchChecked && !isOverrideActive) || isOverrideActive
             }
-            // evaluates as if its one boolean
             onToggle={handleSwitchToggle}
           />
           {/* //creates new instance of switchinput component */}
-
-          {/* </div> */}
+          </div>
+          <div className = "checkdiv">
           {renderCheckbox && (
             <CheckboxInput
               onCheckboxToggle={handleCheckboxToggle}
@@ -86,7 +80,6 @@ export default function SearchBarWrapper({
             />
           )}
           {/* //creates new instance of checkboxinput component */}
-          {/* <div className="checkdiv"></div> */}
         </div>
       </div>
     </div>

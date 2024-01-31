@@ -1,62 +1,40 @@
 .search-bar {
-  width: 100%;
+  // width: 100%;
   display: flex;
   background-color: $light-black;
   justify-content: space-between;
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: 1300px) {
+    //breakpoint will change when search bar is responsive
+    //at first, flex column overflows into page, will fit
+    //in when search bar responsive
     flex-direction: column;
   }
 }
 
 .search-component {
   // max-width: 453px;
-  // border: 1px solid whitesmoke;
   display: flex;
   align-items: center;
   padding: 5px;
-  // margin-left: 20px;
-  // margin-right:20px
 }
 
 .mini-searchbar-wrapper {
   width: 100%;
+  min-height: 100px;
+  background-color: $light-black;
   display: flex;
-  flex: wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
-  @media (max-width: $breakpoint-lg) {
-  }
-}
-.switch-and-check {
-  width: 100px;
-  display: flex;
-  position: relative;
-  translate: -170px;
-  @media (max-width: $breakpoint-lg) {
-    // left: 150px;
-  }
-}
 
-//   padding-right: 30px;
-// }
-// .flex {
-//   display: flex;
-//   flex: shrink;
-//   svg {
-//     width: 100px;
-//   }
-// }
-//this is in searchbar.scss
+}
+//mystery padding must have to do with REM padding in search bar
 
 .buttonsize {
   width: 70px;
   overflow: none;
-  // width moves text outsid of box
-  //position relative to get the text back into the box?
-
-  // .p {
-  //   color:white;
-  // } //disappeared at some point now is back
 }
+//delete when searchbar has button
+
 .white {
   color: white;
   padding-right: 10px;
@@ -65,35 +43,30 @@
 .filter-and-map {
   display: flex;
   align-items: center;
-  // align-content: center;
 }
 .arrow-button-filter {
   display: flex;
   align-items: center;
-  //centers check box & details
-  // justify-content: space-around;
   position: relative;
   left: 70px;
 }
-
-// .switchdiv {
-// flex: 1;
-// width:200px;
-// display:flex;
-// align-items: center;
-// padding-right: 20px;
-// }
-
+.switch-and-check {
+  min-width: 100px;
+  display: flex;
+  position: relative;
+  translate: -170px;
+  @media (max-width: $breakpoint-md) {
+    translate: 0px;
+  }
+}
 .checkdiv {
-  // flex:1;
-  height: 100%;
-  // width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
+  padding-right: 20px;
   padding-left: 20px;
-  // justify-content: center;
 
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-md) {
     display: none; //  hides .checkdiv on screens 480px wide or less
   }
 }
