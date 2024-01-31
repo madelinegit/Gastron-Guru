@@ -13,6 +13,39 @@
   align-items: center;
 }
 
-.spinner-icon {
+.icon {
   color: $gold;
+  animation: fadeIn 0.5s linear;
+
+  &.spinner-circle {
+    animation: spin 1s;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
