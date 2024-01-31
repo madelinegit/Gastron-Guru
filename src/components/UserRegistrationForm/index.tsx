@@ -66,12 +66,9 @@ export const UserRegistrationForm: React.FC = () => {
 
     if (handleValidate(inputNameValue, inputEmailValue, inputPasswordValue)) {
       setError('');
-      nameRef.current!.value = '';
-      emailRef.current!.value = '';
-      passwordRef.current!.value = '';
-      nameRef.current!.disabled = true;
-      emailRef.current!.disabled = true;
-      passwordRef.current!.disabled = true;
+      clearAndDisableInput(nameRef);
+      clearAndDisableInput(emailRef);
+      clearAndDisableInput(passwordRef);
       setSuccess(true);
       // TODO: make the api post with user information
     }
