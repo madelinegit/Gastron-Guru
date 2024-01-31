@@ -7,14 +7,17 @@ const clearAndDisableInput = (ref: React.RefObject<HTMLInputElement>) => {
   ref.current!.disabled = true;
 };
 
-export const UserRegistrationForm: React.FC = () => {
-  const [error, setError] = useState<string>('');
-  const [success, setSuccess] = useState<boolean>(false);
+interface UseValidateProps {
+  setError: React.Dispatch<React.SetStateAction<string>>;
+}
 
-  const nameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-
+const useValidate = ({
+  setError,
+}: UseValidateProps): ((
+  name: string,
+  email: string,
+  password: string
+) => boolean) => {
   const handleValidate = (
     name: string,
     email: string,
@@ -23,14 +26,10 @@ export const UserRegistrationForm: React.FC = () => {
     if (name === '' && email === '' && password === '') {
       setError('Please fill the form fields');
       return false;
-    }
-
-    if (!name || name === '') {
+    } else if (!name || name === '') {
       setError('Please enter your name');
       return false;
-    }
-
-    if (
+    } else if (
       !email ||
       email === '' ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
@@ -38,14 +37,10 @@ export const UserRegistrationForm: React.FC = () => {
     ) {
       setError('Please enter a valid email address');
       return false;
-    }
-
-    if (!password || password === '') {
+    } else if (!password || password === '') {
       setError('Please enter a valid password');
       return false;
-    }
-
-    if (password.length < 8) {
+    } else if (password.length < 8) {
       setError('Your password must have more than 8 characters');
       return false;
     }
@@ -53,6 +48,18 @@ export const UserRegistrationForm: React.FC = () => {
     return true;
   };
 
+  return handleValidate;
+};
+
+export const UserRegistrationForm: React.FC = () => {
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<boolean>(false);
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const handleValidate = useValidate({ setError });
   const handleSubmit = (
     event:
       | React.FormEvent<HTMLFormElement>
@@ -60,11 +67,13 @@ export const UserRegistrationForm: React.FC = () => {
   ) => {
     event.preventDefault();
 
-    const inputNameValue: string = nameRef.current!.value;
-    const inputEmailValue: string = emailRef.current!.value;
-    const inputPasswordValue: string = passwordRef.current!.value;
-
-    if (handleValidate(inputNameValue, inputEmailValue, inputPasswordValue)) {
+    if (
+      handleValidate(
+        nameRef.current!.value,
+        emailRef.current!.value,
+        passwordRef.current!.value
+      )
+    ) {
       setError('');
       clearAndDisableInput(nameRef);
       clearAndDisableInput(emailRef);
