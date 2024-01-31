@@ -1,0 +1,59 @@
+.outline-gold-button {
+  padding: 8px 32px;
+
+  background: transparent;
+  color: $gold;
+  font-weight: 800;
+
+  border: 3px solid $gold;
+  border-radius: 4px;
+}
+
+.button-primary {
+  height: 38px;
+  background-color: $gold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0px;
+  font-size: 14px;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-dark {
+  height: 38px;
+  background-color: $light-black;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+.modal-btn {
+  background-color: $gold;
+  height: 37px;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  margin-left: 40px;
+  font: bold 14px "Poppins";
+
+  @media (max-width: $breakpoint-sm) {
+    margin-left: 14px;
+    margin-top: 15px;
+  }
+}

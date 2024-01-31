@@ -1,0 +1,21 @@
+/* Import your color variables */
+@import '../../styles/colors.scss';
+
+/* Customize the label (the container) */
+.checkInputLabel {
+  color: $white;
+  font-size: 21px;
+  font-weight: 700;
+  font-family: Helvetica, sans-serif;
+  margin-left: 15px;
+}
+
+.checkInput {
+  height: 24px;
+  width: 24px;
+  border: 1px solid $white;
+  border-radius: 4px;
+}
+.checkInput:checked {
+  accent-color: $gold;
+}

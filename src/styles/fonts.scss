@@ -1,12 +1,15 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-$breakpoint-sm: 480px;  
-$breakpoint-md: 768px;  
-$breakpoint-lg: 1024px; 
+$breakpoint-xs: 320px;
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
 
 @mixin responsive-font-size($lg-size, $md-size, $sm-size) {
   font-size: $sm-size;
@@ -21,59 +24,70 @@ $breakpoint-lg: 1024px;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-ExtraLight.ttf') format('truetype');
-    font-weight: 200; 
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Medium.ttf') format('truetype');
-    font-weight: 500; 
-  }
-
-  @font-face {
-    font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Black.ttf') format('truetype');
-    font-weight: 900; 
-    font-style: normal;
+  font-family: 'Poppins';
+  src: url('../../assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: PoppinsBold;
+  src: url('../../assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PoppinsExtraLight;
+  src: url('../../assets/fonts/Poppins/Poppins-ExtraLight.ttf')
+    format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PoppinsMedium;
+  src: url('../../assets/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: PoppinsBlack;
+  src: url('../../assets/fonts/Poppins/Poppins-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PinyonScript;
+  src: url('../../assets/fonts/PinyonScript/PinyonScript-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
 
 h1 {
-  @include responsive-font-size(72px, 58px, 45px); 
+  @include responsive-font-size(72px, 58px, 45px);
 }
 
 h2 {
-  @include responsive-font-size(50px, 43px, 36px); 
+  @include responsive-font-size(50px, 42px, 32px);
 }
 
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 900
+h1,
+h3 {
+  font-family: PoppinsBlack, sans-serif;
+}
+h4 {
+  font-family: PoppinsBold, sans-serif;
+}
+
+h2 {
+  font-family: PoppinsBold, sans-serif;
 }
 
 p {
-  @include responsive-font-size(18px, 16px, 14px); 
+  @include responsive-font-size(18px, 16px, 14px);
   font-family: Helvetica, sans-serif;
-  font-weight: 500
+  font-weight: 500;
 }
-
-  
-  
-  
