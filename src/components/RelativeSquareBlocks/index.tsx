@@ -1,11 +1,11 @@
-import NarrowContainer from '../NarrowContainer';
+import React from 'react';
 import './RelativeSquareBlocks.scss';
 
 function RelativeSquareBlocks() {
   return (
     <div className="parent">
       <div className="black-container" />
-      <NarrowContainer>
+
         <div className="chef">
           <img
             src="/src/assets/images/chef.png"
@@ -13,9 +13,7 @@ function RelativeSquareBlocks() {
             alt="Chef photo"
           />
         </div>
-      </NarrowContainer>
       <div className="gold-container">
-        <NarrowContainer>
           <div className="text-container">
             <h2>OUR CHEFS</h2>
             <p>
@@ -30,7 +28,6 @@ function RelativeSquareBlocks() {
               esse cilum
             </p>
           </div>
-        </NarrowContainer>
       </div>
       <div className="blue-container"></div>
     </div>
