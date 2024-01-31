@@ -60,9 +60,6 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
         </section>
         <section className="cd-ribbon">
           <Ribbon label={labels?.[0]} />
-          {/*  <div className="cd-ribbon-container">
-            <p>{labels?.[0]}</p>
-          </div> */}
         </section>
         <section className="cd-info">
           <h3>{name}</h3>
@@ -74,26 +71,3 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
 };
 
 export default ChefDetail;
-
-{
-  /*     {rating?.value}
-            {rating &&
-              rating?.number_of_ratings > 0 &&
-              ` (${rating.number_of_ratings})`}
-            {rating?.value &&
-              rating?.number_of_ratings &&
-              chef?.distance_from_centre &&
-              " | "}
-            {chef?.distance_from_centre !== undefined &&
-              `${(
-                Math.ceil(Number(chef?.distance_from_centre) * 100) / 100
-              ).toFixed(1)} mi`}
-          </p>
-          <p className="cd-tags">
-            <ul>
-              {private_ &&
-                private_.map((item) => (
-                  <li key={item}>{capitalizeWords(item)}</li>
-                ))}
-            </ul> */
-}
