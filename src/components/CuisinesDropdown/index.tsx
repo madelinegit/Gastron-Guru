@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown, faX } from '@fortawesome/free-solid-svg-icons';
 import useChef from '../../utils/Api';
-// import { CuisinesDropdownProps } from './types';
 import './CuisinesDropdown.scss';
 
 const CuisinesDropdown = () => {
@@ -19,7 +18,7 @@ const CuisinesDropdown = () => {
   ));
 
   // if cuisine is clicked, it will add or remove from array
-  function handleSelect(event: MouseEvent | KeyboardEvent, item: string) {
+  function handleSelect(event: React.MouseEvent<HTMLLIElement, MouseEvent> | KeyboardEvent, item: string) {
     event.stopPropagation();
 
     const newSelection = [...selection];
