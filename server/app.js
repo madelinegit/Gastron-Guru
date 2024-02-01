@@ -7,6 +7,7 @@ const os = require("node:os");
 const numCPUs = os.availableParallelism();
 const process = require("node:process");
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 const cors = require("cors");
 const db = require("./models");
@@ -15,14 +16,20 @@ const PORT = process.env.PORT || 3000;
 // import routers
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
+const verifyClaims = require("./utils/verifyClaims");
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(morgan('combined'));
 
 // router mappings
 app.use("/", indexRouter);
 app.use("/user", userRouter);
+app.get("/api/protected", verifyClaims, (req, res) => {
+  // Handle the protected endpoint logic
+  res.json({ message: 'You accessed a protected endpoint!' });
+});
 
 // establish mongo database connection
 db.mongoose.connect(db.url).catch((err) => {
