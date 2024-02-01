@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown, faX } from '@fortawesome/free-solid-svg-icons';
 import useChef from '../../utils/Api';
@@ -53,7 +53,7 @@ const CuisinesDropdown = () => {
         <h3>Select Your Specialty</h3>
         <label>Cuisines</label>
         <button
-          tabIndex={0}
+          // tabIndex={0}
           className="dropdown-box"
           onClick={() => toggle()}
           role="combobox"
