@@ -15,7 +15,7 @@ const Home = () => {
       <Benefits/>
       <ForEveryOccasion />
       <RelativeSquareBlocks />
-      <MultiSelect/>
+      {/* <MultiSelect/> */}
       <CookiesComponent />
     </>
   );
