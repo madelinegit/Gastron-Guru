@@ -7,6 +7,7 @@ import ForEveryOccasion from "../../components/ForEveryOccasion";
 import RelativeSquareBlocks from "../../components/RelativeSquareBlocks";
 import MultiSelect from "../../components/Multiselect";
 
+
 const Home = () => {
   return (
     <>
