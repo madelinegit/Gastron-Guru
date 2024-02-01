@@ -1,3 +1,4 @@
+import React from "react";
 import InputContainer from "./InputContainer";
 import "./CheckboxInput.scss";
 
@@ -8,7 +9,7 @@ interface CheckboxInputProps {
 }
 
 const CheckboxInput = ({
-  checkboxDescription = "Details",
+  checkboxDescription = "Detail",
   onCheckboxToggle,
   isChecked,
 }: CheckboxInputProps) => {
