@@ -18,6 +18,7 @@ import { modalData } from '../../utils/Data'
 import Map from '../../components/Map/Map'
 import { LoadingSpinner } from '../../components/LoadingSpinner'
 import { useEffect, useState } from 'react'
+import ModalWithSortingAndFiltering from '../../components/Modal/Modalv2'
 
 const ChefsDatabase = () => {
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
@@ -30,13 +31,14 @@ const ChefsDatabase = () => {
   const chefData = useChef()
   const { showModal, handleModalToggle } = useModal()
 
-  const { expandedCards, toggleCardExpansion } = useCardExpansion(
-    modalData[0].label
-  )
+  // const { expandedCards, toggleCardExpansion } = useCardExpansion(
+  //   modalData[0].label
+  // )
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing
 
-  const [loading, setLoading] = useState<boolean>(true)
+  //change back to true before push
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     try {
@@ -54,11 +56,6 @@ const ChefsDatabase = () => {
     }
   }, [chefData])
 
-  //START FILTER LOGIC
-  //set the state of the data filtered to map to display the relavent ChefCards according to filter params
-
-  //END FILTER LOGIC
-
   return (
     <div
       style={
@@ -68,33 +65,19 @@ const ChefsDatabase = () => {
       {loading && <LoadingSpinner />}
       <SearchBar />
       <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
-      {showModal && (
-        <Modal>
-          <MockNarrowContainer>
-            {' '}
-            {modalData.map((card) => (
-              <ModalCard
-                key={card.label}
-                {...card}
-                isExpanded={expandedCards.includes(card.label)}
-                onToggleExpansion={() => toggleCardExpansion(card.label)}
-              />
-            ))}
-          </MockNarrowContainer>
-        </Modal>
-      )}
+      {showModal && <ModalWithSortingAndFiltering chefData={chefData} />}
       <SwitchInput
         isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
         onToggle={handleSwitchToggle}
       />
       <SearchBar />
 
-      {renderCheckbox && (
+      {/* {renderCheckbox && (
         <CheckboxInput
           onCheckboxToggle={handleCheckboxToggle}
           isChecked={detailsShowing}
         />
-      )}
+      )} */}
 
       <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
 
@@ -103,7 +86,7 @@ const ChefsDatabase = () => {
           {(isSwitchChecked || isOverrideActive) && (
             <div>
               <h1>Map</h1>
-              <Map />
+              {/* <Map /> */}
             </div>
           )}
           {renderCheckbox && detailsShowing && <h1>Details</h1>}
