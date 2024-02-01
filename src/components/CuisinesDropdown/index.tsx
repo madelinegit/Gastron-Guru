@@ -53,7 +53,6 @@ const CuisinesDropdown = () => {
         <h3>Select Your Specialty</h3>
         <label>Cuisines</label>
         <button
-          // tabIndex={0}
           className="dropdown-box"
           onClick={() => toggle()}
           role="combobox"
