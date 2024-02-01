@@ -18,7 +18,7 @@ const CuisinesDropdown = () => {
   ));
 
   // if cuisine is clicked, it will add or remove from array
-  function handleSelect(event: React.MouseEvent<HTMLLIElement, MouseEvent> | KeyboardEvent, item: string) {
+  function handleSelect(event: React.MouseEvent<HTMLLIElement, MouseEvent> | React.KeyboardEvent<HTMLLIElement>, item: string) {
     event.stopPropagation();
 
     const newSelection = [...selection];
@@ -34,7 +34,7 @@ const CuisinesDropdown = () => {
   };
 
   // handle keyboard navigation within the dropdown
-  const handleKeyControls = (e: KeyboardEvent, item: string, index: number) => {
+  const handleKeyControls = (e: React.KeyboardEvent<HTMLLIElement>, item: string, index: number) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       handleSelect(e, item);
@@ -95,7 +95,7 @@ const CuisinesDropdown = () => {
                 key={cuisine}
                 className={selection.includes(cuisine) ? 'selected' : ''}
                 onClick={(event) => handleSelect(event, cuisine)}
-                onKeyDown={(e) => handleKeyControls(e, cuisine, index)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLLIElement>) => handleKeyControls(e, cuisine, index)}
                 role="option"
                 tabIndex={0}
                 aria-selected={selection.includes(cuisine)}
