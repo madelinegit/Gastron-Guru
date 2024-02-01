@@ -47,7 +47,7 @@ export default function SearchBarWrapper({
           <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
           {showModal && (
             <Modal>
-              <MockNarrowContainer>
+              
                 {" "}
                 {modalData.map((card) => (
                   <ModalCard
@@ -57,7 +57,7 @@ export default function SearchBarWrapper({
                     onToggleExpansion={() => toggleCardExpansion(card.label)}
                   />
                 ))}
-              </MockNarrowContainer>
+              
             </Modal>
           )}
         </div>
