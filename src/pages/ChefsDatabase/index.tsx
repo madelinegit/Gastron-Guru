@@ -15,6 +15,8 @@ import { ChefDataProps } from "../../components/ChefCards/types";
 import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
 import ChefDetail from "../../components/ChefDetail/ChefDetail";
 import useChef from "../../utils/Api";
+import MultiSelect from "../../components/Multiselect";
+
 
 const ChefsDatabase = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -72,7 +74,9 @@ const ChefsDatabase = () => {
 
       {loading && <LoadingSpinner />}
 
-      {/* {<ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />} */}
+      <MultiSelect heading ="heading" options ={["Wedding", "Corporate", "High-End", "In-House", "Outdoor"]}
+      // options comes from DB or API or what where?
+        />
 
       {isScrollEnabled && (
         <section>

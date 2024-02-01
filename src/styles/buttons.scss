@@ -38,6 +38,25 @@
   }
 }
 
+.button-blue {
+  height: 38px;
+  background-color: $gold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  font-size: 14px;
+  text-align: center;
+  color: $light-black;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-dark.selected {
+  background-color: $light-black; /* Change color for selected state */
+  color: white;
+}
 
 .modal-btn {
   background-color: $gold;

@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 
+
 interface MultiSelectProps {
   heading: string;
   options: string[];
+  submit: (selectedOptions: string[]) =>void
   // option: string;
 }
 
@@ -28,22 +30,25 @@ const MultiSelect:React.FC<MultiSelectProps> = ({ heading, options }) => {
       }
     });
   }
+  const handleSubmit = (selectedOptions: string[]) => {
+    console.log(selectedOptions)
+    setSelectedOptions([]);
+  }
 
 
 return (
   <div>
-    <h1> {heading} </h1>
+    <h3> Specialty </h3>
     {/* heading prop */}
     {options.map((option, index) => (
-      <button key ={index} onClick={() => handleSelect(option)}>
+      <button className="cuisines button-dark" key ={index} onClick={() => handleSelect(option)}>
         {option}
       </button>
       //'handleSelect' on click, each button has a unique key {index}
     ))}
-    <div>
-      Selected options: {selectedOptions.join(', ')}
-      {/* displays selectedOptions in a list joined with commas */}
-      </div>
+      <p>Selected options:<br/> {selectedOptions.join(', ')}
+      </p>
+      <button type="submit" className="button-dark" onClick={() => handleSubmit(selectedOptions)}>Submit</button>
     </div>
   )
 }
