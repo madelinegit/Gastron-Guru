@@ -12,7 +12,7 @@ import { LoadingSpinner } from "../../components/LoadingSpinner";
 import useChefsDatabaseEffects from "./useChefsDatabaseEffects";
 import { ChefDataProps } from "../../components/ChefCards/types";
 import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
-
+import useChef from "../../utils/Api";
 
 
 const ChefsDatabase = () => {
@@ -70,6 +70,8 @@ const ChefsDatabase = () => {
       />
 
       {loading && <LoadingSpinner />}
+
+
 
 
       {isScrollEnabled && (
