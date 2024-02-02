@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react';
-import './UserRegistrationForm.scss';
+import { useNavigate } from 'react-router-dom';
 import RegistrationModal from '../Modal/RegistrationModal';
+import './UserRegistrationForm.scss';
+import MultiStepForm from '../MultiStepForm';
 
 const clearAndDisableInput = (ref: React.RefObject<HTMLInputElement>) => {
   ref.current!.value = '';
@@ -54,6 +56,7 @@ const useValidate = ({
 export const UserRegistrationForm: React.FC = () => {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
+  const [accountType, setAccountType] = useState<string>('');
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -83,6 +86,8 @@ export const UserRegistrationForm: React.FC = () => {
     }
   };
 
+  const handleNavigate = useNavigate();
+
   return (
     <main
       className={`user-registration-container ${
@@ -91,14 +96,39 @@ export const UserRegistrationForm: React.FC = () => {
     >
       {success && (
         <RegistrationModal>
-          <h3 className="modal-title">
-            You have been successfully registered!
-          </h3>
-          <div className="buttons">
-            <button className="dark-blue-btn">Search database</button>
-            <button className="dark-blue-btn">Create user profile</button>
-            <button className="dark-blue-btn">Create chefs profile</button>
+          <div
+            style={
+              accountType === 'chef' || accountType === 'user'
+                ? { display: 'none' }
+                : {}
+            }
+          >
+            <h3 className="modal-title">
+              You have been successfully registered!
+            </h3>
+            <div className="buttons">
+              <button
+                className="dark-blue-btn"
+                onClick={() => handleNavigate('chefs-database')}
+              >
+                Search database
+              </button>
+              <button
+                className="dark-blue-btn"
+                onClick={() => setAccountType('user')}
+              >
+                Create user profile
+              </button>
+              <button
+                className="dark-blue-btn"
+                onClick={() => setAccountType('chef')}
+              >
+                Create chefs profile
+              </button>
+            </div>
           </div>
+          {accountType === 'chef' && <MultiStepForm />}
+          {/* {accountType === 'user' && <MultiStepForm />} */}
         </RegistrationModal>
       )}
       <div className="wrapper">
