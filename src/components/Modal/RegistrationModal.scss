@@ -43,11 +43,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   gap: 36px;
 
   h3.modal-title {
     font-family: PoppinsBold, sans-serif;
+    margin-bottom: 36px;
 
     @media (max-width: $breakpoint-sm) {
       text-align: center;
