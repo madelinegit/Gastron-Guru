@@ -6,16 +6,13 @@ import {
   useModal,
   useCardExpansion,
 } from "../../utils/helpers";
-import ChefCards from "../../components/ChefCards";
 import { modalData } from "../../utils/Data";
 import Map from "../../components/Map/Map";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import useChefsDatabaseEffects from "./useChefsDatabaseEffects";
 import { ChefDataProps } from "../../components/ChefCards/types";
 import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
-import ChefDetail from "../../components/ChefDetail/ChefDetail";
-import useChef from "../../utils/Api";
-import MultiSelect from "../../components/Multiselect";
+
 
 
 const ChefsDatabase = () => {
