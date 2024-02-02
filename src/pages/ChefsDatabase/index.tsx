@@ -74,9 +74,6 @@ const ChefsDatabase = () => {
 
       {loading && <LoadingSpinner />}
 
-      <MultiSelect heading ="heading" options ={["Wedding", "Corporate", "High-End", "In-House", "Outdoor"]}
-      // options comes from DB or API or what where?
-        />
 
       {isScrollEnabled && (
         <section>
