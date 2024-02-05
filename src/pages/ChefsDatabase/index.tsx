@@ -61,17 +61,17 @@ const ChefsDatabase = () => {
     if (!filteredData) {
       filteredData = rawChefData
     }
-    let sortedData
-    switch (sort) {
-      case 'Distance from centre':
-        sortedData = filteredData?.sort((a, b) => a.distance - b.distance)
-        break
-      case 'Discount':
-        sortedData = filteredData?.sort((a, b) => b.discount - a.discount)
-        break
-      default:
-        sortedData = filteredData?.sort((a, b) => b.rating - a.rating)
-    }
+    let sortedData = filteredData // remove once switch for sorting is working
+    // switch (sort) {
+    //   case 'Distance from centre':
+    //     sortedData = filteredData?.sort((a, b) => a.distance - b.distance)
+    //     break
+    //   case 'Discount':
+    //     sortedData = filteredData?.sort((a, b) => b.discount - a.discount)
+    //     break
+    //   default:
+    //     sortedData = filteredData?.sort((a, b) => b.rating - a.rating)
+    // }
 
     return sortedData
   }
