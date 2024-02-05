@@ -1,12 +1,18 @@
 import { Outlet } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from './store/store.ts'
+import { loadChefs } from './store/Conventional/thunk'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(loadChefs())
+  }, [])
+
   return (
-    <Provider store={store}>
+    <>
       <Outlet />
-    </Provider>
+    </>
   )
 }
 

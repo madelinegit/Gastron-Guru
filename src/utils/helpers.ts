@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { loadChefs } from '../store/Conventional/thunk'
+import { ChefDataProps } from '../components/ChefCards/types'
 
 export const useWindowResize = (defaultState: boolean) => {
   const [state, setState] = useState<boolean>(defaultState)
@@ -91,4 +93,36 @@ export const useCardExpansion = (firstLabel: string): CardExpansionHelper => {
     expandedCards,
     toggleCardExpansion,
   }
+}
+
+export const findAllFilters = (chefData: ChefDataProps[]) => {
+  interface Filters {
+    cuisineList: string[]
+    discountsList: string[]
+    tagsList: string[]
+  }
+  let filtersObject: Filters = {
+    cuisineList: [],
+    discountsList: [],
+    tagsList: [],
+  }
+  if (!chefData) {
+    loadChefs()
+  }
+  const cuisinesList: string[] = Array.from(
+    new Set(chefData.flatMap((chef: ChefDataProps) => chef.cuisines || []))
+  )
+  const tagsList: string[] = Array.from(
+    new Set(chefData.flatMap((chef: ChefDataProps) => chef.private || []))
+  )
+  const discountsList: string[] = Array.from(
+    new Set(chefData.flatMap((chef: ChefDataProps) => chef.labels || []))
+  )
+  filtersObject = {
+    cuisineList: cuisinesList,
+    discountsList: discountsList,
+    tagsList: tagsList,
+  }
+
+  return filtersObject
 }

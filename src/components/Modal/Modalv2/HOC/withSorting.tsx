@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setSortBy } from '../../../store/reducers/sortingReducer' // Import your setSortBy action
+import { setSortBy } from '../../../../store/reducers/sortingReducer' // Import your setSortBy action
 
 const withSorting = (WrappedComponent: React.ComponentType<any>) => {
   const WithSortingComponent = (props: any) => {
