@@ -1,41 +1,48 @@
-import { MultiStepProps } from './index';
+// import { ChefMultiStepProps } from './index';
 import Input from './Input';
 import TextArea from './TextArea';
+// import { Link } from 'react-router-dom';
 import './MultiStepForm.scss';
-import { NavigateFunction } from 'react-router-dom';
 
-type PageProps = {
-  onChange: (fields: Partial<MultiStepProps>) => void;
+type AddressProps = {
+  state: string;
+  city: string;
+  address: string;
+  zipCode: string;
 };
 
-type SuccessPageProps = {
-  conditionalStyle: React.CSSProperties;
-  navigateToDatabase: () => NavigateFunction;
-  goToMultiStepForms: React.MouseEventHandler<HTMLButtonElement>;
+type AddressFormProps = AddressProps & {
+  onChange: (fields: Partial<AddressProps>) => void;
 };
 
-const SuccessPage = ({
-  conditionalStyle,
-  navigateToDatabase,
-  goToMultiStepForms,
-}: SuccessPageProps) => {
-  return (
-    <div style={conditionalStyle}>
-      <h3 className="modal-title">You have been successfully registered!</h3>
-      <div className="buttons">
-        <button className="dark-blue-btn" onClick={navigateToDatabase}>
-          Search database
-        </button>
-        <button className="dark-blue-btn" onClick={goToMultiStepForms}>
-          Create user profile
-        </button>
-        <button className="dark-blue-btn" onClick={goToMultiStepForms}>
-          Create chefs profile
-        </button>
-      </div>
-    </div>
-  );
-};
+// type SuccessPageProps = {
+//   conditionalStyle: React.CSSProperties;
+//   goToUserProfileForm: React.MouseEventHandler<HTMLButtonElement>;
+//   goToChefProfileForm: React.MouseEventHandler<HTMLButtonElement>;
+// };
+
+// const SuccessPage = ({
+//   conditionalStyle,
+//   goToUserProfileForm,
+//   goToChefProfileForm,
+// }: SuccessPageProps) => {
+//   return (
+//     <div style={conditionalStyle}>
+//       <h3 className="modal-title">You have been successfully registered!</h3>
+//       <div className="buttons">
+//         <Link to={'/chefs-database'} className="link">
+//           <button className="dark-blue-btn">Search database</button>
+//         </Link>
+//         <button className="dark-blue-btn" onClick={goToUserProfileForm}>
+//           Create user profile
+//         </button>
+//         <button className="dark-blue-btn" onClick={goToChefProfileForm}>
+//           Create chefs profile
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
 
 const PageOne = ({
   state,
@@ -43,7 +50,7 @@ const PageOne = ({
   address,
   zipCode,
   onChange,
-}: MultiStepProps & PageProps) => {
+}: AddressFormProps) => {
   return (
     <div className="page-container">
       <h4 className="title">Where do you operate?</h4>
@@ -74,10 +81,9 @@ const PageOne = ({
         />
         <Input
           label="Zip Code"
-          type="text"
+          type="number"
           inputMode="numeric"
           className="input-zip"
-          maxLength={5}
           autoFocus={false}
           value={zipCode}
           handleChange={(e) => onChange({ zipCode: e.target.value })}
@@ -87,11 +93,20 @@ const PageOne = ({
   );
 };
 
+type RestaurantInfoProps = {
+  restaurantName: string;
+  restaurantDescription: string;
+};
+
+type RestaurantInfoFormProps = RestaurantInfoProps & {
+  onChange: (fields: Partial<RestaurantInfoProps>) => void;
+};
+
 const PageTwo = ({
   restaurantName,
   restaurantDescription,
   onChange,
-}: MultiStepProps & PageProps) => {
+}: RestaurantInfoFormProps) => {
   return (
     <div className="page-container">
       <h4 className="title">What do you provide?</h4>
@@ -125,4 +140,4 @@ const PageThree = () => {
   );
 };
 
-export { SuccessPage, PageOne, PageTwo, PageThree };
+export { PageOne, PageTwo, PageThree };

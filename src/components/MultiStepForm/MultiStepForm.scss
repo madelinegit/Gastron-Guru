@@ -1,6 +1,24 @@
 .multi-step-form {
   width: 100%;
 
+  h3.modal-title {
+    font-family: PoppinsBold, sans-serif;
+    margin-bottom: 36px;
+
+    @media (max-width: $breakpoint-sm) {
+      text-align: center;
+    }
+    @media (max-width: $breakpoint-md) {
+      text-align: center;
+    }
+  }
+
+  .dark-blue-btn .link {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+  }
+
   .progress-status {
     width: fit-content;
     position: absolute;
@@ -44,7 +62,7 @@
     }
   }
 
-  button {
+  .step-btn {
     width: 125px;
     height: 46px;
     margin-top: 24px;

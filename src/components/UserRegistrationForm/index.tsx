@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import RegistrationModal from '../Modal/RegistrationModal';
 import './UserRegistrationForm.scss';
 import MultiStepForm from '../MultiStepForm';
@@ -54,9 +54,9 @@ const useValidate = ({
 };
 
 export const UserRegistrationForm: React.FC = () => {
+  const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
-  const [accountType, setAccountType] = useState<string>('');
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -86,8 +86,6 @@ export const UserRegistrationForm: React.FC = () => {
     }
   };
 
-  const handleNavigate = useNavigate();
-
   return (
     <main
       className={`user-registration-container ${
@@ -107,12 +105,9 @@ export const UserRegistrationForm: React.FC = () => {
               You have been successfully registered!
             </h3>
             <div className="buttons">
-              <button
-                className="dark-blue-btn"
-                onClick={() => handleNavigate('chefs-database')}
-              >
-                Search database
-              </button>
+              <Link to={'/chefs-database'} className="link">
+                <button className="dark-blue-btn">Search database</button>
+              </Link>
               <button
                 className="dark-blue-btn"
                 onClick={() => setAccountType('user')}
@@ -128,7 +123,6 @@ export const UserRegistrationForm: React.FC = () => {
             </div>
           </div>
           {accountType === 'chef' && <MultiStepForm />}
-          {/* {accountType === 'user' && <MultiStepForm />} */}
         </RegistrationModal>
       )}
       <div className="wrapper">

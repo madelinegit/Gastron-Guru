@@ -46,18 +46,6 @@
   align-items: center;
   gap: 36px;
 
-  h3.modal-title {
-    font-family: PoppinsBold, sans-serif;
-    margin-bottom: 36px;
-
-    @media (max-width: $breakpoint-sm) {
-      text-align: center;
-    }
-    @media (max-width: $breakpoint-md) {
-      text-align: center;
-    }
-  }
-
   .buttons {
     display: flex;
     gap: 16px;

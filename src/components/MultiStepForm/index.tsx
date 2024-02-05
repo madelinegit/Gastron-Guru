@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './MultiStepForm.scss';
-import { PageOne, PageTwo } from './Pages';
+import { PageOne, PageTwo, SuccessPage } from './Pages';
 import useMultiStepForm from './useMultiStepForm';
 
-export interface MultiStepProps {
+export interface ChefMultiStepProps {
   state: string;
   city: string;
   address: string;
@@ -14,8 +14,9 @@ export interface MultiStepProps {
   // speciality: string[],
 }
 
-export default function MultiStepForm() {
-  const [data, setData] = useState<MultiStepProps>({
+export default function ChefMultiStepForm() {
+  // const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
+  const [data, setData] = useState<ChefMultiStepProps>({
     state: '',
     city: '',
     address: '',
@@ -24,7 +25,7 @@ export default function MultiStepForm() {
     restaurantDescription: '',
   });
 
-  const onChange = (fields: Partial<MultiStepProps>) => {
+  const onChange = (fields: Partial<ChefMultiStepProps>) => {
     setData((prev) => {
       return { ...prev, ...fields };
     });
@@ -39,10 +40,19 @@ export default function MultiStepForm() {
     isFirstStep,
     isLastStep,
   } = useMultiStepForm([
+    // <SuccessPage
+    //   conditionalStyle={
+    //     accountType === 'chef' || accountType === 'user'
+    //       ? { display: 'none' }
+    //       : {}
+    //   }
+    //   goToUserProfileForm={() => setAccountType('user')}
+    //   goToChefProfileForm={() => setAccountType('chef')}
+    // />,
     <PageOne {...data} onChange={onChange} />,
     <PageTwo {...data} onChange={onChange} />,
+    // <PageThree {...data} />
   ]);
-  // <PageThree {...data} />
 
   const handleSubmit = (
     event:
@@ -56,18 +66,21 @@ export default function MultiStepForm() {
     // api post
   };
 
+  const onClickNext = () => {
+    console.log(data);
+    next();
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="multi-step-form">
-        <p className="progress-status">{`Chef's registration ${
-          currentStep + 1
-        } / ${steps.length}`}</p>
+        <p className="progress-status">{`Chef's registration ${currentStep} / ${steps.length}`}</p>
         {stepContent}
         <div className="buttons">
-          <button className="dark-blue-btn" onClick={() => previous()}>
+          <button className="dark-blue-btn step-btn" onClick={previous}>
             Back
           </button>
-          <button className="dark-blue-btn" onClick={() => next()}>
+          <button className="dark-blue-btn step-btn" onClick={onClickNext}>
             {isLastStep ? 'Finish' : 'Next'}
           </button>
         </div>
