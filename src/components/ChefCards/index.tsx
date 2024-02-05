@@ -9,6 +9,7 @@ import "./ChefCards.scss";
 const ChefCard = ({
   name,
   rating,
+  cuisines,
   distance_from_centre,
   labels,
   private: chefPrivate,
@@ -26,6 +27,12 @@ const ChefCard = ({
       onClick={handleClick}
       className={isActive ? "chef-card conditional-border" : "chef-card"}
     >
+      <span>
+        {cuisines?.map((item) => (
+          <button> {item}</button>
+        ))}
+      </span>
+
       <div className="thumbnail">
         <img src={featuredImages?.[0]} alt="Chef Restaurant Images" />
       </div>
@@ -61,7 +68,6 @@ const ChefCard = ({
   );
 };
 
-// CREATE SEPARATE COMPONENT..?
 const ChefCards = ({
   chefData,
   isScrollEnabled,
@@ -73,26 +79,48 @@ const ChefCards = ({
   onCardClick: (index: number) => void;
   activeCard: number;
 }) => {
+  const discountPriority = {
+    "2 for 1": 1,
+    "30% off": 2,
+    "20% off": 3,
+    "10% off": 4,
+  };
+
+  const getMostValuableDiscount = (chef: ChefDataProps) => {
+    const chefDiscounts = chef.labels || [];
+
+    const sortedDiscounts = chefDiscounts.slice().sort((a, b) => {
+      return discountPriority[a] - discountPriority[b];
+    });
+
+    return sortedDiscounts[0] || "";
+  };
+
+  const sortedChefData = chefData.slice().sort((a, b) => {
+    const discountA = getMostValuableDiscount(a);
+    const discountB = getMostValuableDiscount(b);
+
+    return discountPriority[discountA] - discountPriority[discountB];
+  });
+
   return (
     <div
       className={
         isScrollEnabled
-          ? `chef-card-container-scroll`
-          : `chef-card-container-grid`
+          ? "chef-card-container-scroll"
+          : "chef-card-container-grid"
       }
     >
-      {chefData.map((chef, index) => {
+      {sortedChefData.map((chef, index) => {
         const isActive = index === activeCard;
         return (
-          <>
-            <ChefCard
-              key={chef.name}
-              {...chef}
-              isActive={isActive}
-              onCardClick={() => onCardClick(index)}
-              activeCard={activeCard}
-            />
-          </>
+          <ChefCard
+            key={chef.name}
+            {...chef}
+            isActive={isActive}
+            onCardClick={() => onCardClick(index)}
+            activeCard={activeCard}
+          />
         );
       })}
     </div>
