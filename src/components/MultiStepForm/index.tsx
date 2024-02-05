@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './MultiStepForm.scss';
-import { PageOne, PageTwo, SuccessPage } from './Pages';
+import { PageOne, PageThree, PageTwo, SuccessPage } from './Pages';
 import useMultiStepForm from './useMultiStepForm';
 
 export interface ChefMultiStepProps {
@@ -15,7 +15,7 @@ export interface ChefMultiStepProps {
 }
 
 export default function ChefMultiStepForm() {
-  // const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
+  const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
   const [data, setData] = useState<ChefMultiStepProps>({
     state: '',
     city: '',
@@ -40,18 +40,18 @@ export default function ChefMultiStepForm() {
     isFirstStep,
     isLastStep,
   } = useMultiStepForm([
-    // <SuccessPage
-    //   conditionalStyle={
-    //     accountType === 'chef' || accountType === 'user'
-    //       ? { display: 'none' }
-    //       : {}
-    //   }
-    //   goToUserProfileForm={() => setAccountType('user')}
-    //   goToChefProfileForm={() => setAccountType('chef')}
-    // />,
+    <SuccessPage
+      // conditionalStyle={
+      //   accountType === 'chef' || accountType === 'user'
+      //     ? { display: 'none' }
+      //     : {}
+      // }
+      goToUserProfileForm={() => setAccountType('user')}
+      goToChefProfileForm={() => next()}
+    />,
     <PageOne {...data} onChange={onChange} />,
     <PageTwo {...data} onChange={onChange} />,
-    // <PageThree {...data} />
+    <PageThree />,
   ]);
 
   const handleSubmit = (
@@ -60,9 +60,7 @@ export default function ChefMultiStepForm() {
       | React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    if (!isLastStep) return next();
-    console.log(data);
-    alert('Successful Account Creation');
+
     // api post
   };
 
@@ -71,19 +69,28 @@ export default function ChefMultiStepForm() {
     next();
   };
 
+  const onClickBack = () => {
+    console.log(data);
+    previous();
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="multi-step-form">
-        <p className="progress-status">{`Chef's registration ${currentStep} / ${steps.length}`}</p>
+        {!isFirstStep && (
+          <p className="progress-status">{`Chef's registration ${currentStep} / ${steps.length}`}</p>
+        )}
         {stepContent}
-        <div className="buttons">
-          <button className="dark-blue-btn step-btn" onClick={previous}>
-            Back
-          </button>
-          <button className="dark-blue-btn step-btn" onClick={onClickNext}>
-            {isLastStep ? 'Finish' : 'Next'}
-          </button>
-        </div>
+        {!isFirstStep && (
+          <div className="buttons">
+            <button className="dark-blue-btn step-btn" onClick={onClickBack}>
+              Back
+            </button>
+            <button className="dark-blue-btn step-btn" onClick={onClickNext}>
+              {isLastStep ? 'Finish' : 'Next'}
+            </button>
+          </div>
+        )}
       </form>
     </>
   );

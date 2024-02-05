@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 import RegistrationModal from '../Modal/RegistrationModal';
 import './UserRegistrationForm.scss';
 import MultiStepForm from '../MultiStepForm';
@@ -54,7 +54,7 @@ const useValidate = ({
 };
 
 export const UserRegistrationForm: React.FC = () => {
-  const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
+  // const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
 
@@ -94,7 +94,8 @@ export const UserRegistrationForm: React.FC = () => {
     >
       {success && (
         <RegistrationModal>
-          <div
+          <MultiStepForm />
+          {/* <div
             style={
               accountType === 'chef' || accountType === 'user'
                 ? { display: 'none' }
@@ -121,8 +122,8 @@ export const UserRegistrationForm: React.FC = () => {
                 Create chefs profile
               </button>
             </div>
-          </div>
-          {accountType === 'chef' && <MultiStepForm />}
+          </div> */}
+          {/* {accountType === 'chef' && <MultiStepForm />} */}
         </RegistrationModal>
       )}
       <div className="wrapper">
