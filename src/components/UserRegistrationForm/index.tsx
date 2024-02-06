@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
 import RegistrationModal from '../Modal/RegistrationModal';
 import './UserRegistrationForm.scss';
-import MultiStepForm from '../MultiStepForm';
+import Success from './Success';
+import ChefMultiStepForm from '../MultiStepForm/Chef';
+import UserMultiStepForm from '../MultiStepForm/User';
 
 const clearAndDisableInput = (ref: React.RefObject<HTMLInputElement>) => {
   ref.current!.value = '';
@@ -54,7 +55,7 @@ const useValidate = ({
 };
 
 export const UserRegistrationForm: React.FC = () => {
-  // const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
+  const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
 
@@ -93,38 +94,26 @@ export const UserRegistrationForm: React.FC = () => {
       }`}
     >
       {success && (
-        <RegistrationModal>
-          <MultiStepForm />
-          {/* <div
-            style={
-              accountType === 'chef' || accountType === 'user'
-                ? { display: 'none' }
-                : {}
-            }
+        <>
+          <RegistrationModal
+            className={`${accountType !== '' && 'inactive-success-modal'}`}
           >
-            <h3 className="modal-title">
-              You have been successfully registered!
-            </h3>
-            <div className="buttons">
-              <Link to={'/chefs-database'} className="link">
-                <button className="dark-blue-btn">Search database</button>
-              </Link>
-              <button
-                className="dark-blue-btn"
-                onClick={() => setAccountType('user')}
-              >
-                Create user profile
-              </button>
-              <button
-                className="dark-blue-btn"
-                onClick={() => setAccountType('chef')}
-              >
-                Create chefs profile
-              </button>
-            </div>
-          </div> */}
-          {/* {accountType === 'chef' && <MultiStepForm />} */}
-        </RegistrationModal>
+            <Success
+              goToUserProfileForm={() => setAccountType('user')}
+              goToChefProfileForm={() => setAccountType('chef')}
+            />
+          </RegistrationModal>
+          {accountType === 'chef' && (
+            <RegistrationModal>
+              <ChefMultiStepForm setState={() => setAccountType('')} />
+            </RegistrationModal>
+          )}
+          {accountType === 'user' && (
+            <RegistrationModal>
+              <UserMultiStepForm />
+            </RegistrationModal>
+          )}
+        </>
       )}
       <div className="wrapper">
         <h3>Register</h3>
