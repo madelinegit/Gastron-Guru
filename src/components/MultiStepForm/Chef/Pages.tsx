@@ -1,4 +1,3 @@
-// import { ChefMultiStepProps } from './index';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import '../MultiStepForm.scss';
