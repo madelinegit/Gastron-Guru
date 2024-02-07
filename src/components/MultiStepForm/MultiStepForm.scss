@@ -1,6 +1,10 @@
 .multi-step-form {
   width: 100%;
 
+  @media (max-width: $breakpoint-sm) {
+    padding: 20px;
+  }
+
   h3.modal-title {
     font-family: PoppinsBold, sans-serif;
     margin-bottom: 36px;
@@ -21,9 +25,23 @@
 
   .progress-status {
     width: fit-content;
-    position: absolute;
-    right: 450px;
-    top: 196px;
+    position: relative;
+    bottom: 110px;
+    left: 540px;
+
+    @media (max-width: $breakpoint-lg) {
+      bottom: 100px;
+      left: 450px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      bottom: 90px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      bottom: 95px;
+      left: 230px;
+    }
   }
 
   .page-container {
@@ -62,13 +80,18 @@
     }
   }
 
-  .step-btn {
-    width: 125px;
-    height: 46px;
-    margin-top: 24px;
+  .multi-step-form-buttons {
+    display: flex;
+    gap: 16px;
+
+    @media (max-width: $breakpoint-sm) {
+      justify-content: center;
+    }
+
+    .step-btn {
+      width: 125px;
+      height: 46px;
+      margin-top: 24px;
+    }
   }
 }
-
-// 541 (full)
-// 305 (Address)
-// 209 (Zip Code)
