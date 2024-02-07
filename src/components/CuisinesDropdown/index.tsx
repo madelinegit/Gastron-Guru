@@ -19,7 +19,7 @@ const CuisinesDropdown = ({
   onChange,
 }: CuisinesDropdownComponentProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [selection, setSelection] = useState<string[]>([]);
+  const [selection, setSelection] = useState<string[]>(cuisines);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
   const dropdownRef = useRef<HTMLUListElement>(null);
   const toggle = () => setOpen((prevOpen) => !prevOpen);
