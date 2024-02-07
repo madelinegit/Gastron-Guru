@@ -3,55 +3,27 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const router = express.Router();
-const getToken = require("../utils/getToken");
+const { signToken } = require("../utils/auth");
 const model = require("../models");
 const User = model.user;
 
-// sign up
-router.post("/register", async function (req, res) {
+router.post('/checkUser', async (req, res) => {
+  const { authID, name, email } = req.body;
+
   try {
-    const { name, email, password } = req.body;
+    const userResult = await User.find({ authID, name, email });
 
-    // create new user
-    await new User({ name, email, password }).save();
-
-    const user = await User.findOne({ email: email });
-
-    if (!user) {
-      console.log("user not found");
-      return res.sendStatus(401);
+    if (userResult.length > 0) {
+      const token = signToken({ authID, _id: userResult[0]._id });
+      return res.json({ token, user: userResult[0] });
+    } else {
+      const user = await User.create({ authID, name, email });
+      const token = signToken({ authID, _id: user._id });
+      return res.json({ token, user });
     }
-
-    // create token with _id as subject
-    const token = await getToken(user._id);
-
-    res.send(token);
   } catch (err) {
     console.log(err);
-
-    return res.sendStatus(500);
-  }
-});
-
-// sign in
-router.post("/login", async function (req, res) {
-  try {
-    const { email, password } = req.body;
-
-    const user = await User.findOne({ email: email, password: password });
-
-    if (!user) {
-      console.log("user not found");
-      return res.sendStatus(401);
-    }
-
-    const token = await getToken(user._id);
-
-    res.send(token);
-  } catch (err) {
-    console.log(err);
-
-    return res.sendStatus(500);
+    return res.status(500).json({ error: 'An error occurred' });
   }
 });
 
