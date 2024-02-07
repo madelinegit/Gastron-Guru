@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import '../MultiStepForm.scss';
-import { PageOne, PageTwo } from './Pages';
-import useMultiStepForm from '../useMultiStepForm';
+import { useState } from "react";
+import useMultiStepForm from "../useMultiStepForm";
+import AddressPage from "./AddressPage";
+import RestaurantInfoPage from "./RestaurantInfoPage";
+import SpecialityAndCuisinesPage from "./SpecialityAndCuisinesPage";
+import "../MultiStepForm.scss";
 
 export interface ChefMultiStepProps {
   state: string;
@@ -20,12 +22,14 @@ type ChefMultiStepForm = {
 
 export default function ChefMultiStepForm({ setState }: ChefMultiStepForm) {
   const [data, setData] = useState<ChefMultiStepProps>({
-    state: '',
-    city: '',
-    address: '',
-    zipCode: '',
-    restaurantName: '',
-    restaurantDescription: '',
+    state: "",
+    city: "",
+    address: "",
+    zipCode: "",
+    restaurantName: "",
+    restaurantDescription: "",
+    cuisines: [],
+    speciality: [],
   });
 
   const onChange = (fields: Partial<ChefMultiStepProps>) => {
@@ -43,9 +47,9 @@ export default function ChefMultiStepForm({ setState }: ChefMultiStepForm) {
     isFirstStep,
     isLastStep,
   } = useMultiStepForm([
-    <PageOne {...data} onChange={onChange} />,
-    <PageTwo {...data} onChange={onChange} />,
-    // <PageThree />,
+    <AddressPage {...data} onChange={onChange} />,
+    <RestaurantInfoPage {...data} onChange={onChange} />,
+    <SpecialityAndCuisinesPage {...data} onChange={onChange} />,
   ]);
 
   const handleSubmit = (
@@ -68,11 +72,11 @@ export default function ChefMultiStepForm({ setState }: ChefMultiStepForm) {
     } = { ...data };
 
     if (isFirstStep) {
-      if (address !== '' && state !== '' && city !== '' && zipCode !== '')
+      if (address !== "" && state !== "" && city !== "" && zipCode !== "")
         next();
     }
     if (currentStep === 1) {
-      if (restaurantName !== '' && restaurantDescription !== '') next();
+      if (restaurantName !== "" && restaurantDescription !== "") next();
     }
     return;
   };
@@ -81,10 +85,10 @@ export default function ChefMultiStepForm({ setState }: ChefMultiStepForm) {
     if (isFirstStep) {
       if (
         confirm(
-          'Do you really want to close the form? Your data is going to be lost.'
+          "Do you really want to close the form? Your data is going to be lost."
         )
       )
-        setState('');
+        setState("");
     }
     previous();
   };
@@ -92,14 +96,16 @@ export default function ChefMultiStepForm({ setState }: ChefMultiStepForm) {
   return (
     <>
       <form onSubmit={handleSubmit} className="multi-step-form">
-        <p className="progress-status">{`Chef's registration ${currentStep} / ${steps.length}`}</p>
+        <p className="progress-status">{`Chef's registration ${
+          currentStep + 1
+        } / ${steps.length}`}</p>
         {stepContent}
-        <div className="buttons">
+        <div className="multi-step-form-buttons">
           <button className="dark-blue-btn step-btn" onClick={onClickBack}>
             Back
           </button>
           <button className="dark-blue-btn step-btn" onClick={onClickNext}>
-            {isLastStep ? 'Finish' : 'Next'}
+            {isLastStep ? "Finish" : "Next"}
           </button>
         </div>
       </form>
