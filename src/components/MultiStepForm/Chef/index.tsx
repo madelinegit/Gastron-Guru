@@ -69,6 +69,7 @@ export default function ChefMultiStepForm({ setState }: ChefMultiStepForm) {
       restaurantDescription,
       restaurantName,
       zipCode,
+      cuisines,
     } = { ...data };
 
     if (isFirstStep) {
@@ -77,6 +78,11 @@ export default function ChefMultiStepForm({ setState }: ChefMultiStepForm) {
     }
     if (currentStep === 1) {
       if (restaurantName !== "" && restaurantDescription !== "") next();
+    }
+    if (isLastStep) {
+      if (cuisines.length > 0) next();
+      // if (specialities.length > 0) next();
+      /* submit the form */
     }
     return;
   };
