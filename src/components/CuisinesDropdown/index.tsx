@@ -44,7 +44,9 @@ const CuisinesDropdown = ({
     };
 
     setSelection(newSelection);
-  };
+    // BUG: selection is always missing the last selected cuisine
+    onChange({ cuisines: newSelection });
+  }
 
   // handle keyboard navigation within the dropdown
   const handleKeyControls = (e: React.KeyboardEvent<HTMLLIElement>, item: string, index: number) => {
