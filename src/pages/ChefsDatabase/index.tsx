@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import SwitchInput from '../../components/Inputs/SwitchInput';
-import CheckboxInput from '../../components/Inputs/CheckboxInput';
-import {
-  useWindowResize,
-  useSwitchToggle,
-  useCheckboxToggle,
-  useModal,
-  useCardExpansion,
-} from '../../utils/helpers';
-import SearchBar from '../../components/SearchBar';
+import { useEffect, useState } from 'react';
+import ArrowButton from '../../components/Buttons/ArrowButton';
 import ChefCards from '../../components/ChefCards';
+import { ChefDataProps } from '../../components/ChefCards/types';
+import ChefDetail from '../../components/ChefDetail/ChefDetail';
+import SwitchInput from '../../components/Inputs/SwitchInput';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
+import Map from '../../components/Map/Map';
+import MockNarrowContainer from '../../components/Modal/MockNarrowContainer';
 import Modal from '../../components/Modal/Modal';
 import ModalCard from '../../components/Modal/ModalCard';
-import MockNarrowContainer from '../../components/Modal/MockNarrowContainer';
+import SearchBar from '../../components/SearchBar';
+import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper';
 import useChef from '../../utils/Api';
-import ArrowButton from '../../components/Buttons/ArrowButton';
 import { modalData } from '../../utils/Data';
-import Map from '../../components/Map/Map';
-import { LoadingSpinner } from '../../components/LoadingSpinner';
+import {
+  useCardExpansion,
+  useCheckboxToggle,
+  useModal,
+  useSwitchToggle,
+  useWindowResize,
+} from '../../utils/helpers';
 import useChefsDatabaseEffects from './useChefsDatabaseEffects';
-import { ChefDataProps } from '../../components/ChefCards/types';
+import '../../components/LoadingSpinner/LoadingSpinner.scss';
 
 const ChefsDatabase = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -38,8 +40,13 @@ const ChefsDatabase = () => {
   const { expandedCards, toggleCardExpansion } = useCardExpansion(
     modalData[0].label
   );
-
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
+
+  const [activeCard, setActiveCard] = useState<number>(0);
+
+  const onCardClick = (index: number) => {
+    setActiveCard(index);
+  };
 
   useEffect(() => {
     try {
@@ -58,11 +65,7 @@ const ChefsDatabase = () => {
   useChefsDatabaseEffects({ chefData, setSortChefCards });
 
   return (
-    <div
-      style={
-        loading ? { overflow: 'hidden', position: 'fixed', width: '100vw' } : {}
-      }
-    >
+    <div className={`${loading && 'spinner-wrapper'}`}>
       <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
@@ -85,16 +88,28 @@ const ChefsDatabase = () => {
       />
       <SearchBar />
 
-      {renderCheckbox && (
-        <CheckboxInput
-          onCheckboxToggle={handleCheckboxToggle}
-          isChecked={detailsShowing}
-        />
-      )}
+      <SearchBarWrapper
+        handleCheckboxToggle={handleCheckboxToggle}
+        handleSwitchToggle={handleSwitchToggle}
+        expandedCards={expandedCards}
+        isSwitchChecked={isSwitchChecked}
+        isOverrideActive={isOverrideActive}
+        renderCheckbox={renderCheckbox}
+        detailsShowing={detailsShowing}
+        showModal={showModal}
+        toggleCardExpansion={toggleCardExpansion}
+        handleModalToggle={handleModalToggle}
+      />
 
       {loading && <LoadingSpinner />}
 
-      <ChefCards chefData={chefData} isScrollEnabled={isScrollEnabled} />
+      <ChefCards
+        chefData={chefData}
+        isScrollEnabled={isScrollEnabled}
+        onCardClick={onCardClick}
+        activeCard={activeCard}
+      />
+      <ChefDetail activeCard={activeCard} />
 
       {isScrollEnabled && (
         <section>

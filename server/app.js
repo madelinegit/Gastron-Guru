@@ -11,6 +11,7 @@ const morgan = require("morgan");
 const app = express();
 const cors = require("cors");
 const db = require("./models");
+const routes = require('./controllers');
 const PORT = process.env.PORT || 3000;
 
 // import routers
@@ -30,6 +31,7 @@ app.get("/api/protected", verifyClaims, (req, res) => {
   // Handle the protected endpoint logic
   res.json({ message: 'You accessed a protected endpoint!' });
 });
+app.use(routes);
 
 // establish mongo database connection
 db.mongoose.connect(db.url).catch((err) => {
