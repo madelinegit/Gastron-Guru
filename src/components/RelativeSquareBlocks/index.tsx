@@ -1,4 +1,4 @@
-import NarrowContainer from '../NarrowContainer';
+import React from 'react';
 import './RelativeSquareBlocks.scss';
 
 function RelativeSquareBlocks() {
