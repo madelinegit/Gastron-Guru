@@ -107,12 +107,12 @@ const CuisinesDropdown = ({
             {cuisinesList.map((cuisine, index) => (
               <li
                 key={cuisine}
-                className={selection.includes(cuisine) ? 'selected' : ''}
+                className={cuisines.includes(cuisine) ? "selected" : ""}
                 onClick={(event) => handleSelect(event, cuisine)}
                 onKeyDown={(e: React.KeyboardEvent<HTMLLIElement>) => handleKeyControls(e, cuisine, index)}
                 role="option"
                 tabIndex={0}
-                aria-selected={selection.includes(cuisine)}
+                aria-selected={cuisines.includes(cuisine)}
                 aria-hidden="true"
                 aria-label={cuisine}
                 onMouseEnter={() => setHighlightedIndex(index)}
