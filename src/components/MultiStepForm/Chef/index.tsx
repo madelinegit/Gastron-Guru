@@ -10,8 +10,8 @@ export interface ChefMultiStepProps {
   zipCode: string;
   restaurantName: string;
   restaurantDescription: string;
-  // cuisines: string[],
-  // speciality: string[],
+  cuisines: string[];
+  speciality: string[];
 }
 
 type ChefMultiStepForm = {
