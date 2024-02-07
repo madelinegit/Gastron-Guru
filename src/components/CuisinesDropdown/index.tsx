@@ -64,8 +64,7 @@ const CuisinesDropdown = ({
 
   return (
     <>
-      <div className="dropdown-container">
-        <h3>Select Your Specialty</h3>
+      <div className={`dropdown-container ${specialClassName}`}>
         <label>Cuisines</label>
         <button
           className="dropdown-box"
