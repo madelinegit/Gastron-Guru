@@ -4,7 +4,20 @@ import { faChevronUp, faChevronDown, faX } from '@fortawesome/free-solid-svg-ico
 import useChef from '../../utils/Api';
 import './CuisinesDropdown.scss';
 
-const CuisinesDropdown = () => {
+type CuisinesDropdownProps = {
+  specialClassName: string;
+  cuisines: string[];
+};
+
+type CuisinesDropdownComponentProps = CuisinesDropdownProps & {
+  onChange: (fields: Partial<CuisinesDropdownProps>) => void;
+};
+
+const CuisinesDropdown = ({
+  specialClassName,
+  cuisines,
+  onChange,
+}: CuisinesDropdownComponentProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const [selection, setSelection] = useState<string[]>([]);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
