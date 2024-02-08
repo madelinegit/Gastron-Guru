@@ -52,11 +52,9 @@ const ChefsDatabase = () => {
     try {
       chefData;
     } catch (error) {
-      console.log("An error occurred...");
       setLoading(true);
     }
     return () => {
-      console.log("Done!");
       setLoading(false);
     };
   }, [chefData]);
@@ -103,7 +101,7 @@ const ChefsDatabase = () => {
         showModal={showModal}
         toggleCardExpansion={toggleCardExpansion}
         handleModalToggle={handleModalToggle}
-       />
+      />
 
       {loading && <LoadingSpinner />}
 
