@@ -22,6 +22,7 @@ const RestaurantInfoPage = ({
       <Input
         label="What Name do you want to operate under"
         type="text"
+        id="restaurantName"
         className="full-input"
         autoFocus={false}
         value={restaurantName}
