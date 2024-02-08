@@ -66,16 +66,19 @@ const AddressPage = ({
   return (
     <FormWrapper title="Where do you operate?">
       {inputsData.map((input) => {
+        const { id, label, type, className, autoFocus, value, handleChange } = {
+          ...input,
+        };
         return (
           <Input
-            key={input.id}
-            label={input.label}
-            type={input.type}
-            id={input.id}
-            className={input.className}
-            autoFocus={input.autoFocus}
-            value={input.value}
-            handleChange={input.handleChange}
+            key={id}
+            label={label}
+            type={type}
+            id={id}
+            className={className}
+            autoFocus={autoFocus}
+            value={value}
+            handleChange={handleChange}
           />
         );
       })}
