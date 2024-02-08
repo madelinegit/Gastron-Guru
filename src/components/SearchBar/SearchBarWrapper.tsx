@@ -4,7 +4,6 @@ import CheckboxInput from "../Inputs/CheckboxInput";
 import "./SearchBarWrapper.scss";
 import SearchBar from ".";
 import ArrowButton from "../Buttons/ArrowButton";
-import MockNarrowContainer from "../Modal/MockNarrowContainer";
 import Modal from "../Modal/Modal";
 import ModalCard from "../Modal/ModalCard";
 import { modalData } from "../../utils/Data";
@@ -21,6 +20,7 @@ interface SearchBarWrapperProps {
   handleModalToggle: () => void;
   // modalData: boolean;
   expandedCards: string[];
+  handleSearch: (query: string) => void;
 }
 
 export default function SearchBarWrapper({
@@ -34,12 +34,13 @@ export default function SearchBarWrapper({
   showModal,
   handleModalToggle,
   expandedCards,
+  handleSearch
 }: SearchBarWrapperProps): JSX.Element {
   // specifies what this code intends to do, create search bar element
   return (
     <div className="search-bar">
       <div className="search-component">
-        <SearchBar />
+        <SearchBar handleSearch={handleSearch}/>
       </div>
       <div className="mini-searchbar-wrapper">
         <div className="arrow-button-filter">
