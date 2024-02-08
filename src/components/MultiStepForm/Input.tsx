@@ -1,18 +1,6 @@
 import './Input.scss';
 
-interface InputMode {
-  inputMode?:
-    | 'none'
-    | 'text'
-    | 'tel'
-    | 'url'
-    | 'email'
-    | 'numeric'
-    | 'decimal'
-    | 'search';
-}
-
-type InputProps = InputMode & {
+export type InputProps = {
   label: string;
   type: string;
   className: string;
