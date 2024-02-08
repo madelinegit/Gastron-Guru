@@ -95,6 +95,10 @@ label {
   font-family: PoppinsBold, sans-serif;
 }
 
+h4 {
+  font-family: PoppinsBold, sans-serif;
+  font-size: 18;
+}
 p {
   @include responsive-font-size(18px, 16px, 14px);
   font-family: Helvetica, sans-serif;
