@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './ImageSlider.scss';
 
-interface Slide {
+export interface Slide {
   title: string;
   url: string;
 }
@@ -11,6 +11,7 @@ interface ImageSliderProps {
 }
 
 const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
+   const {{title, url}} = slides
   const timerRef: React.MutableRefObject<number | null> = useRef(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const goToNext = useCallback((): void => {
