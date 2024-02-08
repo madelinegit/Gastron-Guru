@@ -1,8 +1,9 @@
-import './Input.scss';
+import "./Input.scss";
 
 export type InputProps = {
   label: string;
   type: string;
+  id: string;
   className: string;
   autoFocus: boolean;
   maxLength?: number;
@@ -13,7 +14,7 @@ export type InputProps = {
 const Input = ({
   label,
   type,
-  inputMode,
+  id,
   className,
   autoFocus,
   maxLength,
@@ -25,7 +26,7 @@ const Input = ({
       <label>{label}</label>
       <input
         type={type}
-        inputMode={inputMode}
+        id={id}
         className={className}
         required
         autoFocus={autoFocus}
