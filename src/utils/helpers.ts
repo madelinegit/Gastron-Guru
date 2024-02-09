@@ -166,9 +166,10 @@ export const getChefDataFilterSort = () => {
   if (filters.length === 0) {
     filteredRawData = rawChefData
   } else {
+    //return only chef objects that match at least one filter
     filteredRawData = rawChefData?.filter((chef) => {
       return filters.some((filter) => {
-        // Check if any of the filters match cuisines, private, or labels
+        // Using the filters array, Check each item of filters array and see if any of the filters are found in the chef obj's cuisines, private, or labels. If yes, .some will return true for that chef and allow it to be added to the filteredRawData array
         return (
           chef.cuisines.includes(filter) ||
           chef.private.includes(filter) ||

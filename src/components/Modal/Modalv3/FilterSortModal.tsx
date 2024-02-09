@@ -11,7 +11,7 @@ import FilterRadioCard from '../ModalCardComps/FilterRadioCard'
 import SortByCard from '../ModalCardComps/SortByCard'
 import ArrowButton from '../../Buttons/ArrowButton'
 import { findAllFilters, filterRatingOptions } from '../../../utils/helpers'
-import './Modalv3.scss'
+import './FilterSortModal.scss'
 
 interface ModalV3Props {
   handleFilterChange: (selectedFilter: string) => void
@@ -19,7 +19,7 @@ interface ModalV3Props {
   handleRatingFilterChange: (selectedFilter: string) => void
 }
 
-const Modalv3 = ({
+const FilterSortModal = ({
   handleFilterChange,
   handleSortChange,
   handleRatingFilterChange,
@@ -97,7 +97,7 @@ const Modalv3 = ({
   )
 }
 
-const ModalWithSorting = ReduxSorting(Modalv3)
+const ModalWithSorting = ReduxSorting(FilterSortModal)
 const ModalWithSortingAndFiltering = ReduxFiltering(ModalWithSorting)
 
 export default ModalWithSortingAndFiltering

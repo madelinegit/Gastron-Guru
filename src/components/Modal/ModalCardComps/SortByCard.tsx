@@ -1,5 +1,5 @@
 import ArrowButton from '../../Buttons/ArrowButton'
-import '../Modalv3/Modalv3.scss'
+import '../Modalv3/FilterSortModal.scss'
 import './FilterRadioCard.scss'
 interface SortByCardProps {
   expandedCards: string[]

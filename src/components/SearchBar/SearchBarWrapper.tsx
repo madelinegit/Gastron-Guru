@@ -1,4 +1,3 @@
-import React from 'react'
 import SwitchInput from '../Inputs/SwitchInput'
 import CheckboxInput from '../Inputs/CheckboxInput'
 import './SearchBarWrapper.scss'
@@ -7,7 +6,7 @@ import ArrowButton from '../Buttons/ArrowButton'
 // import Modal from "../Modal/Modalv1/Modal";
 // import ModalCard from "../Modal/Modalv1/ModalCard";
 // import { modalData } from "../../utils/Data";
-import ModalWithSortingAndFiltering from '../Modal/Modalv3/Modalv3'
+import ModalWithSortingAndFiltering from '../Modal/Modalv3/FilterSortModal'
 
 interface SearchBarWrapperProps {
   isSwitchChecked: boolean
