@@ -81,8 +81,7 @@ export const replaceWords = (word: string): string => {
 
 // logic for Modal Component
 export const useModal = () => {
-  //CHANGE TO FALSE B4 PUSH
-  const [showModal, setShowModal] = useState<boolean>(true)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   const handleModalToggle = () => {
     setShowModal((prev) => !prev)
@@ -116,12 +115,12 @@ export const useCardExpansion = (firstLabel: string): CardExpansionHelper => {
 
 export const findAllFilters = (chefData: ChefDataProps[]) => {
   interface Filters {
-    cuisineList: string[]
+    cuisinesList: string[]
     discountsList: string[]
     tagsList: string[]
   }
   let filtersObject: Filters = {
-    cuisineList: [],
+    cuisinesList: [],
     discountsList: [],
     tagsList: [],
   }
@@ -138,7 +137,7 @@ export const findAllFilters = (chefData: ChefDataProps[]) => {
     new Set(chefData.flatMap((chef: ChefDataProps) => chef.labels || []))
   )
   filtersObject = {
-    cuisineList: cuisinesList,
+    cuisinesList: cuisinesList,
     discountsList: discountsList,
     tagsList: tagsList,
   }

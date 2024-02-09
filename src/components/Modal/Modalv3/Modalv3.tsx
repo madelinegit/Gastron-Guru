@@ -76,7 +76,7 @@ const Modalv3 = ({
                   )}
                   {option === 'Cuisines' && (
                     <FilterButtonCard
-                      btnArr={filterOptions.cuisineList || []}
+                      btnArr={filterOptions.cuisinesList || []}
                       isBtnActive={filtersSelected}
                       btnHandle={handleFilterChange}
                     />
