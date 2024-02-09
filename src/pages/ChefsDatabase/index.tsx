@@ -21,7 +21,7 @@ import {
 } from '../../store/Conventional/selectors'
 import { loadChefs } from '../../store/Conventional/thunk'
 import { useDispatch } from 'react-redux'
-import { get } from 'http'
+import { setFilter } from '../../store/Conventional/actionCreator'
 
 const ChefsDatabase = () => {
   const dispatch = useDispatch()
@@ -32,6 +32,7 @@ const ChefsDatabase = () => {
   )
   const { renderCheckbox } = useWindowResize(true)
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
+
   const getChefDataFilterSort = () => {
     let rawChefData = useChefDataSelector()
     if (!rawChefData) {
@@ -42,8 +43,12 @@ const ChefsDatabase = () => {
     const sort = useSortSelector()
     let filteredData
 
-    if (filters.length === 1 && filters[0] === 'All') {
+    if (
+      (filters.length === 1 && filters[0] === 'All') ||
+      filters.length === 0
+    ) {
       filteredData = rawChefData
+      // dispatch(setFilter('All'))
     } else {
       filteredData = rawChefData?.filter((chef) => {
         return filters.some((filter) => {
@@ -80,6 +85,7 @@ const ChefsDatabase = () => {
 
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing
   const chefData = getChefDataFilterSort()
+
   //change back to true before push
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -98,8 +104,6 @@ const ChefsDatabase = () => {
       }, 2500)
     }
   }, [chefData])
-
-  let filteredData = getChefDataFilterSort()
 
   return (
     <div
