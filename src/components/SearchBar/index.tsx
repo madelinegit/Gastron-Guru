@@ -3,13 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import "./SearchBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
-export default function SearchBar() {
-  const inputRef = useRef(null);
+interface SearchBarProps {
+  handleSearch: (query: string) => void;
+}
+export default function SearchBar({ handleSearch }: SearchBarProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [placeholder, setPlaceholder] = useState<string>("");
 
   const stringToSplit: string = "Search chefs in your location";
-
   useEffect(() => {
     const splittedString: string[] = stringToSplit.split("");
     let index: number = -1;
@@ -29,11 +30,15 @@ export default function SearchBar() {
     }, 2000);
 
     return () => clearInterval(timer);
-  }, []);
-
+  }, [placeholder]);
+  const handleFormSubmit = (event: React.FormEvent) => {
+    event.preventDefault(); 
+    if (inputRef.current) {
+      handleSearch(inputRef.current.value);
+    }
+  } 
   return (
-    // <div className="search-bar-container">
-      <div className="search-input-group">
+      <form className="search-input-group" onSubmit={handleFormSubmit}>
         <FontAwesomeIcon icon={faMagnifyingGlass} className="light-icon" />
         <input
           type="text"
@@ -41,10 +46,10 @@ export default function SearchBar() {
           id="search-box"
           className="search-box"
           name="search-box"
+          tabIndex={0}
           placeholder={placeholder as string}
           />
-        <button className="button-primary buttonsize"><span>Search</span></button>
-      </div>
-    // </div>
+        <button className="button-primary buttonsize" type="submit" tabIndex={0}><span>Search</span></button>
+      </form>
   );
 }
