@@ -82,7 +82,7 @@ export const replaceWords = (word: string): string => {
 // logic for Modal Component
 export const useModal = () => {
   //CHANGE TO FALSE B4 PUSH
-  const [showModal, setShowModal] = useState<boolean>(true) //CHANGE TO FALSE B4 PUSH
+  const [showModal, setShowModal] = useState<boolean>(true)
 
   const handleModalToggle = () => {
     setShowModal((prev) => !prev)
