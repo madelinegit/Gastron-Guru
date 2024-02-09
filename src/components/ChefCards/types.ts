@@ -1,4 +1,5 @@
 export interface ChefDataProps {
+  user_id: string;
   name?: string;
   "featured-images"?: string[];
   labels?: string[];
@@ -13,6 +14,7 @@ export interface ChefDataProps {
   };
   cuisines?: string[];
   location?: string;
+  coordinates: { latitude: number; longitude: number };
   isActive?: boolean;
   onCardClick?: (index: number) => void | undefined;
   activeCard: number;
