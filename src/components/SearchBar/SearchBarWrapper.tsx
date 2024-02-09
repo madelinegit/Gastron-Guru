@@ -16,11 +16,9 @@ interface SearchBarWrapperProps {
   renderCheckbox: boolean
   handleCheckboxToggle: () => void
   detailsShowing: boolean
-  toggleCardExpansion: (str: string) => void
   showModal: boolean
   handleModalToggle: () => void
   // modalData: boolean;
-  expandedCards: string[]
   handleSearch: (query: string) => void
 }
 
@@ -31,10 +29,8 @@ export default function SearchBarWrapper({
   renderCheckbox,
   handleCheckboxToggle,
   detailsShowing,
-  toggleCardExpansion,
   showModal,
   handleModalToggle,
-  expandedCards,
   handleSearch,
 }: SearchBarWrapperProps): JSX.Element {
   // specifies what this code intends to do, create search bar element

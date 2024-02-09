@@ -48,16 +48,16 @@
 //     }
 //     const filters = useFilterSelector()
 //     const sort = useSortSelector()
-//     let filteredData
+//     let filteredRawData
 
 //     if (
 //       (filters.length === 1 && filters[0] === 'All') ||
 //       filters.length === 0
 //     ) {
-//       filteredData = rawChefData
+//       filteredRawData = rawChefData
 //       // dispatch(setFilter('All'))
 //     } else {
-//       filteredData = rawChefData?.filter((chef) => {
+//       filteredRawData = rawChefData?.filter((chef) => {
 //         return filters.some((filter) => {
 //           // Check if any of the filters match cuisines, private, or labels
 //           return (
@@ -67,22 +67,22 @@
 //           )
 //         })
 //       })
-//       console.log({ filteredData })
+//       console.log({ filteredRawData })
 //     }
 
-//     if (!filteredData) {
-//       filteredData = rawChefData
+//     if (!filteredRawData) {
+//       filteredRawData = rawChefData
 //     }
-//     let sortedData = filteredData // remove once switch for sorting is working
+//     let sortedData = filteredRawData // remove once switch for sorting is working
 //     // switch (sort) {
 //     //   case 'Distance from centre':
-//     //     sortedData = filteredData?.sort((a, b) => a.distance - b.distance)
+//     //     sortedData = filteredRawData?.sort((a, b) => a.distance - b.distance)
 //     //     break
 //     //   case 'Discount':
-//     //     sortedData = filteredData?.sort((a, b) => b.discount - a.discount)
+//     //     sortedData = filteredRawData?.sort((a, b) => b.discount - a.discount)
 //     //     break
 //     //   default:
-//     //     sortedData = filteredData?.sort((a, b) => b.rating - a.rating)
+//     //     sortedData = filteredRawData?.sort((a, b) => b.rating - a.rating)
 //     // }
 
 //     return sortedData
@@ -188,17 +188,11 @@
 
 // export default ChefsDatabase
 import { useEffect, useState } from 'react'
-import ArrowButton from '../../components/Buttons/ArrowButton'
 import ChefCards from '../../components/ChefCards'
 import { ChefDataProps } from '../../components/ChefCards/types'
 import ChefDetail from '../../components/ChefDetail/ChefDetail'
-import SwitchInput from '../../components/Inputs/SwitchInput'
 import { LoadingSpinner } from '../../components/LoadingSpinner'
 import Map from '../../components/Map/Map'
-// import MockNarrowContainer from '../../components/Modal/MockNarrowContainer';
-// import Modal from '../../components/Modal/Modal';
-// import ModalCard from '../../components/Modal/ModalCard';
-//import SearchBar from '../../components/SearchBar';
 import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper'
 import useChef from '../../utils/Api'
 import { modalData } from '../../utils/Data'
@@ -212,9 +206,12 @@ import {
 import useChefsDatabaseEffects from './useChefsDatabaseEffects'
 import '../../components/LoadingSpinner/LoadingSpinner.scss'
 import useSearchChefs from '../../utils/useSeachChefs'
+import { useDispatch } from 'react-redux'
+import { getChefDataFilterSort } from '../../utils/helpers'
 
 const ChefsDatabase = () => {
-  const [loading, setLoading] = useState<boolean>(true)
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState<boolean>(false)
   const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
@@ -224,12 +221,9 @@ const ChefsDatabase = () => {
   const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
 
   const [sortedChefCards, setSortChefCards] = useState<ChefDataProps[]>([])
-  const chefData = useChef()
+  const chefData = getChefDataFilterSort()
   const { showModal, handleModalToggle } = useModal()
 
-  const { expandedCards, toggleCardExpansion } = useCardExpansion(
-    modalData[0].label
-  )
   const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing
   const { searchResults, handleSearch } = useSearchChefs(chefData)
   const [activeCard, setActiveCard] = useState<number>(0)
@@ -238,60 +232,35 @@ const ChefsDatabase = () => {
     setActiveCard(index)
   }
 
-  useEffect(() => {
-    try {
-      chefData
-    } catch (error) {
-      console.log('An error occurred...')
-      setLoading(true)
-    }
-    return () => {
-      console.log('Done!')
-      setLoading(false)
-    }
-  }, [chefData])
-
-  // sort chef cards by ratings (high to low)
-  useChefsDatabaseEffects({ chefData, setSortChefCards })
+  // useEffect(() => {
+  //   try {
+  //     chefData
+  //   } catch (error) {
+  //     console.log('An error occurred...')
+  //     setLoading(true)
+  //   }
+  //   return () => {
+  //     console.log('Done!')
+  //     setLoading(false)
+  //   }
+  // }, [chefData])
 
   return (
     <div className={`${loading && 'spinner-wrapper'}`}>
-      {/* <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
-      {showModal && (
-        <Modal>
-          <MockNarrowContainer>
-            {' '}
-            {modalData.map((card) => (
-              <ModalCard
-                key={card.label}
-                {...card}
-                isExpanded={expandedCards.includes(card.label)}
-                onToggleExpansion={() => toggleCardExpansion(card.label)}
-              />
-            ))}
-          </MockNarrowContainer>
-        </Modal>
-      )}
-      <SwitchInput
-        isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
-        onToggle={handleSwitchToggle}
-      /> */}
-
       <SearchBarWrapper
         handleCheckboxToggle={handleCheckboxToggle}
         handleSwitchToggle={handleSwitchToggle}
-        expandedCards={expandedCards}
         isSwitchChecked={isSwitchChecked}
         isOverrideActive={isOverrideActive}
         renderCheckbox={renderCheckbox}
         detailsShowing={detailsShowing}
         showModal={showModal}
-        toggleCardExpansion={toggleCardExpansion}
         handleModalToggle={handleModalToggle}
         handleSearch={handleSearch}
       />
       {loading && <LoadingSpinner />}
 
+      {/* TODO: Thesse cards need the filtered and sorted data. searchResults needs the sorted and filtered cards set to it. (Make sure that this is a useSelector for it to be current?) */}
       {searchResults.length === 0 ? (
         <ChefCards
           chefData={chefData}
