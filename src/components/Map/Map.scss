@@ -1,0 +1,30 @@
+.map-container {
+  width: 600px;
+  height: 600px;
+}
+
+.map-marker {
+  border-radius: 5px;
+  background-color: $dark-blue;
+  color: $white;
+  width: 150px;
+  height: 40px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 64px;
+    width: 16px;
+    height: 16px;
+    z-index: 3;
+    background-color: $dark-blue;
+    transform: rotate(45deg);
+  }
+}
