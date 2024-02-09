@@ -10,6 +10,8 @@ $breakpoint-xs: 320px;
 $breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
+$breakpoint-4k: 2560px;
 
 @mixin responsive-font-size($lg-size, $md-size, $sm-size) {
   font-size: $sm-size;
@@ -74,18 +76,25 @@ h2 {
   @include responsive-font-size(50px, 42px, 32px);
 }
 
+h3 {
+  @include responsive-font-size(36px, 30px, 24px);
+}
+
 h1,
 h3 {
   font-family: PoppinsBlack, sans-serif;
 }
+
+h2,
+h4,
+label {
+  font-family: PoppinsBold, sans-serif;
+}
+
 h4 {
   font-family: PoppinsBold, sans-serif;
+  font-size: 18;
 }
-
-h2 {
-  font-family: PoppinsBold, sans-serif;
-}
-
 p {
   @include responsive-font-size(18px, 16px, 14px);
   font-family: Helvetica, sans-serif;

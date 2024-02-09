@@ -11,6 +11,7 @@ import FilterRadioCard from '../ModalCardComps/FilterRadioCard'
 import SortByCard from '../ModalCardComps/SortByCard'
 import ArrowButton from '../../Buttons/ArrowButton'
 import { findAllFilters } from '../../../utils/helpers'
+import './Modalv3.scss'
 
 interface ModalV3Props {
   handleFilterChange: (selectedFilter: string) => void

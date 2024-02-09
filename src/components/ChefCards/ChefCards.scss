@@ -6,7 +6,7 @@
   overflow-x: scroll;
   overflow-y: hidden;
   gap: 12px;
-  padding: 0 85px 35px 85px;
+  padding: 50px 85px 35px 85px;
 
   .chef-card {
     @media (max-width: $breakpoint-md) {
@@ -17,7 +17,7 @@
 }
 
 .chef-card-container-grid {
-  background-color: $light-black;
+  background-color: $black;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -31,6 +31,11 @@
       margin: 0 0 30px 0;
     }
   }
+}
+
+.conditional-border {
+  border: 3pt solid $gold;
+  padding: 0;
 }
 
 .chef-card {

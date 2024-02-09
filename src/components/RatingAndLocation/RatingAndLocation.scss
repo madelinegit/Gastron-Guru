@@ -10,17 +10,17 @@
     width: auto;
 
     p {
-      font-family: 'Helvetica', sans-serif;
+      font-family: "Helvetica", sans-serif;
       font-size: 11.5px;
     }
-  
+
     svg {
       display: inline-flex;
       width: 14px;
-      
+
       path {
-      border: 2px solid #ccc;
-      fill: $gold;
+        border: 2px solid #ccc;
+        fill: $gold;
       }
     }
   }

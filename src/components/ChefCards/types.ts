@@ -15,5 +15,5 @@ export interface ChefDataProps {
   location?: string
   isActive?: boolean
   onCardClick?: (index: number) => void | undefined
-  activeCard?: number
+  activeCard: number
 }

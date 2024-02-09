@@ -23,6 +23,36 @@
   }
 }
 
+.button-dark {
+  height: 38px;
+  background-color: $light-black;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-blue {
+  height: 38px;
+  background-color: $blue;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  font-size: 14px;
+  text-align: center;
+  color: $light-black;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .modal-btn {
   background-color: $gold;
   height: 37px;
@@ -34,10 +64,25 @@
   cursor: pointer;
   display: flex;
   margin-left: 40px;
-  font: bold 14px "Poppins";
+  font: bold 14px 'Poppins';
 
   @media (max-width: $breakpoint-sm) {
     margin-left: 14px;
     margin-top: 15px;
   }
+}
+
+.dark-blue-btn {
+  background-color: $dark-blue;
+  color: $white;
+
+  font-size: responsive-font-size(14px, 12px, 10px);
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 0.25px;
+
+  border: none;
+  border-radius: 5px;
+  padding: 14px 10px;
+
+  cursor: pointer;
 }
