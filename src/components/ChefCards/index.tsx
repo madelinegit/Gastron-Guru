@@ -22,11 +22,11 @@ const ChefCard = ({
   const handleClick = () => {
     onCardClick(isActive ? activeCard : -1);
   };
-  const slides = featuredImages?.map((url, index) => ({
-    title: `Slide ${index + 1}`,
-    url: url,
-  {}  console.log(url) }
-  }));
+  // const slides = featuredImages?.map((url, index) => ({
+  //   title: `Slide ${index + 1}`,
+  //   url: url,
+  // {}  console.log(url) }
+  // }));
 
   
   return (
@@ -35,7 +35,8 @@ const ChefCard = ({
       className={isActive ? "chef-card conditional-border" : "chef-card"}
     >
       <div className="thumbnail">
-        <ImageSlider slides={slides} parentWidth={100} />
+        <ImageSlider parentWidth={100} slides={featuredImages}/>
+        {/* {slides.map()<ImageSlider slides={slides} parentWidth={100} />} */}
       </div>
 
       <h3>{name}</h3>

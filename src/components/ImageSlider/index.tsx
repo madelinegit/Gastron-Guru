@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import './ImageSlider.scss';
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import "./ImageSlider.scss";
 
 export interface Slide {
   title: string;
@@ -11,7 +11,6 @@ interface ImageSliderProps {
 }
 
 const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
-   const {{title, url}} = slides
   const timerRef: React.MutableRefObject<number | null> = useRef(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const goToNext = useCallback((): void => {
@@ -37,24 +36,26 @@ const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
   }
   const goToPrevious = (): void => {
     const isFirstSlide: boolean = currentIndex === 0;
-    const newIndex: number = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    const newIndex: number = isFirstSlide
+      ? slides.length - 1
+      : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
   const getSlideStylesWithBackground = (index: number) => ({
-    height: '100%',
-    borderTopLeftRadius: '4px',
-    borderTopRightRadius: '4px',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
+    height: "100%",
+    borderTopLeftRadius: "4px",
+    borderTopRightRadius: "4px",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
     backgroundImage: `url(${slides[index].url})`,
-    width: `${parentWidth}px`
+    width: `${parentWidth}px`,
   });
   const getSlidesStylesContainerWithWidth = () => ({
-    display: 'flex',
-    height: '100%',
-    transition: 'transform ease-out 0.3s',
+    display: "flex",
+    height: "100%",
+    transition: "transform ease-out 0.3s",
     width: parentWidth * slides.length,
-    transform: `translateX(${-(currentIndex * parentWidth)}px)`
+    transform: `translateX(${-(currentIndex * parentWidth)}px)`,
   });
   const renderSlides = () => {
     return slides.map((_, index: number) => (
@@ -64,10 +65,20 @@ const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
   return (
     <div className="slider">
       <div className="slider-shadow" />
-      <span tabIndex={0} className="left-arrow" onClick={goToPrevious} onKeyDown={goToPrevious}>
+      <span
+        tabIndex={0}
+        className="left-arrow"
+        onClick={goToPrevious}
+        onKeyDown={goToPrevious}
+      >
         <i className="fa-solid fa-chevron-left fa-lg"></i>
       </span>
-      <span tabIndex={0} className="right-arrow" onClick={goToNext} onKeyDown={goToNext}>
+      <span
+        tabIndex={0}
+        className="right-arrow"
+        onClick={goToNext}
+        onKeyDown={goToNext}
+      >
         <i className="fa-solid fa-chevron-right fa-lg"></i>
       </span>
       <div className="slider-container-overflow">
