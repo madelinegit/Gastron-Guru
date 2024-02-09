@@ -22,12 +22,6 @@ interface ActionReducerObject {
   type: string
   payload: string
 }
-const filterRatingOptions: string[] = [
-  'All',
-  'At least 2 stars',
-  'At least 3 stars',
-  'At least 4 stars',
-]
 
 const rootReducer = (
   state = initialState,

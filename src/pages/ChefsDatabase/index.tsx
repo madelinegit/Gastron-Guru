@@ -102,12 +102,7 @@ const ChefsDatabase = () => {
           {renderCheckbox && detailsShowing && (
             <ChefDetail activeCard={activeCard} />
           )}
-          {(isSwitchChecked || isOverrideActive) && (
-            <div>
-              <div className="mockMap">Map</div>
-              {/* <Map /> */}
-            </div>
-          )}
+          {(isSwitchChecked || isOverrideActive) && <div>{/* <Map /> */}</div>}
         </section>
       )}
     </div>

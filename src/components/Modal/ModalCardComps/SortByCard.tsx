@@ -16,7 +16,6 @@ const SortByCard = ({
 }: SortByCardProps) => {
   const sortingOptions = ['Rating', 'Number of Reviews', 'Distance from Centre']
   const cardFor = 'Sort by:'
-  console.log(handleSortChange)
   return (
     <article className="modalCard">
       <div className="modalCard-header">

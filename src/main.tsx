@@ -26,7 +26,6 @@ const router = createBrowserRouter([
       {
         path: 'chefs-database',
         element: <ChefsDatabase />,
-        //element: <Tester />, //change to <ChefsDatabase /> before push
       },
       {
         path: 'user-registration',

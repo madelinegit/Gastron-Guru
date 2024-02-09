@@ -10,7 +10,7 @@ import FilterButtonCard from '../ModalCardComps/FilterButtonCard'
 import FilterRadioCard from '../ModalCardComps/FilterRadioCard'
 import SortByCard from '../ModalCardComps/SortByCard'
 import ArrowButton from '../../Buttons/ArrowButton'
-import { findAllFilters } from '../../../utils/helpers'
+import { findAllFilters, filterRatingOptions } from '../../../utils/helpers'
 import './Modalv3.scss'
 
 interface ModalV3Props {
@@ -24,18 +24,11 @@ const Modalv3 = ({
   handleSortChange,
   handleRatingFilterChange,
 }: ModalV3Props) => {
-  // const dispatch = useDispatch()
   const filterTabs = ['Discounts', 'Cuisines', 'Tags', 'Rating']
   const modalTabName = ['Sort by:', 'Discounts', 'Cuisines', 'Tags', 'Rating']
-  const ratingList = [
-    'All',
-    'At least 3 stars',
-    'At least 2 stars',
-    'At least 4 stars',
-  ]
+  const ratingList = filterRatingOptions
   let selectSortBy: string = useSortSelector()
   let filtersSelected: string[] = useFilterSelector()
-  console.log({ selectSortBy, filtersSelected })
   const { expandedCards, toggleCardExpansion } = useCardExpansion(
     modalTabName[0]
   )

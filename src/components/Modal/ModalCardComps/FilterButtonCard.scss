@@ -1,11 +1,13 @@
+@import '../../../styles/colors.scss';
+
 .activeFilter {
-  background-color: rgb(30, 36, 52);
+  background-color: $dark-blue;
   font-weight: bold;
-  color: white;
+  color: $white;
 }
 
 .inactiveFilter {
-  background-color: rgb(145, 167, 226);
+  background-color: $blue;
   color: black;
 }
 

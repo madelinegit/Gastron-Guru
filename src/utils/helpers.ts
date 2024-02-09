@@ -113,6 +113,13 @@ export const useCardExpansion = (firstLabel: string): CardExpansionHelper => {
   }
 }
 
+export const filterRatingOptions: string[] = [
+  'All',
+  'At least 3 stars',
+  'At least 2 stars',
+  'At least 4 stars',
+]
+
 export const findAllFilters = (chefData: ChefDataProps[]) => {
   interface Filters {
     cuisinesList: string[]
