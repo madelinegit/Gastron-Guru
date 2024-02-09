@@ -38,7 +38,6 @@ export default function SearchBar({ handleSearch }: SearchBarProps) {
     }
   }
   return (
-    //do we want the searching to be updating the filter in realtime? (onSubmit vs onChange)
     <form className="search-input-group" onSubmit={handleFormSubmit}>
       <FontAwesomeIcon icon={faMagnifyingGlass} className="light-icon" />
       <input
