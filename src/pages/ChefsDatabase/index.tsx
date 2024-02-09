@@ -5,7 +5,7 @@ import { ChefDataProps } from "../../components/ChefCards/types";
 import ChefDetail from "../../components/ChefDetail/ChefDetail";
 import SwitchInput from "../../components/Inputs/SwitchInput";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
-import Map from "../../components/Map/Map";
+import GoogleMaps from "../../components/Map/Map";
 import MockNarrowContainer from "../../components/Modal/MockNarrowContainer";
 import Modal from "../../components/Modal/Modal";
 import ModalCard from "../../components/Modal/ModalCard";
@@ -123,7 +123,7 @@ const ChefsDatabase = () => {
           {(isSwitchChecked || isOverrideActive) && (
             <div>
               <h1>Map</h1>
-              <Map />
+              <GoogleMaps />
             </div>
           )}
           {renderCheckbox && detailsShowing && <h1>Details</h1>}
