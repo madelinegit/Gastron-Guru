@@ -19,7 +19,7 @@ import './ChefsDatabase.scss'
 
 const ChefsDatabase = () => {
   //NOTE: This dispatch is being used for helper functions that require redux.  VSCODE is not recognizing this as being used, but it is.
-  const dispatch = useDispatch() //DO NOT REMOVE
+  const dispatch = useDispatch()
   //DO NOT REMOVE ABOVE DISPATCH
 
   const [loading, setLoading] = useState<boolean>(true)
