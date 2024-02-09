@@ -29,8 +29,8 @@ const Modalv3 = ({
   const modalTabName = ['Sort by:', 'Discounts', 'Cuisines', 'Tags', 'Rating']
   const ratingList = [
     'All',
-    'At least 2 stars',
     'At least 3 stars',
+    'At least 2 stars',
     'At least 4 stars',
   ]
   let selectSortBy: string = useSortSelector()
@@ -45,6 +45,7 @@ const Modalv3 = ({
 
   return (
     <section className="outerModalContainer">
+      <span className="ModalUIArrow"></span>
       <div className="innerModalContainer">
         <SortByCard
           sortBy={selectSortBy}
@@ -56,8 +57,8 @@ const Modalv3 = ({
         <article className="modalCard">
           <h2>Filter by:</h2>
           {filterTabs.map((option) => (
-            <div key={option} className="filterCard">
-              <div className="cardHeader">
+            <div key={option} className="modalCard">
+              <div className="modalCard-header">
                 <h2>{option}</h2>
                 <ArrowButton
                   handleBtnToggle={() => toggleCardExpansion(option)}
@@ -65,7 +66,7 @@ const Modalv3 = ({
                 />
               </div>
               {expandedCards.includes(option) && (
-                <ul>
+                <ul className="modalCard-List">
                   {option === 'Discounts' && (
                     <FilterButtonCard
                       btnArr={filterOptions.discountsList || []}

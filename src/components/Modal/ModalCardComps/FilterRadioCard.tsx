@@ -1,5 +1,5 @@
 import { useFilterRatingSelector } from '../../../store/Conventional/selectors'
-
+import './FilterRadioCard.scss'
 interface FilterRadioCardProps {
   radioArr: string[]
   radioHandle: (radio: string) => void
@@ -16,6 +16,7 @@ const FilterRadioCard = ({ radioArr, radioHandle }: FilterRadioCardProps) => {
             value={radio}
             checked={filterRatingChoice === radio}
             onChange={() => radioHandle(radio)}
+            className="modalFilterRadio"
           />
           <label htmlFor={radio}>{radio}</label>
         </li>

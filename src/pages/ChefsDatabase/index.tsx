@@ -194,16 +194,12 @@ import ChefDetail from '../../components/ChefDetail/ChefDetail'
 import { LoadingSpinner } from '../../components/LoadingSpinner'
 import Map from '../../components/Map/Map'
 import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper'
-import useChef from '../../utils/Api'
-import { modalData } from '../../utils/Data'
 import {
-  useCardExpansion,
   useCheckboxToggle,
   useModal,
   useSwitchToggle,
   useWindowResize,
 } from '../../utils/helpers'
-import useChefsDatabaseEffects from './useChefsDatabaseEffects'
 import '../../components/LoadingSpinner/LoadingSpinner.scss'
 import useSearchChefs from '../../utils/useSeachChefs'
 import { useDispatch } from 'react-redux'
@@ -260,7 +256,6 @@ const ChefsDatabase = () => {
       />
       {loading && <LoadingSpinner />}
 
-      {/* TODO: Thesse cards need the filtered and sorted data. searchResults needs the sorted and filtered cards set to it. (Make sure that this is a useSelector for it to be current?) */}
       {searchResults.length === 0 ? (
         <ChefCards
           chefData={chefData}

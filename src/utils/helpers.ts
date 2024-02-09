@@ -81,7 +81,8 @@ export const replaceWords = (word: string): string => {
 
 // logic for Modal Component
 export const useModal = () => {
-  const [showModal, setShowModal] = useState<boolean>(false)
+  //CHANGE TO FALSE B4 PUSH
+  const [showModal, setShowModal] = useState<boolean>(true) //CHANGE TO FALSE B4 PUSH
 
   const handleModalToggle = () => {
     setShowModal((prev) => !prev)
@@ -208,7 +209,7 @@ export const getChefDataFilterSort = () => {
     dispatch(changeSort('Rating'))
   }
   switch (sort) {
-    //from centre of what exactly? Also rn these are strings. this sort will probably not work as intended.
+    //from centre of what exactly? Do we need to take in user location?
     case 'Distance from Centre':
       sortedData = finalFilteredData?.sort((a, b) => {
         let distanceA = parseFloat(a.distance_from_centre)
@@ -216,9 +217,10 @@ export const getChefDataFilterSort = () => {
         return distanceA - distanceB
       })
       break
-    case 'Discount':
-      //need to know how to value the discounts
-      sortedData = finalFilteredData?.sort((a, b) => b.discount - a.discount)
+    case 'Number of Reviews':
+      sortedData = finalFilteredData?.sort(
+        (a, b) => b.rating.number_of_ratings - a.rating.number_of_ratings
+      )
       break
     default:
       sortedData = finalFilteredData?.sort(
@@ -226,4 +228,12 @@ export const getChefDataFilterSort = () => {
       )
   }
   return sortedData
+}
+export const removeBadDiscount = (discount: string[]) => {
+  const badDiscounts: string[] = ['currently unavailable', 'no discount']
+  if (discount.some((item) => badDiscounts.includes(item))) {
+    return discount.filter((item) => !badDiscounts.includes(item))
+  } else {
+    return discount
+  }
 }

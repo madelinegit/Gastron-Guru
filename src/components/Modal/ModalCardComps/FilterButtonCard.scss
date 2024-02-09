@@ -1,10 +1,25 @@
 .activeFilter {
-  background-color: red;
-  color: white;
+  background-color: rgb(30, 36, 52);
   font-weight: bold;
+  color: white;
 }
 
 .inactiveFilter {
-  background-color: black;
-  color: green;
+  background-color: rgb(145, 167, 226);
+  color: black;
+}
+
+.modalBtn {
+  opacity: 1;
+
+  font-family: 'Helvetica-Regular';
+  font-size: 10px;
+  font-weight: 400;
+  font-style: Regular;
+  letter-spacing: 0px;
+  text-align: center;
+  height: 24px;
+  width: 50px;
+  border-radius: 4px;
+  border: none;
 }

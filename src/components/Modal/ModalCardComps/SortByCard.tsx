@@ -1,5 +1,6 @@
 import ArrowButton from '../../Buttons/ArrowButton'
-
+import '../Modalv3/Modalv3.scss'
+import './FilterRadioCard.scss'
 interface SortByCardProps {
   expandedCards: string[]
   toggleCardExpansion: (cardName: string) => void
@@ -18,7 +19,7 @@ const SortByCard = ({
   console.log(handleSortChange)
   return (
     <article className="modalCard">
-      <div className="cardHeader">
+      <div className="modalCard-header">
         <h2>Sort by:</h2>
         <ArrowButton
           handleBtnToggle={() => toggleCardExpansion(cardFor)}
@@ -26,7 +27,7 @@ const SortByCard = ({
         />
       </div>
       {expandedCards.includes(cardFor) && (
-        <ul>
+        <ul className="modalCard-List">
           {sortingOptions.map((option) => (
             <li key={option}>
               <input
@@ -35,6 +36,7 @@ const SortByCard = ({
                 value={option}
                 checked={sortBy === option}
                 onChange={() => handleSortChange(option)}
+                className="modalFilterRadio"
               />
               <label htmlFor={option}>{option}</label>
             </li>

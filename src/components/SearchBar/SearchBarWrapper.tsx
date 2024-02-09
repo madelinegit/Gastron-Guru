@@ -42,7 +42,11 @@ export default function SearchBarWrapper({
       <div className="mini-searchbar-wrapper">
         <div className="arrow-button-filter">
           <p className="white">Filter</p>
-          <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
+          <ArrowButton
+            handleBtnToggle={handleModalToggle}
+            state={showModal}
+            isModalTrigger={true}
+          />
           {showModal && <ModalWithSortingAndFiltering />}
         </div>
 

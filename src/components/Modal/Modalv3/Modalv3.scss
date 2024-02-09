@@ -1,3 +1,129 @@
+@import '../../../styles/colors.scss';
 .outerModalContainer {
   background-color: white;
+  position: absolute;
+  top: 78px;
+  left: -26px;
+  z-index: 2;
+  max-height: 511px;
+  width: 423px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 4px rgba(183, 183, 183, 0.78);
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ModalUIArrow {
+  position: absolute;
+  background-color: transparent;
+  top: -25px;
+  left: 68px;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent; /* half of the width */
+  border-right: 20px solid transparent; /* half of the width */
+  border-bottom: 22px solid rgba(0, 0, 0, 0.5); /* height of the triangle */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 1px; /* Adjust positioning as needed */
+    left: -17px; /* Adjust positioning as needed */
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent; /* half of the width */
+    border-right: 18px solid transparent; /* half of the width */
+    border-bottom: 20px solid white; /* height of the triangle */
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: white;
+    height: 22px;
+    width: 22px;
+    top: 18px;
+    left: -10px;
+    z-index: 4;
+  }
+}
+.innerModalContainer {
+  width: 85%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: $black;
+    margin: 10px;
+    width: 88%;
+    height: 26px;
+    text-align: start;
+  }
+}
+
+.modalCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  padding: 10px;
+  width: 100%;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid rgb(151, 151, 151);
+  }
+  h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: $black;
+    margin: 10px;
+    width: 163px;
+    height: 26px;
+  }
+}
+
+.modalCard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: $black;
+    margin: 10px;
+    width: 163px;
+    height: 26px;
+  }
+}
+
+.modalCard-List {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  li label {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Helvetica', sans-serif;
+    margin-left: 10px;
+    width: 116px;
+    text-wrap: wrap;
+    overflow-x: none;
+    display: inline-block;
+  }
+  li {
+    display: flex;
+    align-items: center;
+  }
 }

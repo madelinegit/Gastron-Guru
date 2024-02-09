@@ -2,14 +2,16 @@
 .arrowBtn {
   font-size: 21px;
   color: $light-black;
-  background-color: $white;
+  background-color: transparent;
   border: none;
+  height: 26px;
+  width: 26px;
 }
 
-.arrowBtn-inactive {
-  transform: rotate(180deg);
-  background-color: $white;
+.modalChevronColor {
+  color: $white;
+  position: relative;
+}
+.modalTabChevronColor {
   color: $light-black;
-  border: none;
-  font-size: 21px;
 }
