@@ -1,11 +1,11 @@
-import { useFilterSelector } from '../../../store/Conventional/selectors'
+import { useFilterRatingSelector } from '../../../store/Conventional/selectors'
 
 interface FilterRadioCardProps {
   radioArr: string[]
   radioHandle: (radio: string) => void
 }
 const FilterRadioCard = ({ radioArr, radioHandle }: FilterRadioCardProps) => {
-  const filterRatingChoice = useFilterSelector()
+  const filterRatingChoice = useFilterRatingSelector()
   return (
     <>
       {radioArr.map((radio: string) => (
@@ -14,7 +14,7 @@ const FilterRadioCard = ({ radioArr, radioHandle }: FilterRadioCardProps) => {
             type="radio"
             name="filter"
             value={radio}
-            checked={filterRatingChoice.includes(radio)}
+            checked={filterRatingChoice === radio}
             onChange={() => radioHandle(radio)}
           />
           <label htmlFor={radio}>{radio}</label>

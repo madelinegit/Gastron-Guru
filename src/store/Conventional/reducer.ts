@@ -1,21 +1,38 @@
-import { SET_FILTER, CHANGE_SORT, CHEF_LOADING } from './actionTypes'
+import {
+  SET_FILTER,
+  CHANGE_SORT,
+  CHEF_LOADING,
+  FILTER_RATINGS,
+} from './actionTypes'
 
-const initialState = {
-  sortBy: 'Rating',
-  filter: ['All'],
-  chefData: {},
+export interface InitialState {
+  sortBy: string
+  filter: string[]
+  chefData: any[]
+  filterRating: string
 }
-const ratingFilters: string[] = [
+
+const initialState: InitialState = {
+  sortBy: 'Rating',
+  filter: [],
+  chefData: [],
+  filterRating: 'All',
+}
+interface ActionReducerObject {
+  type: string
+  payload: string
+}
+const filterRatingOptions: string[] = [
   'All',
   'At least 2 stars',
   'At least 3 stars',
   'At least 4 stars',
 ]
 
-const isRatingThere: string =
-  'All' || 'At least 2 stars' || 'At least 3 stars' || 'At least 4 stars'
-
-const rootReducer = (state = initialState, { type, payload }: any) => {
+const rootReducer = (
+  state = initialState,
+  { type, payload }: ActionReducerObject
+) => {
   switch (type) {
     case CHANGE_SORT:
       return {
@@ -23,23 +40,8 @@ const rootReducer = (state = initialState, { type, payload }: any) => {
         sortBy: payload,
       }
     case SET_FILTER:
-      //check if payload is a rating filter
-      if (ratingFilters.includes(payload)) {
-        //if the filter is not found in the list of filters, remove the old filter (want only one). then add new filter
-        if (!state.filter.includes(payload)) {
-          const removeOldRating = state.filter.filter(
-            (item) => item !== isRatingThere
-          )
-          return {
-            ...state,
-            filter: [...removeOldRating, payload],
-          }
-        }
-        //if payload is a rating and already in the filter, escape
-        return
-      }
-      //if payload is not a rating, check if it is in the filter. if it is, remove it. if not, add it
-      else if (state.filter.includes(payload)) {
+      //check if payload is in the filter. if it is, remove it. if not, add it
+      if (state.filter.includes(payload)) {
         return {
           ...state,
           filter: state.filter.filter((item) => item !== payload),
@@ -55,6 +57,11 @@ const rootReducer = (state = initialState, { type, payload }: any) => {
       return {
         ...state,
         chefData: payload,
+      }
+    case FILTER_RATINGS:
+      return {
+        ...state,
+        filterRating: payload,
       }
     default:
       return state

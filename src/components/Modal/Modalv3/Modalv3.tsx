@@ -16,9 +16,14 @@ import './Modalv3.scss'
 interface ModalV3Props {
   handleFilterChange: (selectedFilter: string) => void
   handleSortChange: (selectedSort: string) => void
+  handleRatingFilterChange: (selectedFilter: string) => void
 }
 
-const Modalv3 = ({ handleFilterChange, handleSortChange }: ModalV3Props) => {
+const Modalv3 = ({
+  handleFilterChange,
+  handleSortChange,
+  handleRatingFilterChange,
+}: ModalV3Props) => {
   // const dispatch = useDispatch()
   const filterTabs = ['Discounts', 'Cuisines', 'Tags', 'Rating']
   const modalTabName = ['Sort by:', 'Discounts', 'Cuisines', 'Tags', 'Rating']
@@ -85,7 +90,7 @@ const Modalv3 = ({ handleFilterChange, handleSortChange }: ModalV3Props) => {
                   {option === 'Rating' && (
                     <FilterRadioCard
                       radioArr={ratingList}
-                      radioHandle={handleFilterChange}
+                      radioHandle={handleRatingFilterChange}
                     />
                   )}
                 </ul>

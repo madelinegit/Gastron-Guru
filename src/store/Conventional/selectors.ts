@@ -1,18 +1,15 @@
 import { useSelector } from 'react-redux'
-import { ChefDataProps } from '../../components/ChefCards/types'
-
-interface RootState {
-  sortBy: string
-  filter: string[]
-  chefData?: ChefDataProps[]
-}
+import { InitialState } from './reducer'
 
 export const useSortSelector = () => {
-  return useSelector((state: RootState) => state.sortBy)
+  return useSelector((state: InitialState) => state.sortBy)
 }
 export const useFilterSelector = () => {
-  return useSelector((state: RootState) => state.filter)
+  return useSelector((state: InitialState) => state.filter)
 }
 export const useChefDataSelector = () => {
-  return useSelector((state: RootState) => state.chefData)
+  return useSelector((state: InitialState) => state.chefData)
+}
+export const useFilterRatingSelector = () => {
+  return useSelector((state: InitialState) => state.filterRating)
 }

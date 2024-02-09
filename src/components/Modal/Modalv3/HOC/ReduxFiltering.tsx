@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux'
 // import { useFilterSelector } from '../../../../store/Conventional/selectors'
-import { setFilter } from '../../../../store/Conventional/actionCreator'
+import {
+  setFilter,
+  filterRatings,
+} from '../../../../store/Conventional/actionCreator'
 
 const ReduxFiltering = (WrappedComponent: React.ComponentType<any>) => {
   const FilteringComponent = (props: any) => {
@@ -10,8 +13,15 @@ const ReduxFiltering = (WrappedComponent: React.ComponentType<any>) => {
     const handleFilterChange = (selectedFilter: string) => {
       dispatch(setFilter(selectedFilter))
     }
+    const handleRatingFilterChange = (selectedFilter: string) => {
+      dispatch(filterRatings(selectedFilter))
+    }
     return (
-      <WrappedComponent handleFilterChange={handleFilterChange} {...props} />
+      <WrappedComponent
+        handleFilterChange={handleFilterChange}
+        handleRatingFilterChange={handleRatingFilterChange}
+        {...props}
+      />
     )
   }
   return FilteringComponent
