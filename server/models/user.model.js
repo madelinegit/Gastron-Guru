@@ -6,9 +6,9 @@ module.exports = (mongoose) => {
     "User",
     mongoose.Schema(
       {
+        authID: { type: String, required: true, unique: true },
         name: { type: String, required: true, unique: false },
         email: { type: String, required: true, unique: true },
-        password: { type: String, required: true, unique: false },
         state: { type: String, required: false, unique: false },
         city: { type: String, required: false, unique: false },
         address: { type: String, required: false, unique: false },
