@@ -1,26 +1,24 @@
-import React from "react";
-import SwitchInput from "../Inputs/SwitchInput";
-import CheckboxInput from "../Inputs/CheckboxInput";
-import "./SearchBarWrapper.scss";
-import SearchBar from ".";
-import ArrowButton from "../Buttons/ArrowButton";
-import Modal from "../Modal/Modal";
-import ModalCard from "../Modal/ModalCard";
-import { modalData } from "../../utils/Data";
+import SwitchInput from '../Inputs/SwitchInput'
+import CheckboxInput from '../Inputs/CheckboxInput'
+import './SearchBarWrapper.scss'
+import SearchBar from '.'
+import ArrowButton from '../Buttons/ArrowButton'
+// import Modal from "../Modal/Modalv1/Modal";
+// import ModalCard from "../Modal/Modalv1/ModalCard";
+// import { modalData } from "../../utils/Data";
+import ModalWithSortingAndFiltering from '../Modal/Modalv3/FilterSortModal'
 
 interface SearchBarWrapperProps {
-  isSwitchChecked: boolean;
-  isOverrideActive: boolean;
-  handleSwitchToggle: () => void;
-  renderCheckbox: boolean;
-  handleCheckboxToggle: () => void;
-  detailsShowing: boolean;
-  toggleCardExpansion: (str: string) => void;
-  showModal: boolean;
-  handleModalToggle: () => void;
+  isSwitchChecked: boolean
+  isOverrideActive: boolean
+  handleSwitchToggle: () => void
+  renderCheckbox: boolean
+  handleCheckboxToggle: () => void
+  detailsShowing: boolean
+  showModal: boolean
+  handleModalToggle: () => void
   // modalData: boolean;
-  expandedCards: string[];
-  handleSearch: (query: string) => void;
+  handleSearch: (query: string) => void
 }
 
 export default function SearchBarWrapper({
@@ -30,10 +28,8 @@ export default function SearchBarWrapper({
   renderCheckbox,
   handleCheckboxToggle,
   detailsShowing,
-  toggleCardExpansion,
   showModal,
   handleModalToggle,
-  expandedCards,
   handleSearch,
 }: SearchBarWrapperProps): JSX.Element {
   // specifies what this code intends to do, create search bar element
@@ -45,19 +41,12 @@ export default function SearchBarWrapper({
       <div className="mini-searchbar-wrapper">
         <div className="arrow-button-filter">
           <p className="white">Filter</p>
-          <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
-          {showModal && (
-            <Modal>
-              {modalData.map((card) => (
-                <ModalCard
-                  key={card.label}
-                  {...card}
-                  isExpanded={expandedCards.includes(card.label)}
-                  onToggleExpansion={() => toggleCardExpansion(card.label)}
-                />
-              ))}
-            </Modal>
-          )}
+          <ArrowButton
+            handleBtnToggle={handleModalToggle}
+            state={showModal}
+            isModalTrigger={true}
+          />
+          {showModal && <ModalWithSortingAndFiltering />}
         </div>
 
         <div className="switch-and-check">
@@ -81,5 +70,5 @@ export default function SearchBarWrapper({
         </div>
       </div>
     </div>
-  );
+  )
 }

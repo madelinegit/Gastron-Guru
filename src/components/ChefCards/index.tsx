@@ -1,12 +1,11 @@
-import { capitalizeWords } from "../../utils/helpers";
-import RatingAndLocation from "../RatingAndLocation";
-import Ribbon from "../Ribbon";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { ChefDataProps } from "./types";
-import "./ChefCards.scss";
-import ImageSlider from "../ImageSlider";
-import Slide from "../ImageSlider";
+import { capitalizeWords } from '../../utils/helpers'
+import RatingAndLocation from '../RatingAndLocation'
+import Ribbon from '../Ribbon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { ChefDataProps } from './types'
+import './ChefCards.scss'
+import ImageSlider from '../ImageSlider'
 
 const ChefCard = ({
   name,
@@ -17,22 +16,17 @@ const ChefCard = ({
   onCardClick,
   activeCard,
   isActive,
-  "featured-images": featuredImages,
+  'featured-images': featuredImages,
 }: ChefDataProps & { onCardClick: (index: number) => void }) => {
   const handleClick = () => {
-    onCardClick(isActive ? activeCard : -1);
-  };
-  // const slides = featuredImages?.map((url, index) => ({
-  //   title: `Slide ${index + 1}`,
-  //   url: url,
-  // {}  console.log(url) }
-  // }));
+    onCardClick(isActive ? activeCard : -1)
+  }
 
   
   return (
     <div
       onClick={handleClick}
-      className={isActive ? "chef-card conditional-border" : "chef-card"}
+      className={isActive ? 'chef-card conditional-border' : 'chef-card'}
     >
       <div className="thumbnail">
         <ImageSlider parentWidth={100} slides={featuredImages}/>
@@ -67,8 +61,8 @@ const ChefCard = ({
         <button className="button-primary">Buy now</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 // CREATE SEPARATE COMPONENT..?
 const ChefCards = ({
@@ -77,10 +71,10 @@ const ChefCards = ({
   onCardClick,
   activeCard,
 }: {
-  chefData: ChefDataProps[];
-  isScrollEnabled: boolean;
-  onCardClick: (index: number) => void;
-  activeCard: number;
+  chefData: ChefDataProps[]
+  isScrollEnabled: boolean
+  onCardClick: (index: number) => void
+  activeCard: number
 }) => {
   return (
     <div
@@ -91,7 +85,7 @@ const ChefCards = ({
       }
     >
       {chefData.map((chef, index) => {
-        const isActive = index === activeCard;
+        const isActive = index === activeCard
         return (
           <>
             <ChefCard
@@ -102,10 +96,10 @@ const ChefCards = ({
               activeCard={activeCard}
             />
           </>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default ChefCards;
+export default ChefCards
