@@ -27,4 +27,11 @@
     background-color: $dark-blue;
     transform: rotate(45deg);
   }
+
+  &.highlighted {
+    background-color: $light-blue;
+    &:before {
+      background-color: $light-blue;
+    }
+  }
 }

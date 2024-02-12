@@ -117,7 +117,7 @@ const ChefsDatabase = () => {
           {(isSwitchChecked || isOverrideActive) && (
             <div>
               <h1>Map</h1>
-              <GoogleMaps />
+              <GoogleMaps activeChef={activeCard} />
             </div>
           )}
           {renderCheckbox && detailsShowing && <h1>Details</h1>}

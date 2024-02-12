@@ -1,55 +1,58 @@
-import { LoadScript } from "@react-google-maps/api";
-// GoogleMap,
 import { AdvancedMarker, Map, APIProvider } from "@vis.gl/react-google-maps";
-// import { ChefDataProps } from "../ChefCards/types";
-import "./Map.scss";
 import useChef from "../../utils/Api";
+import "./Map.scss";
 
-type MapProps = {
+type MarkerProps = {
   latitude: number;
   longitude: number;
   user_id: string;
   name?: string;
+  isActive: boolean;
 };
 
-const GoogleMaps = () => {
-  // const mapContainerStyle = {
-  //   width: "600px",
-  //   height: "600px",
-  // };
+type MapProps = {
+  activeChef: number;
+};
 
+const GoogleMaps = ({ activeChef }: MapProps) => {
   //please talk to Adam for key (need to set up .env)
   const GOOGLE_MAP_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY!;
   const chefData = useChef();
 
   return (
     <div className="map-container">
-      <LoadScript googleMapsApiKey={GOOGLE_MAP_API_KEY}>
-        <APIProvider apiKey={GOOGLE_MAP_API_KEY}>
-          <Map
-            mapId={GOOGLE_MAP_API_KEY}
-            defaultCenter={{ lat: 40.73061, lng: -73.935242 }}
-            defaultZoom={10}
-          >
-            {chefData.map((chef) => {
-              return (
-                <Marker
-                  key={chef.user_id}
-                  latitude={chef.coordinates.latitude}
-                  longitude={chef.coordinates.longitude}
-                  user_id={chef.user_id}
-                  name={chef.name}
-                />
-              );
-            })}
-          </Map>
-        </APIProvider>
-      </LoadScript>
+      <APIProvider apiKey={GOOGLE_MAP_API_KEY}>
+        <Map
+          mapId={GOOGLE_MAP_API_KEY}
+          defaultCenter={{ lat: 40.73061, lng: -73.935242 }}
+          defaultZoom={10}
+        >
+          {chefData.map((chef, index) => {
+            const isActive = index === activeChef;
+            return (
+              <Marker
+                key={chef.user_id}
+                latitude={chef.coordinates.latitude}
+                longitude={chef.coordinates.longitude}
+                user_id={chef.user_id}
+                name={chef.name}
+                isActive={isActive}
+              />
+            );
+          })}
+        </Map>
+      </APIProvider>
     </div>
   );
 };
 
-const Marker = ({ latitude, longitude, user_id, name }: MapProps) => {
+const Marker = ({
+  latitude,
+  longitude,
+  user_id,
+  name,
+  isActive,
+}: MarkerProps) => {
   return (
     <AdvancedMarker
       position={{
@@ -57,10 +60,9 @@ const Marker = ({ latitude, longitude, user_id, name }: MapProps) => {
         lng: longitude,
       }}
       key={user_id}
-      // className="map-marker"
+      className={`map-marker ${isActive && "highlighted"}`}
     >
-      {/* <span style={{ fontSize: "2rem" }}>🌳</span> */}
-      <div className="map-marker">{name}</div>
+      {name}
     </AdvancedMarker>
   );
 };
