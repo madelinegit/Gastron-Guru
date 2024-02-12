@@ -1,15 +1,15 @@
-import React from "react";
-import InputContainer from "./InputContainer";
-import "./CheckboxInput.scss";
+import React from 'react'
+import InputContainer from './InputContainer'
+import './CheckboxInput.scss'
 
 interface CheckboxInputProps {
-  checkboxDescription?: string;
-  onCheckboxToggle: () => void;
-  isChecked: boolean;
+  checkboxDescription?: string
+  onCheckboxToggle: () => void
+  isChecked: boolean
 }
 
 const CheckboxInput = ({
-  checkboxDescription = "Detail",
+  checkboxDescription = 'Detail',
   onCheckboxToggle,
   isChecked,
 }: CheckboxInputProps) => {
@@ -20,14 +20,14 @@ const CheckboxInput = ({
         name="detail"
         className="checkInput"
         checked={isChecked}
-        defaultChecked={true}
+        // defaultChecked={true}
         onChange={onCheckboxToggle}
       />
       <label htmlFor="details" className="checkInputLabel">
         {checkboxDescription}
       </label>
     </InputContainer>
-  );
-};
+  )
+}
 
-export default CheckboxInput;
+export default CheckboxInput

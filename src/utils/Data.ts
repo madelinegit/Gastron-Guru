@@ -1,4 +1,4 @@
-interface ModalDataProps {
+export interface ModalDataProps {
   label: string
   inputs: {
     label: string
@@ -11,15 +11,15 @@ export const modalData: ModalDataProps[] = [
     inputs: [
       {
         label: 'Price',
-        type: 'radio',
+        type: 'checkbox',
       },
       {
         label: 'Rating',
-        type: 'radio',
+        type: 'checkbox',
       },
       {
         label: 'Distance to centre',
-        type: 'radio',
+        type: 'checkbox',
       },
     ],
   },
@@ -28,30 +28,30 @@ export const modalData: ModalDataProps[] = [
     inputs: [
       {
         label: '5% off',
-        type: 'radio',
+        type: 'checkbox',
       },
       {
         label: '10% off',
-        type: 'radio',
+        type: 'checkbox',
       },
       {
         label: '25% off',
-        type: 'radio',
+        type: 'checkbox',
       },
-      { label: '> 25% off', type: 'radio' },
+      { label: '> 25% off', type: 'checkbox' },
     ],
   },
   {
     label: 'Cusines',
     inputs: [
-      { label: 'Italian', type: 'radio' },
-      { label: 'Indian', type: 'radio' },
+      { label: 'Italian', type: 'checkbox' },
+      { label: 'Indian', type: 'checkbox' },
     ],
   },
   {
     label: 'Tags',
     inputs: [
-      { label: 'Vegetarian', type: 'radio' },
+      { label: 'Vegetarian', type: 'checkbox' },
       { label: 'Vegan', type: 'checkbox' },
     ],
   },
