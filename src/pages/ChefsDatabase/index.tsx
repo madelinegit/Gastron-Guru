@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import ChefCards from '../../components/ChefCards'
-import { ChefDataProps } from '../../components/ChefCards/types'
 import ChefDetail from '../../components/ChefDetail/ChefDetail'
 import { LoadingSpinner } from '../../components/LoadingSpinner'
 import Map from '../../components/Map/Map'
@@ -83,11 +82,6 @@ const ChefsDatabase = () => {
 
       {!loading && searchResults.length === 0 ? (
         <ChefCards
-          chefData={chefData}
-          isScrollEnabled={isScrollEnabled}
-          onCardClick={onCardClick}
-          activeCard={activeCard}
-        />
           chefData={chefData}
           isScrollEnabled={isScrollEnabled}
           onCardClick={onCardClick}
