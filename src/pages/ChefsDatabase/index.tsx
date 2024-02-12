@@ -88,6 +88,11 @@ const ChefsDatabase = () => {
           onCardClick={onCardClick}
           activeCard={activeCard}
         />
+          chefData={chefData}
+          isScrollEnabled={isScrollEnabled}
+          onCardClick={onCardClick}
+          activeCard={activeCard}
+        />
       ) : (
         <ChefCards
           chefData={searchResults}
