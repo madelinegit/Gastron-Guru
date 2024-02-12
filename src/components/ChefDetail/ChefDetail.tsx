@@ -1,16 +1,16 @@
-import { capitalizeWords } from "../../utils/helpers";
-import "../Ribbon/Ribbon.scss";
-import "./ChefDetail.scss";
-import "../ChefCards/ChefCards.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Ribbon from "../Ribbon";
-import useChef from "../../utils/Api";
-import RatingAndLocation from "../RatingAndLocation";
+import { capitalizeWords } from '../../utils/helpers'
+import '../Ribbon/Ribbon.scss'
+import './ChefDetail.scss'
+import '../ChefCards/ChefCards.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import Ribbon from '../Ribbon'
+import useChef from '../../utils/Api'
+import RatingAndLocation from '../RatingAndLocation'
 
 const ChefDetail = ({ activeCard }: { activeCard: number }) => {
-  const chefData = useChef();
-  const chef = chefData[activeCard];
+  const chefData = useChef()
+  const chef = chefData[activeCard]
   const {
     rating,
     private: private_,
@@ -18,8 +18,8 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
     name,
     description,
     distance_from_centre,
-    ["featured-images"]: image,
-  } = chef || {};
+    ['featured-images']: image,
+  } = chef || {}
 
   return (
     <main className="main-detail">
@@ -30,12 +30,12 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
           ) : image?.[0] ? (
             <img src={image?.[0]} />
           ) : (
-            ""
+            ''
           )}
         </section>
         <section
           className="cd-miscal"
-          style={image ? { gridArea: "miscal" } : { gridArea: "img" }}
+          style={image ? { gridArea: 'miscal' } : { gridArea: 'img' }}
         >
           <p>
             <div className="cd-rating-location">
@@ -67,7 +67,7 @@ const ChefDetail = ({ activeCard }: { activeCard: number }) => {
         </section>
       </article>
     </main>
-  );
-};
+  )
+}
 
-export default ChefDetail;
+export default ChefDetail
