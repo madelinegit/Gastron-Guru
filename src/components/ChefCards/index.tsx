@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { ChefDataProps } from "./types";
 import "./ChefCards.scss";
+import ImageSlider from "../ImageSlider";
+import Slide from "../ImageSlider";
 
 const ChefCard = ({
   name,
@@ -20,14 +22,21 @@ const ChefCard = ({
   const handleClick = () => {
     onCardClick(isActive ? activeCard : -1);
   };
+  // const slides = featuredImages?.map((url, index) => ({
+  //   title: `Slide ${index + 1}`,
+  //   url: url,
+  // {}  console.log(url) }
+  // }));
 
+  
   return (
     <div
       onClick={handleClick}
       className={isActive ? "chef-card conditional-border" : "chef-card"}
     >
       <div className="thumbnail">
-        <img src={featuredImages?.[0]} alt="Chef Restaurant Images" />
+        <ImageSlider parentWidth={100} slides={featuredImages}/>
+        {/* {slides.map()<ImageSlider slides={slides} parentWidth={100} />} */}
       </div>
 
       <h3>{name}</h3>
