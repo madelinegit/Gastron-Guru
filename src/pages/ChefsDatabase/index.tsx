@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import ArrowButton from "../../components/Buttons/ArrowButton";
+// import ArrowButton from "../../components/Buttons/ArrowButton";
 import ChefCards from "../../components/ChefCards";
 import { ChefDataProps } from "../../components/ChefCards/types";
 import ChefDetail from "../../components/ChefDetail/ChefDetail";
-import SwitchInput from "../../components/Inputs/SwitchInput";
+// import SwitchInput from "../../components/Inputs/SwitchInput";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import GoogleMaps from "../../components/Map/Map";
 import MockNarrowContainer from "../../components/Modal/MockNarrowContainer";
 import Modal from "../../components/Modal/Modal";
 import ModalCard from "../../components/Modal/ModalCard";
-import SearchBar from "../../components/SearchBar";
+// import SearchBar from "../../components/SearchBar";
 import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
 import useChef from "../../utils/Api";
 import { modalData } from "../../utils/Data";
@@ -65,11 +65,9 @@ const ChefsDatabase = () => {
 
   return (
     <div className={`${loading && "spinner-wrapper"}`}>
-      <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
       {showModal && (
         <Modal>
           <MockNarrowContainer>
-            {" "}
             {modalData.map((card) => (
               <ModalCard
                 key={card.label}
@@ -81,10 +79,6 @@ const ChefsDatabase = () => {
           </MockNarrowContainer>
         </Modal>
       )}
-      <SwitchInput
-        isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
-        onToggle={handleSwitchToggle}
-      />
 
       <SearchBarWrapper
         handleCheckboxToggle={handleCheckboxToggle}

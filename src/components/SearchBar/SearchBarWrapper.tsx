@@ -34,13 +34,13 @@ export default function SearchBarWrapper({
   showModal,
   handleModalToggle,
   expandedCards,
-  handleSearch
+  handleSearch,
 }: SearchBarWrapperProps): JSX.Element {
   // specifies what this code intends to do, create search bar element
   return (
     <div className="search-bar">
       <div className="search-component">
-        <SearchBar handleSearch={handleSearch}/>
+        <SearchBar handleSearch={handleSearch} />
       </div>
       <div className="mini-searchbar-wrapper">
         <div className="arrow-button-filter">
@@ -48,17 +48,14 @@ export default function SearchBarWrapper({
           <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
           {showModal && (
             <Modal>
-              
-                {" "}
-                {modalData.map((card) => (
-                  <ModalCard
-                    key={card.label}
-                    {...card}
-                    isExpanded={expandedCards.includes(card.label)}
-                    onToggleExpansion={() => toggleCardExpansion(card.label)}
-                  />
-                ))}
-              
+              {modalData.map((card) => (
+                <ModalCard
+                  key={card.label}
+                  {...card}
+                  isExpanded={expandedCards.includes(card.label)}
+                  onToggleExpansion={() => toggleCardExpansion(card.label)}
+                />
+              ))}
             </Modal>
           )}
         </div>
@@ -72,8 +69,8 @@ export default function SearchBarWrapper({
             onToggle={handleSwitchToggle}
           />
           {/* //creates new instance of switchinput component */}
-          </div>
-          <div className = "checkdiv">
+        </div>
+        <div className="checkdiv">
           {renderCheckbox && (
             <CheckboxInput
               onCheckboxToggle={handleCheckboxToggle}
