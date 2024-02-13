@@ -99,7 +99,7 @@ const ChefsDatabase = () => {
       {isScrollEnabled && (
         <section className="mapDetail-Container-ChefDB">
           {renderCheckbox && detailsShowing && (
-            <ChefDetail activeCard={activeCard} />
+            <ChefDetail activeChef={chefData[activeCard]} />
           )}
           {(isSwitchChecked || isOverrideActive) && (
             <div>
