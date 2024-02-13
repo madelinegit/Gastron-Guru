@@ -104,7 +104,10 @@ const ChefsDatabase = () => {
           {(isSwitchChecked || isOverrideActive) && (
             <div>
               <h1>Map</h1>
-              <GoogleMaps activeChef={activeCard} />
+              <GoogleMaps
+                activeChef={chefData[activeCard]}
+                chefData={chefData}
+              />
             </div>
           )}
         </section>

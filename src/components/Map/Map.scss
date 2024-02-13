@@ -8,9 +8,10 @@
   background-color: $dark-blue;
   color: $white;
   width: 150px;
-  height: 40px;
+  height: 42px;
   position: relative;
   z-index: 2;
+  @include responsive-font-size(14px, 12px, 12px);
   display: flex;
   flex-direction: column;
   justify-content: center;

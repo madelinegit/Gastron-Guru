@@ -1,6 +1,7 @@
 import { AdvancedMarker, Map, APIProvider } from "@vis.gl/react-google-maps";
-import useChef from "../../utils/Api";
+// import useChef from "../../utils/Api";
 import "./Map.scss";
+import { ChefDataProps } from "../ChefCards/types";
 
 type MarkerProps = {
   latitude: number;
@@ -11,13 +12,14 @@ type MarkerProps = {
 };
 
 type MapProps = {
-  activeChef: number;
+  activeChef: { name: string };
+  chefData: ChefDataProps[];
 };
 
-const GoogleMaps = ({ activeChef }: MapProps) => {
+const GoogleMaps = ({ activeChef, chefData }: MapProps) => {
   //please talk to Adam for key (need to set up .env)
   const GOOGLE_MAP_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY!;
-  const chefData = useChef();
+  // const chefData = useChef();
 
   return (
     <div className="map-container">
@@ -27,8 +29,8 @@ const GoogleMaps = ({ activeChef }: MapProps) => {
           defaultCenter={{ lat: 40.73061, lng: -73.935242 }}
           defaultZoom={10}
         >
-          {chefData.map((chef, index) => {
-            const isActive = index === activeChef;
+          {chefData.map((chef) => {
+            const isActive = chef.name == activeChef.name;
             return (
               <Marker
                 key={chef.user_id}
