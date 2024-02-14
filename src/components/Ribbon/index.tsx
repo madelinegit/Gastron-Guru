@@ -11,7 +11,11 @@ const Ribbon = ({ label }: RibbonProps) => {
     ? discountPriority.filter((discount) => label.includes(discount))
     : [];
   return (
-    <div className="ribbon">
+    <div
+      className={`ribbon ${
+        !label || bestDiscount.length === 0 ? "hidden" : ""
+      }`}
+    >
       <p>{bestDiscount?.[0]}</p>
     </div>
   );
