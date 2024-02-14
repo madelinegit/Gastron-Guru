@@ -71,7 +71,7 @@ const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
         onClick={goToPrevious}
         onKeyDown={goToPrevious}
       >
-        <i className="fa-solid fa-chevron-left fa-lg"></i>
+        <i className="fa-solid fa-chevron-left fa-md"></i>
       </span>
       <span
         tabIndex={0}
@@ -79,7 +79,7 @@ const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
         onClick={goToNext}
         onKeyDown={goToNext}
       >
-        <i className="fa-solid fa-chevron-right fa-lg"></i>
+        <i className="fa-solid fa-chevron-right fa-md"></i>
       </span>
       <div className="slider-container-overflow">
         <div style={getSlidesStylesContainerWithWidth()}>{renderSlides()}</div>
