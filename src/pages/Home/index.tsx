@@ -1,4 +1,3 @@
-import React from 'react'
 import HomeBanner from '../../components/HomeBanner'
 import Benefits from '../../components/Benefits/index'
 import CookiesComponent from '../../components/CookiesComponent/CookiesComponent'
@@ -19,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
