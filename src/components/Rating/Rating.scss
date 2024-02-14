@@ -20,12 +20,6 @@
   background-color: $dark-blue;
   padding: 49px 70px;
 
-  h3 {
-    color: $white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-  }
-
   p {
     font-size: 17px;
   }
@@ -35,6 +29,29 @@
     margin-top: 24px;
     font-family: 'PoppinsMedium', sans-serif;
     border-radius: 11px;
+  }
+
+  .customer-reviews {
+    display: flex;
+    align-items: center;
+    margin-bottom: 11px;
+
+    svg {
+      width: 24px;
+      height: 22px;
+  
+      path {
+        fill: $gold;
+      }
+    }
+
+    h3 {
+      margin-left: 11px;
+      color: $white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: normal;
+    }
   }
   
   .sidebar-info {
@@ -92,6 +109,7 @@
   .dropdown {
     position: relative;
     display: inline-block;
+    margin-bottom: 27px;
 
     button.dropdown-btn {
       width: 180px;

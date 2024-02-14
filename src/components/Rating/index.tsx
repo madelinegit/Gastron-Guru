@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import './Rating.scss';
 
 const Rating = () => {
@@ -13,10 +13,18 @@ const Rating = () => {
       <div className="rating-sidebar">
         <section>
           <h2>Customer reviews</h2>
-          <h3>{/* STARS */} 4.3 out of 5</h3>
+          <div className="customer-reviews">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStarHalfStroke} />
+            <h3>4.3 out of 5</h3>
+          </div>
+
           <p>432 global ratings</p>
 
-          {/* ALL RATINGS */}
+          {/* INSERT ALL RATINGS HERE BASED ON REVIEWS MODAL */}
 
           <div className="sidebar-info">
             <FontAwesomeIcon icon={faChevronDown} size="xs" />
@@ -88,7 +96,7 @@ const Rating = () => {
             </p>
           </article>
 
-          <article>
+          <article className="reviews">
             <div className="user-info">
               <img src="https://placekitten.com/200/287" alt="User Avatar" />
               <p>Laura M.</p>
