@@ -1,0 +1,97 @@
+.multi-step-form {
+  width: 100%;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 20px;
+  }
+
+  h3.modal-title {
+    font-family: PoppinsBold, sans-serif;
+    margin-bottom: 36px;
+
+    @media (max-width: $breakpoint-sm) {
+      text-align: center;
+    }
+    @media (max-width: $breakpoint-md) {
+      text-align: center;
+    }
+  }
+
+  .dark-blue-btn .link {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .progress-status {
+    width: fit-content;
+    position: relative;
+    bottom: 110px;
+    left: 540px;
+
+    @media (max-width: $breakpoint-lg) {
+      bottom: 100px;
+      left: 450px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      bottom: 90px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      bottom: 95px;
+      left: 230px;
+    }
+  }
+
+  .page-container {
+    display: grid;
+
+    .title {
+      font-family: PoppinsBold;
+      margin-bottom: 10px;
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 14px;
+
+      .full-input {
+        grid-column: 1/4;
+      }
+
+      .description-textarea {
+        width: 100%;
+        grid-column: 1/4;
+        height: 121px;
+      }
+
+      .input-address {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-right: 27px;
+      }
+
+      .input-zip {
+        grid-column-start: 3;
+        grid-column-end: 4;
+      }
+    }
+  }
+
+  .multi-step-form-buttons {
+    display: flex;
+    gap: 16px;
+
+    @media (max-width: $breakpoint-sm) {
+      justify-content: center;
+    }
+
+    .step-btn {
+      width: 125px;
+      height: 46px;
+      margin-top: 24px;
+    }
+  }
+}

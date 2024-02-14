@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
-import './UserRegistrationForm.scss';
 import RegistrationModal from '../Modal/RegistrationModal';
+import './UserRegistrationForm.scss';
+import Success from './Success';
+import ChefMultiStepForm from '../MultiStepForm/Chef';
+import UserMultiStepForm from '../MultiStepForm/User';
 
 const clearAndDisableInput = (ref: React.RefObject<HTMLInputElement>) => {
   ref.current!.value = '';
@@ -52,6 +55,7 @@ const useValidate = ({
 };
 
 export const UserRegistrationForm: React.FC = () => {
+  const [accountType, setAccountType] = useState<'' | 'chef' | 'user'>('');
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
 
@@ -90,16 +94,26 @@ export const UserRegistrationForm: React.FC = () => {
       }`}
     >
       {success && (
-        <RegistrationModal>
-          <h3 className="modal-title">
-            You have been successfully registered!
-          </h3>
-          <div className="buttons">
-            <button className="dark-blue-btn">Search database</button>
-            <button className="dark-blue-btn">Create user profile</button>
-            <button className="dark-blue-btn">Create chefs profile</button>
-          </div>
-        </RegistrationModal>
+        <>
+          <RegistrationModal
+            className={`${accountType !== '' && 'inactive-success-modal'}`}
+          >
+            <Success
+              goToUserProfileForm={() => setAccountType('user')}
+              goToChefProfileForm={() => setAccountType('chef')}
+            />
+          </RegistrationModal>
+          {accountType === 'chef' && (
+            <RegistrationModal>
+              <ChefMultiStepForm setState={() => setAccountType('')} />
+            </RegistrationModal>
+          )}
+          {accountType === 'user' && (
+            <RegistrationModal>
+              <UserMultiStepForm />
+            </RegistrationModal>
+          )}
+        </>
       )}
       <div className="wrapper">
         <h3>Register</h3>
