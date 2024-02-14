@@ -80,6 +80,10 @@ h3 {
   @include responsive-font-size(36px, 30px, 24px);
 }
 
+h4 {
+  @include responsive-font-size(26px, 20px, 18px);
+}
+
 h1,
 h3 {
   font-family: PoppinsBlack, sans-serif;

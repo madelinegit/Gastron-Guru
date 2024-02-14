@@ -17,6 +17,10 @@
     display: flex;
     align-items: center;
 
+    .inactive-success-modal {
+      display: none;
+    }
+
     .wrapper {
       overflow: hidden;
       position: fixed;
