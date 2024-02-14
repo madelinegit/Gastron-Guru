@@ -1,10 +1,10 @@
-import { capitalizeWords } from '../../utils/helpers';
-import RatingAndLocation from '../RatingAndLocation';
-import Ribbon from '../Ribbon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { ChefDataProps } from './types';
-import './ChefCard.scss';
+import { capitalizeWords } from "../../utils/helpers";
+import RatingAndLocation from "../RatingAndLocation";
+import Ribbon from "../Ribbon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { ChefDataProps } from "../ChefCards/types";
+import "./ChefCard.scss";
 
 const Card = ({
   name,
@@ -40,7 +40,9 @@ const Card = ({
     <div className="tags">
       <ul>
         {chefPrivate &&
-          chefPrivate.map(item => <li key={item}>{capitalizeWords(item)}</li>)}
+          chefPrivate.map((item) => (
+            <li key={item}>{capitalizeWords(item)}</li>
+          ))}
       </ul>
     </div>
 
