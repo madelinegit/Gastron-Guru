@@ -28,7 +28,7 @@ const ChefCard = ({
       className={isActive ? "chef-card conditional-border" : "chef-card"}
     >
       <div className="thumbnail">
-        <ImageSlider parentWidth={100} slides={featuredImages} />
+        <ImageSlider parentWidth={200} slides={featuredImages} />
         {/* {slides.map()<ImageSlider slides={slides} parentWidth={100} />} */}
       </div>
 

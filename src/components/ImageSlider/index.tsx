@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import "./ImageSlider.scss";
 
-export interface Slide {
-  title: string;
-  url: string;
-}
+// export interface Slide {
+//   title: string;
+//   url: string;
+// }
 interface ImageSliderProps {
-  slides: Slide[];
+  slides: string[];
   parentWidth: number;
 }
 
@@ -42,12 +42,12 @@ const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
     setCurrentIndex(newIndex);
   };
   const getSlideStylesWithBackground = (index: number) => ({
-    height: "100%",
+    height: "138px",
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
     backgroundPosition: "center",
     backgroundSize: "cover",
-    backgroundImage: `url(${slides[index].url})`,
+    backgroundImage: `url(${slides[index]})`,
     width: `${parentWidth}px`,
   });
   const getSlidesStylesContainerWithWidth = () => ({
