@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown, faChevronRight, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
+
 import './Rating.scss';
 
 const Rating = () => {
@@ -52,7 +53,7 @@ const Rating = () => {
 
           <div className="carousel">
             <h2>Reviews with images</h2>
-            <p>See all photos <FontAwesomeIcon icon={faChevronRight} size="2xs" /></p>
+            <a href="#">See all photos <FontAwesomeIcon icon={faChevronRight} size="2xs" /></a>
             {/* INSERT IMAGE CAROUSEL */}
           </div>
 
@@ -121,7 +122,7 @@ const Rating = () => {
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Rating;
