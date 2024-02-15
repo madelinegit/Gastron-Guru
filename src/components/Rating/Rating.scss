@@ -134,10 +134,10 @@
       margin: 5px 0;
       padding: 0;
 
-      // UPDATE LATER
+      // UPDATE STYLING LATER
       li.menu-item {
         margin: 0;
-        background-color:#D1DEFF;
+        background-color: #D1DEFF;
 
         button {
           width: 100%;
@@ -148,8 +148,13 @@
           border: none;
           padding: 5px;
           margin: 0;
-          font: inherit;
+          font-family: 'Poppins', sans-serif;
           cursor: pointer;
+
+          &:hover {
+            background-color: $dark-blue;
+            color: $white;
+          }
         }
       }
     }

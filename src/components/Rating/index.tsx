@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown, faChevronRight, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import './Rating.scss';
 
 const Rating = () => {
@@ -60,7 +60,7 @@ const Rating = () => {
           <div className="dropdown">
             <button onClick={handleOpen} className="dropdown-btn">
               Top Reviews
-              <FontAwesomeIcon icon={faChevronDown} size="sm" />
+              {open ? <FontAwesomeIcon icon={faChevronUp} size="sm" /> : <FontAwesomeIcon icon={faChevronDown} size="sm" />}
             </button>
             {open ? (
               <ul className="dropdown-menu">
