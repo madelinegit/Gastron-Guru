@@ -1,0 +1,41 @@
+.rating-distribution { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+    .rating-progress-bar { 
+        flex-grow: 2;
+        border-radius: 5px;
+        height: 23px;
+        color: $gold;
+        background-color: $tan;
+        border: 1px $dark-tan solid;
+        &::-moz-progress-bar {
+            background-color: $gold;
+        }
+    }
+    .rating-progress-percentage {
+        min-width: 50px;
+        text-align: right;
+    }
+    .rating-progress-label {
+        min-width: 70px;
+        text-align: left;
+    }
+}
+// .rating-progress-bar {
+//   border-radius: 5px;
+//   height: 23px; 
+// }
+// .rating-progress-bar::-webkit-progress-bar {
+//   background-color: yellow;
+//   border-radius: 7px;
+// }
+// .rating-progress-bar::-webkit-progress-value {
+//   background-color: blue;
+//   border-radius: 7px;
+//   box-shadow: 1px 1px 5px 3px rgba( 255, 0, 0, 0.8 );
+// }
+// .rating-progress-bar::-moz-progress {
+  
+// }

@@ -54,6 +54,12 @@ $breakpoint-4k: 2560px;
 }
 
 @font-face {
+  font-family: PoppinsSemiBold;
+  src: url('../../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
   font-family: PoppinsBlack;
   src: url('../../assets/fonts/Poppins/Poppins-Black.ttf') format('truetype');
   font-weight: 900;
