@@ -4,10 +4,21 @@ interface RibbonProps {
   label: string | undefined;
 }
 
-const Ribbon = ({ label }: RibbonProps) => (
-  <div className="ribbon">
-    <p>{label}</p>
-  </div>
-);
+const discountPriority = ["2 for 1", "30% off", "20% off", "10% off"];
+
+const Ribbon = ({ label }: RibbonProps) => {
+  const bestDiscount = label
+    ? discountPriority.filter((discount) => label.includes(discount))
+    : [];
+  return (
+    <div
+      className={`ribbon ${
+        !label || bestDiscount.length === 0 ? "hidden" : ""
+      }`}
+    >
+      <p>{bestDiscount?.[0]}</p>
+    </div>
+  );
+};
 
 export default Ribbon;
