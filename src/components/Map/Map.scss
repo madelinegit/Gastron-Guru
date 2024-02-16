@@ -1,8 +1,3 @@
-.map-container {
-  width: 600px;
-  height: 600px;
-}
-
 .map-marker {
   border-radius: 5px;
   background-color: $dark-blue;
@@ -30,6 +25,7 @@
   }
 
   &.highlighted {
+    z-index: 4;
     background-color: $light-blue;
     &:before {
       background-color: $light-blue;
