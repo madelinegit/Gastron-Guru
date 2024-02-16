@@ -67,9 +67,13 @@
         height: 134px;
       }
     }
+    .thumbtags {
+      position: relative;
+      z-index:2;
+    }
   }
 
-  .tags ul {
+  .tags, ul {
     list-style-type: none;
     display: flex;
     align-items: center;
