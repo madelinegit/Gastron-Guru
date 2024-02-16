@@ -16,11 +16,15 @@
     color: $white;
     font-family: 'PoppinsMedium', sans-serif;
     font-size: 24px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 20px;
+    }
   }
 }
 
 .rating-sidebar {
-  max-width: 576px;
+  max-width: 500px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -33,6 +37,10 @@
 
   p {
     font-size: 17px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 15px;
+    }
   }
 
   button {
@@ -63,6 +71,10 @@
       font-family: 'Poppins', sans-serif;
       font-size: 24px;
       font-weight: normal;
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: 18px;
+      }
     }
   }
   
@@ -106,6 +118,10 @@
 
   p {
     font-size: 20px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 17px;
+    }
   }
 
   .blue-text {
@@ -131,6 +147,10 @@
       font-family: 'PoppinsMedium', sans-serif;
       font-size: 17px;
       text-decoration: none;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -220,6 +240,10 @@
       margin-left: 12px;
       font-family: 'PoppinsMedium', sans-serif;
       font-size: 17px;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 15px;
+      }
     }
   }
 
@@ -230,6 +254,10 @@
       font-family: 'Helvetica', sans-serif;
       font-size: 19px;
       padding: 18px 0;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 15px;
+      }
     }
   }
 
