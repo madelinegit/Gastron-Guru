@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ChefCards from "../../components/ChefCards";
 import ChefDetail from "../../components/ChefDetail/ChefDetail";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
-import GoogleMaps from "../../components/Map/Map";
 import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
 import {
   useCheckboxToggle,
@@ -15,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { getChefDataFilterSort } from "../../utils/helpers";
 import "../../components/LoadingSpinner/LoadingSpinner.scss";
 import "./ChefsDatabase.scss";
+import Map from "../../components/Map/Map";
 
 const ChefsDatabase = () => {
   //NOTE: This dispatch is being used for helper functions that require redux.  VSCODE is not recognizing this as being used, but it is.
@@ -104,10 +104,7 @@ const ChefsDatabase = () => {
           {(isSwitchChecked || isOverrideActive) && (
             <div>
               <h1>Map</h1>
-              <GoogleMaps
-                activeChef={chefData[activeCard]}
-                chefData={chefData}
-              />
+              <Map activeChef={chefData[activeCard]} chefData={chefData} />
             </div>
           )}
         </section>
