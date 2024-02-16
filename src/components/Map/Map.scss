@@ -32,3 +32,31 @@
     }
   }
 }
+
+.chefs-map-container {
+  width: 435px;
+  height: 461px;
+
+  span.chef-name-span {
+    font-family: PoppinsMedium, sans-serif;
+    &.highlighted {
+      font-family: PoppinsBlack, sans-serif;
+    }
+  }
+
+  // .gm-style-iw.gm-style-iw-c,
+  // .gm-style-iw-d,
+  // .gm-style-iw-tc::after {
+
+  // }
+
+  .gm-ui-hover-effect {
+    display: none !important;
+    visibility: hidden !important;
+
+    span {
+      mask-image: none;
+      -webkit-mask-image: none !important;
+    }
+  }
+}

@@ -5,8 +5,6 @@ import {
   Marker,
 } from "@react-google-maps/api";
 import { ChefDataProps } from "../ChefCards/types";
-// import { faMapMarker, faMarker } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Map.scss";
 
 type MapProps = {
@@ -18,18 +16,12 @@ type MapProps = {
 };
 
 const Map = ({ activeChef, chefData }: MapProps) => {
-  const mapContainerStyle = {
-    width: "435px",
-    height: "461px",
-  };
-
   //please talk to Adam for key (need to set up .env)
   const GOOGLE_MAP_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY!;
 
   return (
-    <LoadScript googleMapsApiKey={GOOGLE_MAP_API_KEY}>
+    <LoadScript googleMapsApiKey={GOOGLE_MAP_API_KEY} version="weekly">
       <GoogleMap
-        mapContainerStyle={mapContainerStyle}
         center={
           !activeChef
             ? { lat: 40.73061, lng: -73.935242 }
@@ -39,6 +31,7 @@ const Map = ({ activeChef, chefData }: MapProps) => {
               }
         }
         zoom={13}
+        mapContainerClassName="chefs-map-container"
       >
         {chefData.map((chef) => {
           const isActive = chef.name == activeChef.name;
@@ -61,7 +54,9 @@ const Map = ({ activeChef, chefData }: MapProps) => {
                 key={`${chef.user_id}-info-window`}
                 zIndex={isActive ? 1 : 0}
               >
-                <p>{chef.name}</p>
+                <span className={`chef-name-span ${isActive && "highlighted"}`}>
+                  {chef.name}
+                </span>
               </InfoWindowF>
             </>
           );
