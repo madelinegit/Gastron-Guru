@@ -1,0 +1,31 @@
+@mixin responsive-img-width($max-size, $xl-size, $lg-size, $md-size) {
+  width: $md-size;
+
+  @media (min-width: 769px) {
+    width: $lg-size;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    width: $xl-size;
+  }
+
+  @media (min-width: 1150px) {
+    width: $max-size;
+  }
+}
+
+@mixin responsive-img-height($max-size, $xl-size, $lg-size, $md-size) {
+  height: $md-size;
+
+  @media (min-width: 769px) {
+    height: $lg-size;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    height: $xl-size;
+  }
+
+  @media (min-width: 1150px) {
+    height: $max-size;
+  }
+}

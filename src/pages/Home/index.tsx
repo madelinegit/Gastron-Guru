@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <HomeBanner />
       <Featured />
-      <Benefits/>
+      <Benefits />
       <ForEveryOccasion />
       <RelativeSquareBlocks />
       <CookiesComponent />

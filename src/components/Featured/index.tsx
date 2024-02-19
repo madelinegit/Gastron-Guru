@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import useChef from '../../utils/Api';
-import ChefCards from '../ChefCards';
-import './Featured.scss';
-import NarrowContainer from '../NarrowContainer';
+import { useEffect, useState } from "react";
+import useChef from "../../utils/Api";
+import ChefCards from "../ChefCards";
+import "./Featured.scss";
+import NarrowContainer from "../NarrowContainer";
 
 const Featured = () => {
   const chefData = useChef();
@@ -18,10 +18,10 @@ const Featured = () => {
       setNumberOfCards(getNumberOfCards());
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -45,10 +45,7 @@ const Featured = () => {
       <NarrowContainer>
         <h2>Featured</h2>
         <div className="featured-cards">
-          <ChefCards
-            chefData={featuredChefs}
-            isScrollEnabled={false}
-          />
+          <ChefCards chefData={featuredChefs} isScrollEnabled={false} />
         </div>
       </NarrowContainer>
     </div>
