@@ -31,6 +31,8 @@
   background-color: $dark-blue;
   padding: 50px 40px;
 
+  font-family: 'Poppins', sans-serif;
+
   @media (max-width: $breakpoint-md) {
     padding: 50px 30px;
   }
@@ -52,28 +54,63 @@
   }
 
   .customer-reviews {
+    max-width: 371px;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 11px;
 
-    svg {
-      width: 24px;
-      height: 22px;
-  
-      path {
-        fill: $gold;
+    .chef-star-ratings {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: baseline;
+      gap: 11px;
+
+      .rating-stars i, p.rating-text {
+        font-size: 24px;
       }
     }
 
-    h3 {
-      margin-left: 11px;
-      color: $white;
-      font-family: 'Poppins', sans-serif;
-      font-size: 24px;
-      font-weight: normal;
-      
-      @media (max-width: $breakpoint-md) {
-        font-size: 18px;
+    .chef-total-ratings {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+
+      .total-ratings {
+        color: $white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
+        font-weight: normal;
+      }
+    }
+
+    .chef-rating-distribution {
+      width: 100%;
+      color: #D1DEFF;
+
+      .rating-distribution {
+        progress[value]::-webkit-progress-bar {
+          position: relative;
+          display: block;
+          overflow: hidden;
+          flex-grow: 2;
+          height: 23px;
+          background-color: $tan;
+          border: 2px $dark-tan solid;
+          border-radius: 5px;
+        }
+        
+        &::-moz-progress-bar {
+          background-color: $gold;
+        }
+
+        progress[value]::-webkit-progress-value {
+          background-color: $gold;
+        }
       }
     }
   }
@@ -88,7 +125,6 @@
     .blue-text {
       color: #D1DEFF;
       font-size: 14px;
-
     }
   }
 
@@ -184,7 +220,6 @@
       margin: 5px 0;
       padding: 0;
 
-      // UPDATE STYLING LATER
       li.menu-item {
         margin: 0;
         background-color: #D1DEFF;
@@ -262,5 +297,4 @@
       }
     }
   }
-
 }
