@@ -1,0 +1,25 @@
+.rating-distribution { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+    .rating-progress-bar { 
+        flex-grow: 2;
+        border-radius: 5px;
+        height: 23px;
+        color: $gold;
+        background-color: $tan;
+        border: 1px $dark-tan solid;
+        &::-moz-progress-bar {
+            background-color: $gold;
+        }
+    }
+    .rating-progress-percentage {
+        min-width: 50px;
+        text-align: right;
+    }
+    .rating-progress-label {
+        min-width: 70px;
+        text-align: left;
+    }
+}

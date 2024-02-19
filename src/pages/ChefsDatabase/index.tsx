@@ -1,133 +1,111 @@
-import { useState, useEffect } from "react";
-import SwitchInput from "../../components/Inputs/SwitchInput";
-import CheckboxInput from "../../components/Inputs/CheckboxInput";
+import { useEffect, useState } from 'react'
+import ChefCards from '../../components/ChefCards'
+import ChefDetail from '../../components/ChefDetail/ChefDetail'
+import { LoadingSpinner } from '../../components/LoadingSpinner'
+import Map from '../../components/Map/Map'
+import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper'
 import {
-  useWindowResize,
-  useSwitchToggle,
   useCheckboxToggle,
   useModal,
-  useCardExpansion,
-} from "../../utils/helpers";
-import SearchBar from "../../components/SearchBar";
-import ChefCards from "../../components/ChefCards";
-import Modal from "../../components/Modal/Modal";
-import ModalCard from "../../components/Modal/ModalCard";
-import MockNarrowContainer from "../../components/Modal/MockNarrowContainer";
-import useChef from "../../utils/Api";
-import ArrowButton from "../../components/Buttons/ArrowButton";
-import { modalData } from "../../utils/Data";
-import Map from "../../components/Map/Map";
-import { LoadingSpinner } from "../../components/LoadingSpinner";
-import useChefsDatabaseEffects from "./useChefsDatabaseEffects";
-import { ChefDataProps } from "../../components/ChefCards/types";
-import ChefDetail from "../../components/ChefDetail/ChefDetail";
-import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
+  useSwitchToggle,
+  useWindowResize,
+} from '../../utils/helpers'
+import useSearchChefs from '../../utils/useSeachChefs'
+import { useDispatch } from 'react-redux'
+import { getChefDataFilterSort } from '../../utils/helpers'
+import '../../components/LoadingSpinner/LoadingSpinner.scss'
+import './ChefsDatabase.scss'
 
 const ChefsDatabase = () => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
+  //NOTE: This dispatch is being used for helper functions that require redux.  VSCODE is not recognizing this as being used, but it is.
+  const dispatch = useDispatch()
+  //DO NOT REMOVE ABOVE DISPATCH
+
+  const [loading, setLoading] = useState<boolean>(true)
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
     setIsSwitchChecked
-  );
-  const { renderCheckbox } = useWindowResize(true);
-  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
+  )
+  const { renderCheckbox } = useWindowResize(true)
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
 
-  const [sortedChefCards, setSortChefCards] = useState<ChefDataProps[]>([]);
-  const chefData = useChef();
-  const { showModal, handleModalToggle } = useModal();
+  //handling sort & filter with getChefDataFilterSort. Don't need below
+  // const [sortedChefCards, setSortChefCards] = useState<ChefDataProps[]>([])
+  const chefData = getChefDataFilterSort()
+  const { showModal, handleModalToggle } = useModal()
 
-  const { expandedCards, toggleCardExpansion } = useCardExpansion(
-    modalData[0].label
-  );
-  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
-
-  const [activeCard, setActiveCard] = useState<number>(0);
+  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing
+  const { searchResults, handleSearch } = useSearchChefs(chefData)
+  const [activeCard, setActiveCard] = useState<number>(0)
 
   const onCardClick = (index: number) => {
-    setActiveCard(index);
-  };
+    setActiveCard(index)
+  }
 
+  //NOTE: No longer need this use effect to spy on chefData. This will be incorporated into the funk. Can add loading states to have spinner come up if we add REDUX actions/reducers to keep tract of fetching status
+
+  // useEffect(() => {
+  //   try {
+  //     chefData
+  //   } catch (error) {
+  //     console.log('An error occurred...')
+  //     setLoading(true)
+  //   }
+  //   return () => {
+  //     console.log('Done!')
+  //     setLoading(false)
+  //   }
+  // }, [chefData])
+
+  //NOTE: This is a temporary fix to simulate a loading state. This will be removed once we decide if we integrate with thunk for fetching status states
   useEffect(() => {
-    try {
-      chefData;
-    } catch (error) {
-      console.log("An error occurred...");
-      setLoading(true);
-    }
-    return () => {
-      console.log("Done!");
-      setLoading(false);
-    };
-  }, [chefData]);
-
-  // sort chef cards by ratings (high to low)
-  useChefsDatabaseEffects({ chefData, setSortChefCards });
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, [chefData])
 
   return (
-    <div
-      style={
-        loading ? { overflow: "hidden", position: "fixed", width: "100vw" } : {}
-      }
-    >
-      <ArrowButton handleBtnToggle={handleModalToggle} state={showModal} />
-      {showModal && (
-        <Modal>
-          <MockNarrowContainer>
-            {" "}
-            {modalData.map((card) => (
-              <ModalCard
-                key={card.label}
-                {...card}
-                isExpanded={expandedCards.includes(card.label)}
-                onToggleExpansion={() => toggleCardExpansion(card.label)}
-              />
-            ))}
-          </MockNarrowContainer>
-        </Modal>
-      )}
-      <SwitchInput
-        isChecked={(isSwitchChecked && !isOverrideActive) || isOverrideActive}
-        onToggle={handleSwitchToggle}
-      />
-      <SearchBar />
-
+    <div className={`${loading && 'spinner-wrapper'}`}>
       <SearchBarWrapper
         handleCheckboxToggle={handleCheckboxToggle}
         handleSwitchToggle={handleSwitchToggle}
-        expandedCards={expandedCards}
         isSwitchChecked={isSwitchChecked}
         isOverrideActive={isOverrideActive}
         renderCheckbox={renderCheckbox}
         detailsShowing={detailsShowing}
         showModal={showModal}
-        toggleCardExpansion={toggleCardExpansion}
         handleModalToggle={handleModalToggle}
-       />
-
+        handleSearch={handleSearch}
+      />
       {loading && <LoadingSpinner />}
 
-      <ChefCards
-        chefData={chefData}
-        isScrollEnabled={isScrollEnabled}
-        onCardClick={onCardClick}
-        activeCard={activeCard}
-      />
-      <ChefDetail activeCard={activeCard} />
+      {!loading && searchResults.length === 0 ? (
+        <ChefCards
+          chefData={chefData}
+          isScrollEnabled={isScrollEnabled}
+          onCardClick={onCardClick}
+          activeCard={activeCard}
+        />
+      ) : (
+        <ChefCards
+          chefData={searchResults}
+          isScrollEnabled={isScrollEnabled}
+          onCardClick={onCardClick}
+          activeCard={activeCard}
+        />
+      )}
 
       {isScrollEnabled && (
-        <section>
-          {(isSwitchChecked || isOverrideActive) && (
-            <div>
-              <h1>Map</h1>
-              <Map />
-            </div>
+        <section className="mapDetail-Container-ChefDB">
+          {renderCheckbox && detailsShowing && (
+            <ChefDetail activeCard={activeCard} />
           )}
-          {renderCheckbox && detailsShowing && <h1>Details</h1>}
+          {(isSwitchChecked || isOverrideActive) && <div>{/* <Map /> */}</div>}
         </section>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ChefsDatabase;
+export default ChefsDatabase

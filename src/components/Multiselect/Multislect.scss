@@ -1,0 +1,41 @@
+.multiselect {
+  max-width: 843px;
+  min-width: 250px;
+  background-color: $light-gray;
+  border-radius: 5px;
+  margin: 30px;
+}
+.chefs-reg {
+  text-align: end;
+}
+.multiselect-heading {
+  padding: 20px 0 10px 0;
+}
+.selected-options-text {
+  padding: 15px 10px 10px 0px;
+}
+.multiselect-button {
+  height: auto !important;
+  padding: 5px 7px !important;
+  font-size: 10px !important;
+  margin-right: 7px;
+  margin-bottom: 5px;
+}
+.submit-button {
+  height: auto !important;
+  padding: 15px 30px !important;
+  margin: 30px 0 50px 0;
+  @media (max-width: $breakpoint-md) {
+    padding: 10px 15px !important;
+  }
+}
+.multiselect-container {
+  margin: 30px;
+  padding: 10px 0px 0px 130px;
+  @media (max-width: $breakpoint-md) {
+    padding: 10px 0 0 75px;
+  }
+  @media (max-width: $breakpoint-sm) {
+    padding: 5px 0 0 20px;
+  }
+}

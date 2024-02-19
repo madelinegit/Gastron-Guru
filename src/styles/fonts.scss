@@ -54,6 +54,12 @@ $breakpoint-4k: 2560px;
 }
 
 @font-face {
+  font-family: PoppinsSemiBold;
+  src: url('../../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
   font-family: PoppinsBlack;
   src: url("../../assets/fonts/Poppins/Poppins-Black.ttf") format("truetype");
   font-weight: 900;
@@ -80,6 +86,10 @@ h3 {
   @include responsive-font-size(36px, 30px, 24px);
 }
 
+h4 {
+  @include responsive-font-size(26px, 20px, 18px);
+}
+
 h1,
 h3 {
   font-family: PoppinsBlack, sans-serif;
@@ -91,6 +101,10 @@ label {
   font-family: PoppinsBold, sans-serif;
 }
 
+h4 {
+  font-family: PoppinsBold, sans-serif;
+  font-size: 18;
+}
 p {
   @include responsive-font-size(18px, 16px, 14px);
   font-family: Helvetica, sans-serif;

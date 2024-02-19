@@ -1,0 +1,28 @@
+.review-modal {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: PoppinsMedium;
+  color: $dark-gray;
+  background-color: $light-tan;
+  .review-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .review-modal-stars-text {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .review-modal-button {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+}

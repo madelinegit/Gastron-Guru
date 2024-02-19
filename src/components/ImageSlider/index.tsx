@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import './ImageSlider.scss';
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import "./ImageSlider.scss";
 
-interface Slide {
-  title: string;
-  url: string;
-}
+// export interface Slide {
+//   title: string;
+//   url: string;
+// }
 interface ImageSliderProps {
-  slides: Slide[];
+  slides: string[];
   parentWidth: number;
 }
 
@@ -36,24 +36,26 @@ const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
   }
   const goToPrevious = (): void => {
     const isFirstSlide: boolean = currentIndex === 0;
-    const newIndex: number = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    const newIndex: number = isFirstSlide
+      ? slides.length - 1
+      : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
   const getSlideStylesWithBackground = (index: number) => ({
-    height: '100%',
-    borderTopLeftRadius: '4px',
-    borderTopRightRadius: '4px',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundImage: `url(${slides[index].url})`,
-    width: `${parentWidth}px`
+    height: "138px",
+    borderTopLeftRadius: "4px",
+    borderTopRightRadius: "4px",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundImage: `url(${slides[index]})`,
+    width: `${parentWidth}px`,
   });
   const getSlidesStylesContainerWithWidth = () => ({
-    display: 'flex',
-    height: '100%',
-    transition: 'transform ease-out 0.3s',
+    display: "flex",
+    height: "100%",
+    transition: "transform ease-out 0.3s",
     width: parentWidth * slides.length,
-    transform: `translateX(${-(currentIndex * parentWidth)}px)`
+    transform: `translateX(${-(currentIndex * parentWidth)}px)`,
   });
   const renderSlides = () => {
     return slides.map((_, index: number) => (
@@ -63,11 +65,21 @@ const ImageSlider = ({ slides, parentWidth }: ImageSliderProps) => {
   return (
     <div className="slider">
       <div className="slider-shadow" />
-      <span tabIndex={0} className="left-arrow" onClick={goToPrevious} onKeyDown={goToPrevious}>
-        <i className="fa-solid fa-chevron-left fa-lg"></i>
+      <span
+        tabIndex={0}
+        className="left-arrow"
+        onClick={goToPrevious}
+        onKeyDown={goToPrevious}
+      >
+        <i className="fa-solid fa-chevron-left fa-md"></i>
       </span>
-      <span tabIndex={0} className="right-arrow" onClick={goToNext} onKeyDown={goToNext}>
-        <i className="fa-solid fa-chevron-right fa-lg"></i>
+      <span
+        tabIndex={0}
+        className="right-arrow"
+        onClick={goToNext}
+        onKeyDown={goToNext}
+      >
+        <i className="fa-solid fa-chevron-right fa-md"></i>
       </span>
       <div className="slider-container-overflow">
         <div style={getSlidesStylesContainerWithWidth()}>{renderSlides()}</div>

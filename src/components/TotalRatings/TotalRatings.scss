@@ -1,0 +1,6 @@
+.total-ratings {
+    @include responsive-font-size(20px, 16px, 12px);
+    font-family: PoppinsSemibold;
+    color: $black;
+    margin: 10px 0;
+}

@@ -4,6 +4,7 @@ import Ribbon from "../Ribbon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { ChefDataProps } from "./types";
+import ImageSlider from "../ImageSlider";
 import "./ChefCards.scss";
 
 const ChefCard = ({
@@ -27,7 +28,8 @@ const ChefCard = ({
       className={isActive ? "chef-card conditional-border" : "chef-card"}
     >
       <div className="thumbnail">
-        <img src={featuredImages?.[0]} alt="Chef Restaurant Images" />
+        <ImageSlider parentWidth={200} slides={featuredImages} />
+        {/* {slides.map()<ImageSlider slides={slides} parentWidth={100} />} */}
       </div>
 
       <h3>{name}</h3>

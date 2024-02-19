@@ -2,10 +2,15 @@ import './RegistrationModal.scss';
 
 type RegistrationModalProps = {
   children: React.ReactNode;
+  className?: string;
 };
 
-const RegistrationModal = ({ children }: RegistrationModalProps) => {
-  return <div className="registration-modal-container">{children}</div>;
+const RegistrationModal = ({ children, className }: RegistrationModalProps) => {
+  return (
+    <div className={`registration-modal-container ${className}`}>
+      {children}
+    </div>
+  );
 };
 
 export default RegistrationModal;
