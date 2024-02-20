@@ -4,7 +4,7 @@ import NarrowContainer from "../NarrowContainer";
 const Benefits = () => {
   return (
     <div className="benefitContainer">
-        <h2 className="watermark">Benefits</h2>
+      <h2 className="watermark">Benefits</h2>
       <NarrowContainer>
         <div className="benefitColumn">
           <Benefit
