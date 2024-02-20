@@ -61,7 +61,7 @@ const ChefCard = ({
             chefPrivate.map((item) => (
               <li key={item}>{capitalizeWords(item)}</li>
             ))}
-          {corporate===true &&
+          {corporate &&
             <li key={"corporate"}>Corporate</li>
           }
         </ul>
