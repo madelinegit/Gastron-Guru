@@ -4,6 +4,7 @@ import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import './Rating.scss';
 import RatingHistogram from '../../components/RatingHistogram';
 import ReviewThisChef from '../../components/ReviewThisChef';
+import SortReviewsDropdown from '../../components/SortReviewsDropdown';
 import ChefReviews from '../../components/ChefReviews';
 
 const Rating = () => {
@@ -38,6 +39,10 @@ const Rating = () => {
           {/* INSERT IMAGE CAROUSEL HERE */}
         </div>
 
+        <SortReviewsDropdown
+          title='Top Reviews'
+          items={['Most Recent', 'Oldest', 'Most Helpful', 'Highest Rating', 'Lowest Rating', 'Least Helpful']}
+        />
         <ChefReviews />
       </main>
     </div>
