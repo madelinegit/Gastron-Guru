@@ -1,0 +1,55 @@
+.rating-sidebar {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $dark-blue;
+  padding: 50px 40px;
+
+  font-family: 'Poppins', sans-serif;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 50px 30px;
+  }
+
+  p {
+    font-size: 17px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 15px;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+  
+  .sidebar-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $white;
+    cursor: pointer;
+    
+    .blue-text {
+      color: #D1DEFF;
+      font-size: 14px;
+    }
+  }
+
+  div.review-chef {
+    margin-top: 32px;
+    padding: 32px 0;
+    border-top: 1px #D1DEFF solid;
+    border-bottom: 1px #D1DEFF solid;
+
+    h2 {
+      margin: 0 0 10px 0;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      padding: 32px 0 0 0;
+      border-bottom: 0;
+    }
+  }
+}

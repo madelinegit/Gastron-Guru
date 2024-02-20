@@ -1,0 +1,41 @@
+.rating-main {
+  width: 100%;
+  background-color: $light-black;
+  padding: 73px 80px;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 50px 30px;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 20px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 17px;
+    }
+  }
+
+  .image-carousel {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 46px;
+    margin-bottom: 38px;
+    border-bottom: 2px solid $white;
+
+    a {
+      color: $white;
+      font-family: 'PoppinsMedium', sans-serif;
+      font-size: 17px;
+      text-decoration: none;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 14px;
+      }
+    }
+  }
+}
