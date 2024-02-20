@@ -90,6 +90,16 @@
   }
 }
 
+.blue-text {
+  color: #A1B5E5;
+  font-family: 'PoppinsMedium', sans-serif;
+  font-size: 17px;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 14px;
+  }
+}
+
 article.reviews {
   margin: 20px 0;
 
