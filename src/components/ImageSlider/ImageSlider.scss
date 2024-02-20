@@ -1,8 +1,9 @@
 .slider {
   height: 100%;
   position: relative;
+  margin-top: -48px;
   .slider-shadow {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -23,10 +24,10 @@
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    font-size: clamp(30px, 4vw, 60px);
+    font-size: clamp(40px, 4vw, 60px);
     color: #fff;
     z-index: 1;
-    padding: 0 10px;
+    padding: 0 20px;
     cursor: pointer;
     &.right-arrow {
       right: 0;
@@ -38,7 +39,7 @@
       padding: 0 20px;
     }
     @media (min-width: 1024px) {
-      padding: 0 30px;
+      padding: 0 20px;
     }
   }
   .slider-container-overflow {

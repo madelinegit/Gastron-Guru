@@ -1,4 +1,4 @@
-import './NarrowContainer.scss';
+import "./NarrowContainer.scss";
 
 type NarrowContainerProps = {
   children: React.ReactNode;

@@ -1,8 +1,12 @@
 .ribbon {
   background-color: $gold;
-  padding-left: calc(.8em + .25em);
-  clip-path: polygon(100vw 0,0 0,.8em 50%,0 100%,100vw 100%);
+  padding-left: calc(0.8em + 0.25em);
+  clip-path: polygon(100vw 0, 0 0, 0.8em 50%, 0 100%, 100vw 100%);
   border-image: conic-gradient($gold 0 0) fill 0;
+
+  &.hidden {
+    display: none;
+  }
 
   p {
     width: 100%;

@@ -9,7 +9,7 @@ const useChef = () => {
     const fetchChefs = async () => {
       try {
         const response = await fetch(
-          "https://run.mocky.io/v3/ecfc041c-1dc8-4575-900d-c0585effd77c"
+          "https://run.mocky.io/v3/3ec882fc-be6e-44fb-aac8-0ef9524f1b36"
         );
         const data = await response.json();
         setChefs(data.chefs);

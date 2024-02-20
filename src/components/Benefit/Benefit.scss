@@ -8,12 +8,38 @@
 }
 
 .watermark {
-  font-size: 180px;
   color: $light-blue;
   text-transform: uppercase;
   position: relative;
-  right: 140px;
   top: 5px;
+  font-size: 180px;
+  right: 60px;
+
+  @media (max-width: $breakpoint-lg) {
+    align-self: flex-start;
+    font-size: 135px;
+    left: 32px;
+  }
+
+  @media (max-width: 960px) {
+    align-self: flex-start;
+    font-size: 135px;
+    left: 20px;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 100px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 75px;
+    left: 12px;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 55px;
+    left: 5px;
+  }
 }
 
 .benefitColumn {
@@ -25,8 +51,22 @@
   width: 100%;
   position: relative;
   transform: translateY(-120px);
+
+  @media (max-width: $breakpoint-lg) {
+    transform: translateY(-100px);
+  }
+
   @media (max-width: $breakpoint-md) {
     grid-template-columns: 1fr;
+    transform: translateY(-90px);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    transform: translateY(-70px);
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    transform: translateY(-60px);
   }
 }
 
@@ -42,6 +82,6 @@
 
   p {
     color: #d0cfcf;
-    width: 396px;
+    max-width: 396px;
   }
 }
