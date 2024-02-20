@@ -12,7 +12,9 @@ const ChefCard = ({
   rating,
   distance_from_centre,
   labels,
+  corporate,
   private: chefPrivate,
+  cuisines: chefCuisines,
   onCardClick,
   activeCard,
   isActive,
@@ -28,6 +30,12 @@ const ChefCard = ({
       className={isActive ? "chef-card conditional-border" : "chef-card"}
     >
       <div className="thumbnail">
+      <div className="tags thumbtags">
+          {chefCuisines &&
+                chefCuisines.map((item) => (
+                  <li key={item}>{capitalizeWords(item)}</li>
+                ))}
+        </div>
         <ImageSlider parentWidth={200} slides={featuredImages} />
         {/* {slides.map()<ImageSlider slides={slides} parentWidth={100} />} */}
       </div>
@@ -53,6 +61,9 @@ const ChefCard = ({
             chefPrivate.map((item) => (
               <li key={item}>{capitalizeWords(item)}</li>
             ))}
+          {corporate &&
+            <li key={"corporate"}>Corporate</li>
+          }
         </ul>
       </div>
 
