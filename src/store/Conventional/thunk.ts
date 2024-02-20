@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
 import { CHEF_LOADING } from './actionTypes'
 //to change to backend api when available
-const apiLink = 'https://run.mocky.io/v3/ef3f1e59-97f5-4dcf-8e97-e22160e2d587'
+const apiLink = 'https://run.mocky.io/v3/3ec882fc-be6e-44fb-aac8-0ef9524f1b36'
 
 //thunk to load chefs
 export const loadChefs = () => async (dispatch: Dispatch) => {
