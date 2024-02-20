@@ -1,101 +1,32 @@
+@import "../../styles/img.scss";
+
 .activity-container {
   display: flex;
-  align-items: center;
-  gap: 96px;
-
-  @media (max-width: $breakpoint-lg) {
-    gap: 52px;
-  }
-
   margin-bottom: 60px;
 
   &-inverted {
     display: flex;
-    align-items: center;
-
-    @media (min-width: $breakpoint-lg) {
-      flex-direction: row-reverse;
-    }
-
-    gap: 96px;
-
-    @media (max-width: $breakpoint-lg) {
-      gap: 52px;
-    }
-
     margin-bottom: 60px;
-
-    .img {
-      @media (max-width: $breakpoint-md) {
-        display: none;
-      }
-
-      img {
-        width: 480px;
-        height: 336px;
-
-        @media (max-width: $breakpoint-lg) {
-          width: 420px;
-          height: 312px;
-        }
-
-        object-fit: cover;
-        object-position: 65% 65%;
-      }
-    }
-
-    p {
-      width: 448px;
-      color: #fffb;
-
-      @media (max-width: $breakpoint-sm) {
-        width: 350px;
-      }
-
-      @media (max-width: $breakpoint-sm) {
-        width: 280px;
-      }
-    }
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 
     .text {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      h2 {
-        max-width: 391px;
-        margin-bottom: 10px;
-        font-family: PinyonScript !important;
-        @include responsive-font-size(72px, 52px, 42px);
-      }
-
-      p {
-        padding-bottom: 28px;
-      }
-
-      button {
-        cursor: pointer;
-      }
+      margin-left: 0;
+      margin-right: 60px;
     }
   }
+}
 
-  .img {
-    @media (max-width: $breakpoint-md) {
-      display: none;
-    }
+.img {
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
 
-    img {
-      width: 480px;
-      height: 372px;
-
-      @media (max-width: $breakpoint-lg) {
-        width: 420px;
-        height: 312px;
-      }
-
-      object-fit: cover;
-      object-position: 65% 65%;
-    }
+  img {
+    @include responsive-img-width(435px, 380px, 300px, 0);
+    @include responsive-img-height(316px, 276px, 217px, 0);
+    object-fit: cover;
+    object-position: 65% 65%;
   }
 
   p {
@@ -110,25 +41,32 @@
       width: 280px;
     }
   }
+}
 
-  .text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.text {
+  margin-left: 60px;
 
-    h2 {
-      max-width: 391px;
-      font-family: PinyonScript !important;
-      @include responsive-font-size(72px, 52px, 42px);
-      margin-bottom: 10px;
+  @media (max-width: $breakpoint-md) {
+    margin-left: 0;
+  }
+
+  h2 {
+    max-width: 391px;
+    margin-bottom: 10px;
+    font-family: PinyonScript !important;
+    @include responsive-font-size(72px, 52px, 42px);
+  }
+
+  p {
+    padding-bottom: 28px;
+    max-width: 345px;
+
+    @media (max-width: $breakpoint-md) {
+      margin-left: 0;
     }
+  }
 
-    p {
-      padding-bottom: 28px;
-    }
-
-    button {
-      cursor: pointer;
-    }
+  button {
+    cursor: pointer;
   }
 }
