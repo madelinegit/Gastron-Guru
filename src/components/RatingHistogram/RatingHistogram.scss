@@ -1,0 +1,61 @@
+.chef-ratings-histogram {
+  max-width: 371px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 11px;
+
+  .chef-star-ratings {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: baseline;
+    gap: 11px;
+
+    .rating-stars i, p.rating-text {
+      font-size: 24px;
+    }
+  }
+
+  .chef-total-ratings {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+    .total-ratings {
+      color: $white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: normal;
+    }
+  }
+
+  .chef-rating-distribution {
+    width: 100%;
+    color: #D1DEFF;
+
+    .rating-distribution {
+      progress[value]::-webkit-progress-bar {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        flex-grow: 2;
+        height: 23px;
+        background-color: $tan;
+        border: 2px $dark-tan solid;
+        border-radius: 5px;
+      }
+      
+      &::-moz-progress-bar {
+        background-color: $gold;
+      }
+
+      progress[value]::-webkit-progress-value {
+        background-color: $gold;
+      }
+    }
+  }
+}

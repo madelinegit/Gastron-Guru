@@ -1,0 +1,21 @@
+section.review-chef {
+  p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 15px;
+    }
+  }
+
+  h2 {
+    margin: 0 0 10px 0;
+  }
+
+  button {
+    height: 41px;
+    margin-top: 24px;
+    font-family: 'PoppinsMedium', sans-serif;
+    border-radius: 11px;
+  }
+}

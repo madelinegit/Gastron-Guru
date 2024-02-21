@@ -1,0 +1,62 @@
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding-bottom: 10px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.user-rating {
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 20px;
+    height: 20px;
+
+    path {
+      fill: $gold;
+    }
+  }
+
+  strong {
+    color: $white;
+    margin-left: 12px;
+    font-family: 'PoppinsMedium', sans-serif;
+    font-size: 17px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 15px;
+    }
+  }
+}
+
+.blue-text {
+  color: #A1B5E5;
+  font-family: 'PoppinsMedium', sans-serif;
+  font-size: 17px;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 14px;
+  }
+}
+
+article.reviews {
+  margin: 20px 0;
+
+  .review-text {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 19px;
+    padding: 18px 0;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 15px;
+    }
+  }
+}
