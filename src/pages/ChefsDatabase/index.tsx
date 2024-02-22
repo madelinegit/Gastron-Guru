@@ -1,47 +1,47 @@
-import { useEffect, useState } from 'react'
-import ChefCards from '../../components/ChefCards'
-import ChefDetail from '../../components/ChefDetail/ChefDetail'
-import { LoadingSpinner } from '../../components/LoadingSpinner'
-import Map from '../../components/Map/Map'
-import SearchBarWrapper from '../../components/SearchBar/SearchBarWrapper'
+import { useEffect, useState } from "react";
+import ChefCards from "../../components/ChefCards";
+import ChefDetail from "../../components/ChefDetail/ChefDetail";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
+import SearchBarWrapper from "../../components/SearchBar/SearchBarWrapper";
 import {
   useCheckboxToggle,
   useModal,
   useSwitchToggle,
   useWindowResize,
-} from '../../utils/helpers'
-import useSearchChefs from '../../utils/useSeachChefs'
-import { useDispatch } from 'react-redux'
-import { getChefDataFilterSort } from '../../utils/helpers'
-import '../../components/LoadingSpinner/LoadingSpinner.scss'
-import './ChefsDatabase.scss'
+} from "../../utils/helpers";
+import useSearchChefs from "../../utils/useSeachChefs";
+import { useDispatch } from "react-redux";
+import { getChefDataFilterSort } from "../../utils/helpers";
+import "../../components/LoadingSpinner/LoadingSpinner.scss";
+import "./ChefsDatabase.scss";
+import Map from "../../components/Map/Map";
 
 const ChefsDatabase = () => {
   //NOTE: This dispatch is being used for helper functions that require redux.  VSCODE is not recognizing this as being used, but it is.
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //DO NOT REMOVE ABOVE DISPATCH
 
-  const [loading, setLoading] = useState<boolean>(true)
-  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true)
+  const [loading, setLoading] = useState<boolean>(true);
+  const { isSwitchChecked, setIsSwitchChecked } = useWindowResize(true);
   const { isOverrideActive, handleSwitchToggle } = useSwitchToggle(
     isSwitchChecked,
     setIsSwitchChecked
-  )
-  const { renderCheckbox } = useWindowResize(true)
-  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle()
+  );
+  const { renderCheckbox } = useWindowResize(true);
+  const { detailsShowing, handleCheckboxToggle } = useCheckboxToggle();
 
   //handling sort & filter with getChefDataFilterSort. Don't need below
   // const [sortedChefCards, setSortChefCards] = useState<ChefDataProps[]>([])
-  const chefData = getChefDataFilterSort()
-  const { showModal, handleModalToggle } = useModal()
+  const chefData = getChefDataFilterSort();
+  const { showModal, handleModalToggle } = useModal();
 
-  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing
-  const { searchResults, handleSearch } = useSearchChefs(chefData)
-  const [activeCard, setActiveCard] = useState<number>(0)
+  const isScrollEnabled = isSwitchChecked || isOverrideActive || detailsShowing;
+  const { searchResults, handleSearch } = useSearchChefs(chefData);
+  const [activeCard, setActiveCard] = useState<number>(0);
 
   const onCardClick = (index: number) => {
-    setActiveCard(index)
-  }
+    setActiveCard(index);
+  };
 
   //NOTE: No longer need this use effect to spy on chefData. This will be incorporated into the funk. Can add loading states to have spinner come up if we add REDUX actions/reducers to keep tract of fetching status
 
@@ -61,12 +61,12 @@ const ChefsDatabase = () => {
   //NOTE: This is a temporary fix to simulate a loading state. This will be removed once we decide if we integrate with thunk for fetching status states
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [chefData])
+      setLoading(false);
+    }, 2000);
+  }, [chefData]);
 
   return (
-    <div className={`${loading && 'spinner-wrapper'}`}>
+    <div className={`${loading && "spinner-wrapper"}`}>
       <SearchBarWrapper
         handleCheckboxToggle={handleCheckboxToggle}
         handleSwitchToggle={handleSwitchToggle}
@@ -99,13 +99,18 @@ const ChefsDatabase = () => {
       {isScrollEnabled && (
         <section className="mapDetail-Container-ChefDB">
           {renderCheckbox && detailsShowing && (
-            <ChefDetail activeCard={activeCard} />
+            <ChefDetail activeChef={chefData[activeCard]} />
           )}
-          {(isSwitchChecked || isOverrideActive) && <div>{/* <Map /> */}</div>}
+          {(isSwitchChecked || isOverrideActive) && (
+            <div>
+              <h1>Map</h1>
+              <Map activeChef={chefData[activeCard]} chefData={chefData} />
+            </div>
+          )}
         </section>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ChefsDatabase
+export default ChefsDatabase;

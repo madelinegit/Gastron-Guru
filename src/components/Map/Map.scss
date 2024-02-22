@@ -1,0 +1,56 @@
+.map-marker {
+  border-radius: 5px;
+  background-color: $dark-blue;
+  color: $white;
+  width: 150px;
+  height: 42px;
+  position: relative;
+  z-index: 2;
+  @include responsive-font-size(14px, 12px, 12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 64px;
+    width: 16px;
+    height: 16px;
+    z-index: 3;
+    background-color: $dark-blue;
+    transform: rotate(45deg);
+  }
+
+  &.highlighted {
+    z-index: 4;
+    background-color: $light-blue;
+    &:before {
+      background-color: $light-blue;
+    }
+  }
+}
+
+.chefs-map-container {
+  width: 435px;
+  height: 461px;
+
+  span.chef-name-span {
+    font-family: PoppinsMedium, sans-serif;
+    &.highlighted {
+      font-family: PoppinsBlack, sans-serif;
+    }
+  }
+
+  .gm-ui-hover-effect {
+    display: none !important;
+    visibility: hidden !important;
+
+    span {
+      mask-image: none;
+      -webkit-mask-image: none !important;
+    }
+  }
+}

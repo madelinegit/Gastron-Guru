@@ -30,11 +30,11 @@ const ChefCard = ({
       className={isActive ? "chef-card conditional-border" : "chef-card"}
     >
       <div className="thumbnail">
-      <div className="tags thumbtags">
+        <div className="tags thumbtags">
           {chefCuisines &&
-                chefCuisines.map((item) => (
-                  <li key={item}>{capitalizeWords(item)}</li>
-                ))}
+            chefCuisines.map((item) => (
+              <li key={item}>{capitalizeWords(item)}</li>
+            ))}
         </div>
         <ImageSlider parentWidth={200} slides={featuredImages} />
         {/* {slides.map()<ImageSlider slides={slides} parentWidth={100} />} */}
@@ -61,9 +61,7 @@ const ChefCard = ({
             chefPrivate.map((item) => (
               <li key={item}>{capitalizeWords(item)}</li>
             ))}
-          {corporate &&
-            <li key={"corporate"}>Corporate</li>
-          }
+          {corporate && <li key={"corporate"}>Corporate</li>}
         </ul>
       </div>
 
